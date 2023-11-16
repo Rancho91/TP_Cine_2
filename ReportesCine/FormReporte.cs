@@ -35,35 +35,22 @@ namespace CineApi.ReportesCine
             {
                 List<ReporteButacasDisponibles> lst = await reporteDBService.GetReporte();
                 DataTable dataTable = ConvertListToDataTable(lst);
-
-                reportViewer1.LocalReport.ReportPath = @"C:\Users\ramir\Desktop\Proyectos Facu\version ema\TP_Cine\ReportesCine\Reportes\Report1.rdlc";
-                reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("ButacasDisponiblesDataSet", lst));
-
-
-                //foreach (ReporteButacasDisponibles rep in lst)
-                //{
-                //    List<ReportParameter> paramList = new List<ReportParameter>();
-
-                //    paramList.Add(new ReportParameter("Codigo", rep.Codigo.ToString()));
-                //    paramList.Add(new ReportParameter("Fila", rep.Fila));
-                //    paramList.Add(new ReportParameter("Numero", rep.Numero.ToString()));
-                //    paramList.Add(new ReportParameter("Estado", rep.Estado));
-                //    reportViewer1.LocalReport.SetParameters(paramList);
-
-                //}
+                reportViewer1.LocalReport.ReportPath = @"C:\Users\ramir\Desktop\Proyectos Facu\TP_Cine-Ramiro\ReportesCine\Reportes\Report1.rdlc";
+                reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("DataSet1", lst));
+                List<ReportParameter> paramList = new List<ReportParameter>();
 
                 for (int i = 0; i < lst.Count; i++)
                 {
 
-                    List<ReportParameter> paramList = new List<ReportParameter>();
 
                     paramList.Add(new ReportParameter("Codigo", lst[i].Codigo.ToString()));
                     paramList.Add(new ReportParameter("Fila", lst[i].Fila));
                     paramList.Add(new ReportParameter("Numero", lst[i].Numero.ToString()));
                     paramList.Add(new ReportParameter("Estado", lst[i].Estado));
-                    reportViewer1.LocalReport.SetParameters(paramList);
 
                 }
+                reportViewer1.LocalReport.SetParameters(paramList);
+
                 reportViewer1.RefreshReport();
 
                 funcionService = new FuncionService();
@@ -116,6 +103,11 @@ namespace CineApi.ReportesCine
         }
 
         private  void reportViewer1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cboFuncionReporte_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }

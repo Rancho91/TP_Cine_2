@@ -69,6 +69,7 @@
             this.cboFuncionReporte.Name = "cboFuncionReporte";
             this.cboFuncionReporte.Size = new System.Drawing.Size(48, 21);
             this.cboFuncionReporte.TabIndex = 3;
+            this.cboFuncionReporte.SelectedIndexChanged += new System.EventHandler(this.cboFuncionReporte_SelectedIndexChanged);
             // 
             // label2
             // 
