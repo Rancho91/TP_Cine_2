@@ -25,43 +25,14 @@ namespace CineApi.ReportesCine
         public Form1()
         {
             InitializeComponent();
-            reporteDBService = new ReporteButacasDisponiblesService(1, "No Disponible");
 
         }
 
         private async void Form1_Load(object sender, EventArgs e)
         {
-            try
-            {
-                List<ReporteButacasDisponibles> lst = await reporteDBService.GetReporte();
-                DataTable dataTable = ConvertListToDataTable(lst);
-                reportViewer1.LocalReport.ReportPath = @"C:\Users\ramir\Desktop\Proyectos Facu\TP_Cine-Ramiro\ReportesCine\Reportes\Report1.rdlc";
-                reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("DataSet1", lst));
-                List<ReportParameter> paramList = new List<ReportParameter>();
 
-                for (int i = 0; i < lst.Count; i++)
-                {
-
-
-                    paramList.Add(new ReportParameter("Codigo", lst[i].Codigo.ToString()));
-                    paramList.Add(new ReportParameter("Fila", lst[i].Fila));
-                    paramList.Add(new ReportParameter("Numero", lst[i].Numero.ToString()));
-                    paramList.Add(new ReportParameter("Estado", lst[i].Estado));
-
-                }
-                reportViewer1.LocalReport.SetParameters(paramList);
-
-                reportViewer1.RefreshReport();
-
-                funcionService = new FuncionService();
-                llenarComboFunciones();
-            }
-            catch (Exception ex)
-            {
-                // Manejar la excepción, por ejemplo, mostrar un mensaje de error o registrarla.
-                MessageBox.Show($"Error al obtener datos: {ex.Message}");
-            }
-            this.reportViewer1.RefreshReport();
+            funcionService = new FuncionService();
+            llenarComboFunciones();
         }
 
         private DataTable ConvertListToDataTable(List<ReporteButacasDisponibles> list)
@@ -110,6 +81,52 @@ namespace CineApi.ReportesCine
         private void cboFuncionReporte_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private async void button1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
+                int funcion = 0;
+
+                if (cboFuncionReporte.SelectedItem != null)
+                {
+                    funcion = Convert.ToInt32(cboFuncionReporte.SelectedValue);
+                }
+                string estado = comboBox1.Text;
+
+                reportViewer1.LocalReport.DataSources.Clear();
+                reporteDBService = new ReporteButacasDisponiblesService(funcion,estado);
+                
+                List<ReporteButacasDisponibles> lst = await reporteDBService.GetReporte();
+
+                DataTable dataTable = ConvertListToDataTable(lst);
+                reportViewer1.LocalReport.ReportPath = @"C:\Users\ramir\Desktop\Proyectos Facu\TP_Cine-Ramiro\ReportesCine\Reportes\Report1.rdlc";
+                reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("DataSet1", lst));
+                List<ReportParameter> paramList = new List<ReportParameter>();
+
+                for (int i = 0; i < lst.Count; i++)
+                {
+
+
+                    paramList.Add(new ReportParameter("Codigo", lst[i].Codigo.ToString()));
+                    paramList.Add(new ReportParameter("Fila", lst[i].Fila));
+                    paramList.Add(new ReportParameter("Numero", lst[i].Numero.ToString()));
+                    paramList.Add(new ReportParameter("Estado", lst[i].Estado));
+
+                }
+                reportViewer1.LocalReport.SetParameters(paramList);
+
+                reportViewer1.RefreshReport();
+
+
+            }
+            catch (Exception ex)
+            {
+                // Manejar la excepción, por ejemplo, mostrar un mensaje de error o registrarla.
+                MessageBox.Show($"Error al obtener datos: {ex.Message}");
+            }
         }
     }
 }
