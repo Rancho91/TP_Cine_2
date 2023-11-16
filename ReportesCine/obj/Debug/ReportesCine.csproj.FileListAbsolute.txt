@@ -948,3 +948,5 @@ C:\Users\ramir\Desktop\Proyectos Facu\TP_Cine-Ramiro\ReportesCine\obj\Debug\Repo
 C:\Users\ramir\Desktop\Proyectos Facu\TP_Cine-Ramiro\ReportesCine\obj\Debug\ReportesCine.csproj.CopyComplete
 C:\Users\ramir\Desktop\Proyectos Facu\TP_Cine-Ramiro\ReportesCine\obj\Debug\ReportesCine.exe
 C:\Users\ramir\Desktop\Proyectos Facu\TP_Cine-Ramiro\ReportesCine\obj\Debug\ReportesCine.pdb
+C:\Users\ramir\Desktop\Proyectos Facu\TP_Cine-Ramiro\ReportesCine\obj\Debug\ReportesCine.Reportes.forms.GananciaFormaPagoForm.resources
+C:\Users\ramir\Desktop\Proyectos Facu\TP_Cine-Ramiro\ReportesCine\obj\Debug\ReportesCine.LoginForm.resources

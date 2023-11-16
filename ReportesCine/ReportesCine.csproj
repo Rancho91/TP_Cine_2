@@ -234,8 +234,22 @@
     <Compile Include="FormReporte.Designer.cs">
       <DependentUpon>FormReporte.cs</DependentUpon>
     </Compile>
+    <Compile Include="LoginForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LoginForm.Designer.cs">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reportes\Data\DataSetGananciaFormaPago.cs">
+      <DependentUpon>DataSetGananciaFormaPago.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\Data\DataSetGananciaFormaPago.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSetGananciaFormaPago.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Reportes\Data\ReporteButacasDataSet.cs">
       <DependentUpon>ReporteButacasDataSet.xsd</DependentUpon>
     </Compile>
@@ -244,7 +258,14 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ReporteButacasDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Reportes\forms\GananciaFormaPagoForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reportes\forms\GananciaFormaPagoForm.Designer.cs">
+      <DependentUpon>GananciaFormaPagoForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="service\DataHttp.cs" />
+    <Compile Include="service\FormaPagoService.cs" />
     <Compile Include="service\FuncionService.cs" />
     <Compile Include="service\ReporteButacasDisponiblesService.cs" />
     <Compile Include="service\ReporteFacturasFormaPagoService.cs" />
@@ -255,6 +276,9 @@
     <EmbeddedResource Include="FormReporte.resx">
       <DependentUpon>FormReporte.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="LoginForm.resx">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -264,9 +288,14 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Reportes\forms\GananciaFormaPagoForm.resx">
+      <DependentUpon>GananciaFormaPagoForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\InformeGananciaFoirmaPago.rdlc" />
     <EmbeddedResource Include="Reportes\Report1.rdlc" />
     <None Include="packages.config" />
     <None Include="Properties\DataSources\ReportesCine.Entidades.Reportes.ReporteButacasDisponibles.datasource" />
+    <None Include="Properties\DataSources\ReportesCine.Reportes.Data.DataSetGananciaFormaPago.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -276,6 +305,17 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="Reportes\Data\DataSetGananciaFormaPago.xsc">
+      <DependentUpon>DataSetGananciaFormaPago.xsd</DependentUpon>
+    </None>
+    <None Include="Reportes\Data\DataSetGananciaFormaPago.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSetGananciaFormaPago.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Reportes\Data\DataSetGananciaFormaPago.xss">
+      <DependentUpon>DataSetGananciaFormaPago.xsd</DependentUpon>
+    </None>
     <None Include="Reportes\Data\ReporteButacasDataSet.xsc">
       <DependentUpon>ReporteButacasDataSet.xsd</DependentUpon>
     </None>

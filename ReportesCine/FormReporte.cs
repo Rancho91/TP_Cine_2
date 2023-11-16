@@ -100,6 +100,11 @@ namespace CineApi.ReportesCine
                 reporteDBService = new ReporteButacasDisponiblesService(funcion,estado);
                 
                 List<ReporteButacasDisponibles> lst = await reporteDBService.GetReporte();
+               if(lst.Count == 0 || lst == null)
+                {
+                    MessageBox.Show($"Lista sin informacion");
+
+                }
 
                 DataTable dataTable = ConvertListToDataTable(lst);
                 reportViewer1.LocalReport.ReportPath = @"C:\Users\ramir\Desktop\Proyectos Facu\TP_Cine-Ramiro\ReportesCine\Reportes\Report1.rdlc";
