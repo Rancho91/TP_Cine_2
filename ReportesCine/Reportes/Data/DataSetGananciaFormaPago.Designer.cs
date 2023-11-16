@@ -419,7 +419,7 @@ namespace ReportesCine.Reportes.Data {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public DataTable1Row AddDataTable1Row(int CantidadVentas, int SumaTotal, int TotalDescuento, int TotalFacturado, int CantidadFunciones, int Promedio, string FormaPago) {
+            public DataTable1Row AddDataTable1Row(int CantidadVentas, decimal SumaTotal, decimal TotalDescuento, decimal TotalFacturado, int CantidadFunciones, decimal Promedio, string FormaPago) {
                 DataTable1Row rowDataTable1Row = ((DataTable1Row)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         CantidadVentas,
@@ -465,15 +465,15 @@ namespace ReportesCine.Reportes.Data {
             private void InitClass() {
                 this.columnCantidadVentas = new global::System.Data.DataColumn("CantidadVentas", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnCantidadVentas);
-                this.columnSumaTotal = new global::System.Data.DataColumn("SumaTotal", typeof(int), null, global::System.Data.MappingType.Element);
+                this.columnSumaTotal = new global::System.Data.DataColumn("SumaTotal", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnSumaTotal);
-                this.columnTotalDescuento = new global::System.Data.DataColumn("TotalDescuento", typeof(int), null, global::System.Data.MappingType.Element);
+                this.columnTotalDescuento = new global::System.Data.DataColumn("TotalDescuento", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnTotalDescuento);
-                this.columnTotalFacturado = new global::System.Data.DataColumn("TotalFacturado", typeof(int), null, global::System.Data.MappingType.Element);
+                this.columnTotalFacturado = new global::System.Data.DataColumn("TotalFacturado", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnTotalFacturado);
                 this.columnCantidadFunciones = new global::System.Data.DataColumn("CantidadFunciones", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnCantidadFunciones);
-                this.columnPromedio = new global::System.Data.DataColumn("Promedio", typeof(int), null, global::System.Data.MappingType.Element);
+                this.columnPromedio = new global::System.Data.DataColumn("Promedio", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnPromedio);
                 this.columnFormaPago = new global::System.Data.DataColumn("FormaPago", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnFormaPago);
@@ -635,10 +635,10 @@ namespace ReportesCine.Reportes.Data {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public int SumaTotal {
+            public decimal SumaTotal {
                 get {
                     try {
-                        return ((int)(this[this.tableDataTable1.SumaTotalColumn]));
+                        return ((decimal)(this[this.tableDataTable1.SumaTotalColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("El valor de la columna \'SumaTotal\' de la tabla \'DataTable1\' es DBNull.", e);
@@ -651,10 +651,10 @@ namespace ReportesCine.Reportes.Data {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public int TotalDescuento {
+            public decimal TotalDescuento {
                 get {
                     try {
-                        return ((int)(this[this.tableDataTable1.TotalDescuentoColumn]));
+                        return ((decimal)(this[this.tableDataTable1.TotalDescuentoColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("El valor de la columna \'TotalDescuento\' de la tabla \'DataTable1\' es DBNull.", e);
@@ -667,10 +667,10 @@ namespace ReportesCine.Reportes.Data {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public int TotalFacturado {
+            public decimal TotalFacturado {
                 get {
                     try {
-                        return ((int)(this[this.tableDataTable1.TotalFacturadoColumn]));
+                        return ((decimal)(this[this.tableDataTable1.TotalFacturadoColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("El valor de la columna \'TotalFacturado\' de la tabla \'DataTable1\' es DBNull.", e);
@@ -699,10 +699,10 @@ namespace ReportesCine.Reportes.Data {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public int Promedio {
+            public decimal Promedio {
                 get {
                     try {
-                        return ((int)(this[this.tableDataTable1.PromedioColumn]));
+                        return ((decimal)(this[this.tableDataTable1.PromedioColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("El valor de la columna \'Promedio\' de la tabla \'DataTable1\' es DBNull.", e);

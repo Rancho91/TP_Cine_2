@@ -170,11 +170,11 @@ namespace DataCineDb.Service
                 ReporteFacturasFormaPago rp = new ReporteFacturasFormaPago();
                 rp.CantVentas = (int)row[0];
                 rp.SumaTotal = (decimal)row[1];
-                rp.totalDescuento = (int)row[2];
-                rp.totalFacturado = (decimal)row[2];
-                rp.cantidadFunciones = (int)row[3];
-                rp.PromedioGananciaFuncion = (decimal)row[4];
-                rp.FormaPago = row[5].ToString();
+                rp.totalDescuento = (decimal)row[2];
+                rp.totalFacturado = (decimal)row[3];
+                rp.cantidadFunciones = (int)row[4];
+                rp.PromedioGananciaFuncion = (decimal)row[5];
+                rp.FormaPago = row[6].ToString();
                 list.Add(rp);
             }
 

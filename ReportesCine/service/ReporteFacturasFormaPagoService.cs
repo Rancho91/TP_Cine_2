@@ -13,9 +13,9 @@ namespace ReportesCine.service
     {
         private DataHttp http { get; set; }
 
-        public ReporteFacturasFormaPagoService(DateTime fechaInicio, DateTime fechaFinal, TimeSpan hora)
+        public ReporteFacturasFormaPagoService(DateTime fechaInicio, DateTime fechaFinal, int descuento)
         {
-            http = new DataHttp($"Reporte/funciones/{fechaInicio}/{fechaFinal}/{hora}");
+            http = new DataHttp($"Reporte/facturaFormaPago/{"2020-1-1"}/{"2023-1-1"}/{descuento}");
         }
 
         public async Task<List<ReporteFacturasFormaPago>> GetReporte()

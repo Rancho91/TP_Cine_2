@@ -274,6 +274,7 @@
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                     </Textbox>
+                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
                 <TablixCell>
@@ -481,11 +482,11 @@
             </TablixMember>
           </TablixMembers>
         </TablixRowHierarchy>
-        <DataSetName>DataSet1</DataSetName>
+        <DataSetName>FacturaFormaPagoDataSet</DataSetName>
         <Top>0.49953cm</Top>
         <Left>1.31974cm</Left>
         <Height>1.99375cm</Height>
-        <Width>15.48917cm</Width>
+        <Width>15.38332cm</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -518,7 +519,7 @@
     </DataSource>
   </DataSources>
   <DataSets>
-    <DataSet Name="DataSet1">
+    <DataSet Name="FacturaFormaPagoDataSet">
       <Query>
         <DataSourceName>ReportesCineReportesData</DataSourceName>
         <CommandText>/* Local Query */</CommandText>
@@ -526,27 +527,27 @@
       <Fields>
         <Field Name="CantidadVentas">
           <DataField>CantidadVentas</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
+          <rd:TypeName>System.Int32</rd:TypeName>
         </Field>
         <Field Name="SumaTotal">
           <DataField>SumaTotal</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
+          <rd:TypeName>System.Int32</rd:TypeName>
         </Field>
         <Field Name="TotalDescuento">
           <DataField>TotalDescuento</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
+          <rd:TypeName>System.Int32</rd:TypeName>
         </Field>
         <Field Name="TotalFacturado">
           <DataField>TotalFacturado</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
+          <rd:TypeName>System.Int32</rd:TypeName>
         </Field>
         <Field Name="CantidadFunciones">
           <DataField>CantidadFunciones</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
+          <rd:TypeName>System.Int32</rd:TypeName>
         </Field>
         <Field Name="Promedio">
           <DataField>Promedio</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
+          <rd:TypeName>System.Int32</rd:TypeName>
         </Field>
         <Field Name="FormaPago">
           <DataField>FormaPago</DataField>

@@ -104,7 +104,6 @@ namespace CineApi.ReportesCine
 
                 }
 
-                DataTable dataTable = ConvertListToDataTable(lst);
                 reportViewer2.LocalReport.ReportPath = @"C:\Users\ramir\Desktop\Proyectos Facu\TP_Cine-Ramiro\ReportesCine\Reportes\Report1.rdlc";
                 reportViewer2.LocalReport.DataSources.Add(new ReportDataSource("DataSet1", lst));
                 List<ReportParameter> paramList = new List<ReportParameter>();
