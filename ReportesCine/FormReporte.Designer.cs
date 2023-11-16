@@ -36,7 +36,7 @@
             this.cboFuncionReporte = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
-            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
+            this.reportViewer2 = new Microsoft.Reporting.WinForms.ReportViewer();
             ((System.ComponentModel.ISupportInitialize)(this.butacasXFuncionDataSetBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.butacasDisponiblesDataSetBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -90,22 +90,23 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // reportViewer1
+            // reportViewer2
             // 
-            this.reportViewer1.LocalReport.ReportEmbeddedResource = "ReportesCine.Reportes.Report1.rdlc";
-            this.reportViewer1.Location = new System.Drawing.Point(0, 32);
-            this.reportViewer1.Name = "reportViewer1";
-            this.reportViewer1.ServerReport.BearerToken = null;
-            this.reportViewer1.Size = new System.Drawing.Size(801, 419);
-            this.reportViewer1.TabIndex = 6;
-            this.reportViewer1.Load += new System.EventHandler(this.reportViewer1_Load);
+            this.reportViewer2.DocumentMapWidth = 79;
+            this.reportViewer2.LocalReport.ReportEmbeddedResource = "ReportesCine.Reportes.Report1.rdlc";
+            this.reportViewer2.Location = new System.Drawing.Point(15, 44);
+            this.reportViewer2.Name = "reportViewer2";
+            this.reportViewer2.ServerReport.BearerToken = null;
+            this.reportViewer2.Size = new System.Drawing.Size(773, 266);
+            this.reportViewer2.TabIndex = 6;
+            this.reportViewer2.Load += new System.EventHandler(this.reportViewer2_Load);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 451);
-            this.Controls.Add(this.reportViewer1);
+            this.Controls.Add(this.reportViewer2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.cboFuncionReporte);
@@ -129,7 +130,8 @@
         private System.Windows.Forms.ComboBox cboFuncionReporte;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button button1;
-        private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
+        private Microsoft.Reporting.WinForms.ReportViewerDesigner reportViewer1;
+        private Microsoft.Reporting.WinForms.ReportViewer reportViewer2;
     }
 }
 

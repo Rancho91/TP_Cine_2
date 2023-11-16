@@ -32,5 +32,10 @@ namespace ReportesCine
             GananciaFormaPagoForm form = new GananciaFormaPagoForm();
             form.ShowDialog();
         }
+
+        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
     }
 }

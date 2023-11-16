@@ -11,8 +11,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ReportesCine;
-using Microsoft.Reporting.WinForms;
 using ReportesCine.Entidades.Reportes;
+using Microsoft.Reporting.WinForms;
 
 namespace CineApi.ReportesCine
 {
@@ -33,6 +33,7 @@ namespace CineApi.ReportesCine
 
             funcionService = new FuncionService();
             llenarComboFunciones();
+            this.reportViewer2.RefreshReport();
         }
 
         private DataTable ConvertListToDataTable(List<ReporteButacasDisponibles> list)
@@ -73,10 +74,7 @@ namespace CineApi.ReportesCine
             cboFuncionReporte.DropDownStyle = ComboBoxStyle.DropDownList;
         }
 
-        private  void reportViewer1_Load(object sender, EventArgs e)
-        {
-
-        }
+       
 
         private void cboFuncionReporte_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -95,8 +93,8 @@ namespace CineApi.ReportesCine
                     funcion = Convert.ToInt32(cboFuncionReporte.SelectedValue);
                 }
                 string estado = comboBox1.Text;
-
-                reportViewer1.LocalReport.DataSources.Clear();
+               
+                reportViewer2.LocalReport.DataSources.Clear();
                 reporteDBService = new ReporteButacasDisponiblesService(funcion,estado);
                 
                 List<ReporteButacasDisponibles> lst = await reporteDBService.GetReporte();
@@ -107,8 +105,8 @@ namespace CineApi.ReportesCine
                 }
 
                 DataTable dataTable = ConvertListToDataTable(lst);
-                reportViewer1.LocalReport.ReportPath = @"C:\Users\ramir\Desktop\Proyectos Facu\TP_Cine-Ramiro\ReportesCine\Reportes\Report1.rdlc";
-                reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("DataSet1", lst));
+                reportViewer2.LocalReport.ReportPath = @"C:\Users\ramir\Desktop\Proyectos Facu\TP_Cine-Ramiro\ReportesCine\Reportes\Report1.rdlc";
+                reportViewer2.LocalReport.DataSources.Add(new ReportDataSource("DataSet1", lst));
                 List<ReportParameter> paramList = new List<ReportParameter>();
 
                 for (int i = 0; i < lst.Count; i++)
@@ -121,9 +119,9 @@ namespace CineApi.ReportesCine
                     paramList.Add(new ReportParameter("Estado", lst[i].Estado));
 
                 }
-                reportViewer1.LocalReport.SetParameters(paramList);
+                reportViewer2.LocalReport.SetParameters(paramList);
 
-                reportViewer1.RefreshReport();
+                reportViewer2.RefreshReport();
 
 
             }
@@ -132,6 +130,11 @@ namespace CineApi.ReportesCine
                 // Manejar la excepción, por ejemplo, mostrar un mensaje de error o registrarla.
                 MessageBox.Show($"Error al obtener datos: {ex.Message}");
             }
+        }
+
+        private void reportViewer2_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
