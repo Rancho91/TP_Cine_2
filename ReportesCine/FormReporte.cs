@@ -36,29 +36,7 @@ namespace CineApi.ReportesCine
             this.reportViewer2.RefreshReport();
         }
 
-        private DataTable ConvertListToDataTable(List<ReporteButacasDisponibles> list)
-        {
-            DataTable dataTable = new DataTable("ButacasDisponiblesDataSet");
 
-            // Agrega las columnas al DataTable (asegúrate de que coincidan con las propiedades de ReporteButacasDisponibles)
-            dataTable.Columns.Add("Butaca", typeof(int));
-            dataTable.Columns.Add("Fila", typeof(string));
-            dataTable.Columns.Add("Numero", typeof(int));
-            dataTable.Columns.Add("Estado", typeof(string));
-
-            // Agrega las filas al DataTable
-            foreach (var item in list)
-            {
-                DataRow row = dataTable.NewRow();
-                row["Butaca"] = item.Codigo;
-                row["Fila"] = item.Fila;
-                row["Numero"] = item.Numero;
-                row["Estado"] = item.Estado;
-                dataTable.Rows.Add(row);
-            }
-
-            return dataTable;
-        }
 
 
         private async void llenarComboFunciones()
@@ -110,7 +88,6 @@ namespace CineApi.ReportesCine
 
                 for (int i = 0; i < lst.Count; i++)
                 {
-
 
                     paramList.Add(new ReportParameter("Codigo", lst[i].Codigo.ToString()));
                     paramList.Add(new ReportParameter("Fila", lst[i].Fila));

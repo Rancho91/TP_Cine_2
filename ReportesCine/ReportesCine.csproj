@@ -303,7 +303,9 @@
     <EmbeddedResource Include="Reportes\Report1.rdlc" />
     <None Include="packages.config" />
     <None Include="Properties\DataSources\ReportesCine.Entidades.Reportes.ReporteButacasDisponibles.datasource" />
-    <None Include="Properties\DataSources\ReportesCine.Reportes.Data.DataSetGananciaFormaPago.datasource" />
+    <None Include="Properties\DataSources\ReportesCine.Entidades.Reportes.ReporteFacturasFormaPago.datasource" />
+    <None Include="Properties\DataSources\ReportesCine.Entidades.Reportes.ReportePeliculasGanancia.datasource" />
+    <None Include="Properties\DataSources\ReportesCine.Entidades.Reportes.ReportePeliculasXFecha.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

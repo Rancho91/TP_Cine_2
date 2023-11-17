@@ -24,7 +24,7 @@ namespace ReportesCine.Reportes.Data {
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")]
     public partial class DataSetGananciaFormaPago : global::System.Data.DataSet {
         
-        private DataTable1DataTable tableDataTable1;
+        private DataTable2DataTable tableDataTable2;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
@@ -54,8 +54,8 @@ namespace ReportesCine.Reportes.Data {
             if ((this.DetermineSchemaSerializationMode(info, context) == global::System.Data.SchemaSerializationMode.IncludeSchema)) {
                 global::System.Data.DataSet ds = new global::System.Data.DataSet();
                 ds.ReadXmlSchema(new global::System.Xml.XmlTextReader(new global::System.IO.StringReader(strSchema)));
-                if ((ds.Tables["DataTable1"] != null)) {
-                    base.Tables.Add(new DataTable1DataTable(ds.Tables["DataTable1"]));
+                if ((ds.Tables["DataTable2"] != null)) {
+                    base.Tables.Add(new DataTable2DataTable(ds.Tables["DataTable2"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -79,9 +79,9 @@ namespace ReportesCine.Reportes.Data {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public DataTable1DataTable DataTable1 {
+        public DataTable2DataTable DataTable2 {
             get {
-                return this.tableDataTable1;
+                return this.tableDataTable2;
             }
         }
         
@@ -152,8 +152,8 @@ namespace ReportesCine.Reportes.Data {
                 this.Reset();
                 global::System.Data.DataSet ds = new global::System.Data.DataSet();
                 ds.ReadXml(reader);
-                if ((ds.Tables["DataTable1"] != null)) {
-                    base.Tables.Add(new DataTable1DataTable(ds.Tables["DataTable1"]));
+                if ((ds.Tables["DataTable2"] != null)) {
+                    base.Tables.Add(new DataTable2DataTable(ds.Tables["DataTable2"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -188,10 +188,10 @@ namespace ReportesCine.Reportes.Data {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         internal void InitVars(bool initTable) {
-            this.tableDataTable1 = ((DataTable1DataTable)(base.Tables["DataTable1"]));
+            this.tableDataTable2 = ((DataTable2DataTable)(base.Tables["DataTable2"]));
             if ((initTable == true)) {
-                if ((this.tableDataTable1 != null)) {
-                    this.tableDataTable1.InitVars();
+                if ((this.tableDataTable2 != null)) {
+                    this.tableDataTable2.InitVars();
                 }
             }
         }
@@ -204,13 +204,13 @@ namespace ReportesCine.Reportes.Data {
             this.Namespace = "http://tempuri.org/DataSetGananciaFormaPago.xsd";
             this.EnforceConstraints = true;
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
-            this.tableDataTable1 = new DataTable1DataTable();
-            base.Tables.Add(this.tableDataTable1);
+            this.tableDataTable2 = new DataTable2DataTable();
+            base.Tables.Add(this.tableDataTable2);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        private bool ShouldSerializeDataTable1() {
+        private bool ShouldSerializeDataTable2() {
             return false;
         }
         
@@ -270,33 +270,33 @@ namespace ReportesCine.Reportes.Data {
         }
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public delegate void DataTable1RowChangeEventHandler(object sender, DataTable1RowChangeEvent e);
+        public delegate void DataTable2RowChangeEventHandler(object sender, DataTable2RowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class DataTable1DataTable : global::System.Data.TypedTableBase<DataTable1Row> {
+        public partial class DataTable2DataTable : global::System.Data.TypedTableBase<DataTable2Row> {
             
-            private global::System.Data.DataColumn columnCantidadVentas;
+            private global::System.Data.DataColumn columnCantVentas;
             
             private global::System.Data.DataColumn columnSumaTotal;
             
-            private global::System.Data.DataColumn columnTotalDescuento;
+            private global::System.Data.DataColumn columntotalDescuento;
             
-            private global::System.Data.DataColumn columnTotalFacturado;
+            private global::System.Data.DataColumn columntotalFacturado;
             
-            private global::System.Data.DataColumn columnCantidadFunciones;
+            private global::System.Data.DataColumn columncantidadFunciones;
             
-            private global::System.Data.DataColumn columnPromedio;
+            private global::System.Data.DataColumn columnPromedioGananciaFuncion;
             
             private global::System.Data.DataColumn columnFormaPago;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public DataTable1DataTable() {
-                this.TableName = "DataTable1";
+            public DataTable2DataTable() {
+                this.TableName = "DataTable2";
                 this.BeginInit();
                 this.InitClass();
                 this.EndInit();
@@ -304,7 +304,7 @@ namespace ReportesCine.Reportes.Data {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            internal DataTable1DataTable(global::System.Data.DataTable table) {
+            internal DataTable2DataTable(global::System.Data.DataTable table) {
                 this.TableName = table.TableName;
                 if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
                     this.CaseSensitive = table.CaseSensitive;
@@ -321,16 +321,16 @@ namespace ReportesCine.Reportes.Data {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected DataTable1DataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+            protected DataTable2DataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn CantidadVentasColumn {
+            public global::System.Data.DataColumn CantVentasColumn {
                 get {
-                    return this.columnCantidadVentas;
+                    return this.columnCantVentas;
                 }
             }
             
@@ -344,33 +344,33 @@ namespace ReportesCine.Reportes.Data {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn TotalDescuentoColumn {
+            public global::System.Data.DataColumn totalDescuentoColumn {
                 get {
-                    return this.columnTotalDescuento;
+                    return this.columntotalDescuento;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn TotalFacturadoColumn {
+            public global::System.Data.DataColumn totalFacturadoColumn {
                 get {
-                    return this.columnTotalFacturado;
+                    return this.columntotalFacturado;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn CantidadFuncionesColumn {
+            public global::System.Data.DataColumn cantidadFuncionesColumn {
                 get {
-                    return this.columnCantidadFunciones;
+                    return this.columncantidadFunciones;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn PromedioColumn {
+            public global::System.Data.DataColumn PromedioGananciaFuncionColumn {
                 get {
-                    return this.columnPromedio;
+                    return this.columnPromedioGananciaFuncion;
                 }
             }
             
@@ -393,51 +393,51 @@ namespace ReportesCine.Reportes.Data {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public DataTable1Row this[int index] {
+            public DataTable2Row this[int index] {
                 get {
-                    return ((DataTable1Row)(this.Rows[index]));
+                    return ((DataTable2Row)(this.Rows[index]));
                 }
             }
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event DataTable1RowChangeEventHandler DataTable1RowChanging;
+            public event DataTable2RowChangeEventHandler DataTable2RowChanging;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event DataTable1RowChangeEventHandler DataTable1RowChanged;
+            public event DataTable2RowChangeEventHandler DataTable2RowChanged;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event DataTable1RowChangeEventHandler DataTable1RowDeleting;
+            public event DataTable2RowChangeEventHandler DataTable2RowDeleting;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event DataTable1RowChangeEventHandler DataTable1RowDeleted;
+            public event DataTable2RowChangeEventHandler DataTable2RowDeleted;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void AddDataTable1Row(DataTable1Row row) {
+            public void AddDataTable2Row(DataTable2Row row) {
                 this.Rows.Add(row);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public DataTable1Row AddDataTable1Row(int CantidadVentas, decimal SumaTotal, decimal TotalDescuento, decimal TotalFacturado, int CantidadFunciones, decimal Promedio, string FormaPago) {
-                DataTable1Row rowDataTable1Row = ((DataTable1Row)(this.NewRow()));
+            public DataTable2Row AddDataTable2Row(int CantVentas, decimal SumaTotal, decimal totalDescuento, decimal totalFacturado, int cantidadFunciones, decimal PromedioGananciaFuncion, string FormaPago) {
+                DataTable2Row rowDataTable2Row = ((DataTable2Row)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        CantidadVentas,
+                        CantVentas,
                         SumaTotal,
-                        TotalDescuento,
-                        TotalFacturado,
-                        CantidadFunciones,
-                        Promedio,
+                        totalDescuento,
+                        totalFacturado,
+                        cantidadFunciones,
+                        PromedioGananciaFuncion,
                         FormaPago};
-                rowDataTable1Row.ItemArray = columnValuesArray;
-                this.Rows.Add(rowDataTable1Row);
-                return rowDataTable1Row;
+                rowDataTable2Row.ItemArray = columnValuesArray;
+                this.Rows.Add(rowDataTable2Row);
+                return rowDataTable2Row;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public override global::System.Data.DataTable Clone() {
-                DataTable1DataTable cln = ((DataTable1DataTable)(base.Clone()));
+                DataTable2DataTable cln = ((DataTable2DataTable)(base.Clone()));
                 cln.InitVars();
                 return cln;
             }
@@ -445,64 +445,64 @@ namespace ReportesCine.Reportes.Data {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override global::System.Data.DataTable CreateInstance() {
-                return new DataTable1DataTable();
+                return new DataTable2DataTable();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             internal void InitVars() {
-                this.columnCantidadVentas = base.Columns["CantidadVentas"];
+                this.columnCantVentas = base.Columns["CantVentas"];
                 this.columnSumaTotal = base.Columns["SumaTotal"];
-                this.columnTotalDescuento = base.Columns["TotalDescuento"];
-                this.columnTotalFacturado = base.Columns["TotalFacturado"];
-                this.columnCantidadFunciones = base.Columns["CantidadFunciones"];
-                this.columnPromedio = base.Columns["Promedio"];
+                this.columntotalDescuento = base.Columns["totalDescuento"];
+                this.columntotalFacturado = base.Columns["totalFacturado"];
+                this.columncantidadFunciones = base.Columns["cantidadFunciones"];
+                this.columnPromedioGananciaFuncion = base.Columns["PromedioGananciaFuncion"];
                 this.columnFormaPago = base.Columns["FormaPago"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             private void InitClass() {
-                this.columnCantidadVentas = new global::System.Data.DataColumn("CantidadVentas", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnCantidadVentas);
+                this.columnCantVentas = new global::System.Data.DataColumn("CantVentas", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCantVentas);
                 this.columnSumaTotal = new global::System.Data.DataColumn("SumaTotal", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnSumaTotal);
-                this.columnTotalDescuento = new global::System.Data.DataColumn("TotalDescuento", typeof(decimal), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnTotalDescuento);
-                this.columnTotalFacturado = new global::System.Data.DataColumn("TotalFacturado", typeof(decimal), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnTotalFacturado);
-                this.columnCantidadFunciones = new global::System.Data.DataColumn("CantidadFunciones", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnCantidadFunciones);
-                this.columnPromedio = new global::System.Data.DataColumn("Promedio", typeof(decimal), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnPromedio);
+                this.columntotalDescuento = new global::System.Data.DataColumn("totalDescuento", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columntotalDescuento);
+                this.columntotalFacturado = new global::System.Data.DataColumn("totalFacturado", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columntotalFacturado);
+                this.columncantidadFunciones = new global::System.Data.DataColumn("cantidadFunciones", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columncantidadFunciones);
+                this.columnPromedioGananciaFuncion = new global::System.Data.DataColumn("PromedioGananciaFuncion", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPromedioGananciaFuncion);
                 this.columnFormaPago = new global::System.Data.DataColumn("FormaPago", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnFormaPago);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public DataTable1Row NewDataTable1Row() {
-                return ((DataTable1Row)(this.NewRow()));
+            public DataTable2Row NewDataTable2Row() {
+                return ((DataTable2Row)(this.NewRow()));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new DataTable1Row(builder);
+                return new DataTable2Row(builder);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override global::System.Type GetRowType() {
-                return typeof(DataTable1Row);
+                return typeof(DataTable2Row);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanged(e);
-                if ((this.DataTable1RowChanged != null)) {
-                    this.DataTable1RowChanged(this, new DataTable1RowChangeEvent(((DataTable1Row)(e.Row)), e.Action));
+                if ((this.DataTable2RowChanged != null)) {
+                    this.DataTable2RowChanged(this, new DataTable2RowChangeEvent(((DataTable2Row)(e.Row)), e.Action));
                 }
             }
             
@@ -510,8 +510,8 @@ namespace ReportesCine.Reportes.Data {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanging(e);
-                if ((this.DataTable1RowChanging != null)) {
-                    this.DataTable1RowChanging(this, new DataTable1RowChangeEvent(((DataTable1Row)(e.Row)), e.Action));
+                if ((this.DataTable2RowChanging != null)) {
+                    this.DataTable2RowChanging(this, new DataTable2RowChangeEvent(((DataTable2Row)(e.Row)), e.Action));
                 }
             }
             
@@ -519,8 +519,8 @@ namespace ReportesCine.Reportes.Data {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleted(e);
-                if ((this.DataTable1RowDeleted != null)) {
-                    this.DataTable1RowDeleted(this, new DataTable1RowChangeEvent(((DataTable1Row)(e.Row)), e.Action));
+                if ((this.DataTable2RowDeleted != null)) {
+                    this.DataTable2RowDeleted(this, new DataTable2RowChangeEvent(((DataTable2Row)(e.Row)), e.Action));
                 }
             }
             
@@ -528,14 +528,14 @@ namespace ReportesCine.Reportes.Data {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleting(e);
-                if ((this.DataTable1RowDeleting != null)) {
-                    this.DataTable1RowDeleting(this, new DataTable1RowChangeEvent(((DataTable1Row)(e.Row)), e.Action));
+                if ((this.DataTable2RowDeleting != null)) {
+                    this.DataTable2RowDeleting(this, new DataTable2RowChangeEvent(((DataTable2Row)(e.Row)), e.Action));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void RemoveDataTable1Row(DataTable1Row row) {
+            public void RemoveDataTable2Row(DataTable2Row row) {
                 this.Rows.Remove(row);
             }
             
@@ -562,7 +562,7 @@ namespace ReportesCine.Reportes.Data {
                 type.Attributes.Add(attribute1);
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "DataTable1DataTable";
+                attribute2.FixedValue = "DataTable2DataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -606,30 +606,30 @@ namespace ReportesCine.Reportes.Data {
         /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
-        public partial class DataTable1Row : global::System.Data.DataRow {
+        public partial class DataTable2Row : global::System.Data.DataRow {
             
-            private DataTable1DataTable tableDataTable1;
+            private DataTable2DataTable tableDataTable2;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            internal DataTable1Row(global::System.Data.DataRowBuilder rb) : 
+            internal DataTable2Row(global::System.Data.DataRowBuilder rb) : 
                     base(rb) {
-                this.tableDataTable1 = ((DataTable1DataTable)(this.Table));
+                this.tableDataTable2 = ((DataTable2DataTable)(this.Table));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public int CantidadVentas {
+            public int CantVentas {
                 get {
                     try {
-                        return ((int)(this[this.tableDataTable1.CantidadVentasColumn]));
+                        return ((int)(this[this.tableDataTable2.CantVentasColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'CantidadVentas\' de la tabla \'DataTable1\' es DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'CantVentas\' de la tabla \'DataTable2\' es DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableDataTable1.CantidadVentasColumn] = value;
+                    this[this.tableDataTable2.CantVentasColumn] = value;
                 }
             }
             
@@ -638,78 +638,79 @@ namespace ReportesCine.Reportes.Data {
             public decimal SumaTotal {
                 get {
                     try {
-                        return ((decimal)(this[this.tableDataTable1.SumaTotalColumn]));
+                        return ((decimal)(this[this.tableDataTable2.SumaTotalColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'SumaTotal\' de la tabla \'DataTable1\' es DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'SumaTotal\' de la tabla \'DataTable2\' es DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableDataTable1.SumaTotalColumn] = value;
+                    this[this.tableDataTable2.SumaTotalColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public decimal TotalDescuento {
+            public decimal totalDescuento {
                 get {
                     try {
-                        return ((decimal)(this[this.tableDataTable1.TotalDescuentoColumn]));
+                        return ((decimal)(this[this.tableDataTable2.totalDescuentoColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'TotalDescuento\' de la tabla \'DataTable1\' es DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'totalDescuento\' de la tabla \'DataTable2\' es DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableDataTable1.TotalDescuentoColumn] = value;
+                    this[this.tableDataTable2.totalDescuentoColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public decimal TotalFacturado {
+            public decimal totalFacturado {
                 get {
                     try {
-                        return ((decimal)(this[this.tableDataTable1.TotalFacturadoColumn]));
+                        return ((decimal)(this[this.tableDataTable2.totalFacturadoColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'TotalFacturado\' de la tabla \'DataTable1\' es DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'totalFacturado\' de la tabla \'DataTable2\' es DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableDataTable1.TotalFacturadoColumn] = value;
+                    this[this.tableDataTable2.totalFacturadoColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public int CantidadFunciones {
+            public int cantidadFunciones {
                 get {
                     try {
-                        return ((int)(this[this.tableDataTable1.CantidadFuncionesColumn]));
+                        return ((int)(this[this.tableDataTable2.cantidadFuncionesColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'CantidadFunciones\' de la tabla \'DataTable1\' es DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'cantidadFunciones\' de la tabla \'DataTable2\' es DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableDataTable1.CantidadFuncionesColumn] = value;
+                    this[this.tableDataTable2.cantidadFuncionesColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public decimal Promedio {
+            public decimal PromedioGananciaFuncion {
                 get {
                     try {
-                        return ((decimal)(this[this.tableDataTable1.PromedioColumn]));
+                        return ((decimal)(this[this.tableDataTable2.PromedioGananciaFuncionColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Promedio\' de la tabla \'DataTable1\' es DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'PromedioGananciaFuncion\' de la tabla \'DataTable2\' es DBNu" +
+                                "ll.", e);
                     }
                 }
                 set {
-                    this[this.tableDataTable1.PromedioColumn] = value;
+                    this[this.tableDataTable2.PromedioGananciaFuncionColumn] = value;
                 }
             }
             
@@ -718,99 +719,99 @@ namespace ReportesCine.Reportes.Data {
             public string FormaPago {
                 get {
                     try {
-                        return ((string)(this[this.tableDataTable1.FormaPagoColumn]));
+                        return ((string)(this[this.tableDataTable2.FormaPagoColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'FormaPago\' de la tabla \'DataTable1\' es DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'FormaPago\' de la tabla \'DataTable2\' es DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableDataTable1.FormaPagoColumn] = value;
+                    this[this.tableDataTable2.FormaPagoColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsCantidadVentasNull() {
-                return this.IsNull(this.tableDataTable1.CantidadVentasColumn);
+            public bool IsCantVentasNull() {
+                return this.IsNull(this.tableDataTable2.CantVentasColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetCantidadVentasNull() {
-                this[this.tableDataTable1.CantidadVentasColumn] = global::System.Convert.DBNull;
+            public void SetCantVentasNull() {
+                this[this.tableDataTable2.CantVentasColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool IsSumaTotalNull() {
-                return this.IsNull(this.tableDataTable1.SumaTotalColumn);
+                return this.IsNull(this.tableDataTable2.SumaTotalColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SetSumaTotalNull() {
-                this[this.tableDataTable1.SumaTotalColumn] = global::System.Convert.DBNull;
+                this[this.tableDataTable2.SumaTotalColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsTotalDescuentoNull() {
-                return this.IsNull(this.tableDataTable1.TotalDescuentoColumn);
+            public bool IstotalDescuentoNull() {
+                return this.IsNull(this.tableDataTable2.totalDescuentoColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetTotalDescuentoNull() {
-                this[this.tableDataTable1.TotalDescuentoColumn] = global::System.Convert.DBNull;
+            public void SettotalDescuentoNull() {
+                this[this.tableDataTable2.totalDescuentoColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsTotalFacturadoNull() {
-                return this.IsNull(this.tableDataTable1.TotalFacturadoColumn);
+            public bool IstotalFacturadoNull() {
+                return this.IsNull(this.tableDataTable2.totalFacturadoColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetTotalFacturadoNull() {
-                this[this.tableDataTable1.TotalFacturadoColumn] = global::System.Convert.DBNull;
+            public void SettotalFacturadoNull() {
+                this[this.tableDataTable2.totalFacturadoColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsCantidadFuncionesNull() {
-                return this.IsNull(this.tableDataTable1.CantidadFuncionesColumn);
+            public bool IscantidadFuncionesNull() {
+                return this.IsNull(this.tableDataTable2.cantidadFuncionesColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetCantidadFuncionesNull() {
-                this[this.tableDataTable1.CantidadFuncionesColumn] = global::System.Convert.DBNull;
+            public void SetcantidadFuncionesNull() {
+                this[this.tableDataTable2.cantidadFuncionesColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsPromedioNull() {
-                return this.IsNull(this.tableDataTable1.PromedioColumn);
+            public bool IsPromedioGananciaFuncionNull() {
+                return this.IsNull(this.tableDataTable2.PromedioGananciaFuncionColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetPromedioNull() {
-                this[this.tableDataTable1.PromedioColumn] = global::System.Convert.DBNull;
+            public void SetPromedioGananciaFuncionNull() {
+                this[this.tableDataTable2.PromedioGananciaFuncionColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool IsFormaPagoNull() {
-                return this.IsNull(this.tableDataTable1.FormaPagoColumn);
+                return this.IsNull(this.tableDataTable2.FormaPagoColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SetFormaPagoNull() {
-                this[this.tableDataTable1.FormaPagoColumn] = global::System.Convert.DBNull;
+                this[this.tableDataTable2.FormaPagoColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -818,22 +819,22 @@ namespace ReportesCine.Reportes.Data {
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public class DataTable1RowChangeEvent : global::System.EventArgs {
+        public class DataTable2RowChangeEvent : global::System.EventArgs {
             
-            private DataTable1Row eventRow;
+            private DataTable2Row eventRow;
             
             private global::System.Data.DataRowAction eventAction;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public DataTable1RowChangeEvent(DataTable1Row row, global::System.Data.DataRowAction action) {
+            public DataTable2RowChangeEvent(DataTable2Row row, global::System.Data.DataRowAction action) {
                 this.eventRow = row;
                 this.eventAction = action;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public DataTable1Row Row {
+            public DataTable2Row Row {
                 get {
                     return this.eventRow;
                 }
