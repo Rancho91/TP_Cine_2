@@ -32,5 +32,86 @@ namespace DataCineDb.Service
             }
             return peliculas;
         }
+        public bool postPelicula(Peliculas pelicula)
+        {
+            bool error=false;
+            try
+            {
+                List<Parametros> parametros = new List<Parametros>();
+                if (pelicula.Genero.Codigo > 0)
+                {
+                    parametros.Add(new Parametros("@cod_genero", pelicula.Genero.Codigo));
+                }
+                parametros.Add(new Parametros("@nombre", pelicula.Nombre));
+                if (pelicula.Pais.Codigo > 0) parametros.Add(new Parametros("@cod_pais", pelicula.Pais.Codigo));
+                if(pelicula.Clasificacion.Codigo>0) parametros.Add(new Parametros("@cod_clasificacion", pelicula.Clasificacion.Codigo));
+                parametros.Add(new Parametros("@duracion", pelicula.Duracion));
+                helper.Insertar("sp_crear_pelicula", parametros);
+
+                return true;
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine($"Stack Trace: {ex}");
+                return error;
+            }
+
+
+        }
+        public bool modPelicula(Peliculas pelicula)
+        {
+            bool error = false;
+            TimeSpan duracion = TimeSpan.FromHours(0) + TimeSpan.FromMinutes(0);
+            try
+            {
+                List<Parametros> parametros = new List<Parametros>();
+                if(pelicula.Codigo>0) parametros.Add(new Parametros("@cod_pelicula", pelicula.Codigo));
+
+                if (pelicula.Genero.Codigo > 0)
+                {
+                    parametros.Add(new Parametros("@cod_genero", pelicula.Genero.Codigo));
+                }
+                if(pelicula.Nombre != "" || pelicula.Nombre != string.Empty) parametros.Add(new Parametros("@nombre", pelicula.Nombre));
+
+                if (pelicula.Pais.Codigo > 0) parametros.Add(new Parametros("@cod_pais", pelicula.Pais.Codigo));
+
+                if (pelicula.Clasificacion.Codigo > 0) parametros.Add(new Parametros("@cod_clasificacion", pelicula.Clasificacion.Codigo));
+                if(pelicula.Duracion != duracion) parametros.Add(new Parametros("@duracion", pelicula.Duracion));
+
+                helper.Insertar("sp_update_pelicula", parametros);
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Stack Trace: {ex}");
+                return error;
+            }
+
+
+        }
+        public bool EliminarPelicula( int codigo)
+        {
+            bool error = false;
+            try
+            {
+                List<Parametros> parametros = new List<Parametros>();
+
+                parametros.Add(new Parametros("@cod_pelicula", codigo));
+
+                helper.Insertar("sp_delete_pelicula", parametros);
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Stack Trace: {ex}");
+                return error;
+            }
+
+
+        }
     }
 }
+
+

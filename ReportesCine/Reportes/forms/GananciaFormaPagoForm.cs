@@ -50,11 +50,10 @@ namespace ReportesCine.Reportes.forms
 
                 ReporteFacturasFormaPagoService reporteDBService = new ReporteFacturasFormaPagoService(new DateTime(2020, 1, 1), new DateTime(2023, 1, 1), 0 );
                 List<ReporteFacturasFormaPago> lst = await reporteDBService.GetReporte();
-                DataTable dt = ConvertListToDataTable(lst);
 
                 if (lst.Count == 0)
                 {
-                    MessageBox.Show($"Lista sin informacion");
+                    MessageBox.Show($"reporte sin informacion");
                 }
 
                 reportViewer1.LocalReport.ReportPath = @"C:\Users\ramir\Desktop\Proyectos Facu\TP_Cine-Ramiro\ReportesCine\Reportes\InformeGananciaFoirmaPago.rdlc";
@@ -86,34 +85,7 @@ namespace ReportesCine.Reportes.forms
                 MessageBox.Show($"Error al obtener datos: {ex.Message}");
             }
         }
-        private DataTable ConvertListToDataTable(List<ReporteFacturasFormaPago> list)
-        {
-            DataTable dataTable = new DataTable("ReporteFacturasFormaPagoDataSet");
-
-            dataTable.Columns.Add("FormaPago", typeof(string));
-            dataTable.Columns.Add("CantVentas", typeof(int));
-            dataTable.Columns.Add("SumaTotal", typeof(decimal));
-            dataTable.Columns.Add("TotalDescuento", typeof(decimal));
-            dataTable.Columns.Add("TotalFacturado", typeof(decimal));
-            dataTable.Columns.Add("CantidadFunciones", typeof(int));
-            dataTable.Columns.Add("PromedioGananciaFuncion", typeof(decimal));
-
-            // Agrega las filas al DataTable
-            foreach (var item in list)
-            {
-                DataRow row = dataTable.NewRow();
-                row["FormaPago"] = item.FormaPago;
-                row["CantVentas"] = item.CantVentas;
-                row["SumaTotal"] = item.SumaTotal;
-                row["TotalDescuento"] = item.totalDescuento;
-                row["TotalFacturado"] = item.totalFacturado;
-                row["CantidadFunciones"] = item.cantidadFunciones;
-                row["PromedioGananciaFuncion"] = item.PromedioGananciaFuncion;
-                dataTable.Rows.Add(row);
-            }
-
-            return dataTable;
-        }
+       
         private void reportViewer1_Load(object sender, EventArgs e)
         {
 

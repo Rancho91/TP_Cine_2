@@ -42,20 +42,41 @@ namespace CineApi.Controllers
 
         // POST api/<ValuesController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public IActionResult Post([FromBody] Peliculas pelicula)
         {
+            bool creo = service.postPelicula(pelicula);
+            if (creo ==false)
+            {
+                return BadRequest("no se pudo crear la pelicula.");
+            }
+            
+            return Ok("se creo correctamente");
         }
 
         // PUT api/<ValuesController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public IActionResult Put(int id, [FromBody] Peliculas pelicula)
         {
+            bool creo = service.modPelicula(pelicula);
+            if (creo == false)
+            {
+                return BadRequest("no se pudo modificar la pelicula.");
+            }
+
+            return Ok("se creo correctamente");
         }
 
         // DELETE api/<ValuesController>/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public IActionResult Delete(int id)
         {
+            bool creo = service.EliminarPelicula(id);
+            if (creo == false)
+            {
+                return BadRequest("no se pudo eliminar la pelicula.");
+            }
+
+            return Ok("se elimino correctamente");
         }
     }
 }
