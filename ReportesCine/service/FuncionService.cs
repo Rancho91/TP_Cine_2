@@ -74,5 +74,19 @@ namespace ReportesCine.service
                 MessageBox.Show(ex.Message, "Error");
             }
         }
+        public async Task put(Funciones funcion)
+        {
+            try
+            {
+                string jsonSala = JsonConvert.SerializeObject(funcion);
+                await http.Put(jsonSala);
+
+                MessageBox.Show("Funcion modificada exitosamente");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error");
+            }
+        }
     }
 }

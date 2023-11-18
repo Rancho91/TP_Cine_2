@@ -104,6 +104,7 @@ namespace ReportesCine.Presentacion.Pelicula
             {
                 MessageBox.Show("no se pudo crear la funcion");
             }
+            Cargar();
 
 
 
@@ -139,7 +140,7 @@ namespace ReportesCine.Presentacion.Pelicula
                     {
                         MessageBox.Show(ex.Message);
                     }
-                    cargarDGV();
+                    Cargar();
                 }
                 
             }

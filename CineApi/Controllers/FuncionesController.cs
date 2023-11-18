@@ -87,13 +87,13 @@ namespace CineApi.Controllers
 
         // PUT api/<ValuesController>/5
         [HttpPut("{id}")]
-        public IActionResult Put(int id, [FromBody] Salas sala)
+        public IActionResult Put(int id, [FromBody] Funciones funcion)
         {
             try
             {
-                Console.WriteLine(sala);
-                service.putFunciones(sala);
-                return Ok(sala);
+                Console.WriteLine(funcion);
+                service.putFunciones(funcion);
+                return Ok(funcion);
             }
             catch (Exception ex)
             {
@@ -105,10 +105,25 @@ namespace CineApi.Controllers
             }
         }
 
-        //// DELETE api/<ValuesController>/5
-        //[HttpDelete("{id}")]
-        //public void Delete(int id)
-        //{
-        //}
+        // DELETE api/<ValuesController>/5
+        [HttpDelete("{id}")]
+        public IActionResult Delete(int id)
+        {
+            try
+            {
+                
+                service.deleteFuncion(id);
+                return Ok("se elimino la funcion");
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Excepción: {ex.Message}");
+
+                Console.WriteLine($"Stack Trace: {ex.StackTrace}");
+
+                return BadRequest("no se puede eliminar la funcion");
+            }
+        }
     }
 }

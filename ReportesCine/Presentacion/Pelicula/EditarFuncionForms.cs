@@ -54,18 +54,19 @@ namespace ReportesCine.Presentacion.Pelicula
             cbPeliculas.DataSource = listPelis;
             cbPeliculas.DisplayMember = "Nombre";
             cbPeliculas.ValueMember = "Codigo";
-
+            cbPeliculas.SelectedValue = funcion.Pelicula.Codigo;
             listSalas = await salaService.Get();
 
             cbSalas.DataSource = listSalas;
             cbSalas.DisplayMember = "Codigo";
             cbSalas.ValueMember = "Codigo";
-
+            cbSalas.SelectedValue = funcion.Sala.Codigo;
 
             idiomas = await idiomaService.Get();
             cbIdioma.DataSource = idiomas;
             cbIdioma.DisplayMember = "Idioma";
             cbIdioma.ValueMember = "Codigo";
+            cbIdioma.SelectedValue = funcion.Idioma.Codigo;
 
             nudHora.Value = (int)funcion.Horario.Hours;
             nupMinutos.Value = (int)funcion.Horario.Minutes;
@@ -80,11 +81,28 @@ namespace ReportesCine.Presentacion.Pelicula
 
         }
 
+        private async void btnEditar_Click(object sender, EventArgs e)
+        {
+            sala.Codigo = (int)cbSalas.SelectedValue;
+            funcion.Pelicula.Codigo = (int)cbPeliculas.SelectedValue;
+            funcion.Idioma.Codigo = (int)cbIdioma.SelectedValue;
+            funcion.Fecha = DateTime.Parse(FechaDTP.Text);
+            funcion.Horario = TimeSpan.FromHours((int)nudHora.Value) + TimeSpan.FromMinutes((int)nupMinutos.Value);
+            funcion.Subtitulada = ChBSubtitulada.Checked;
+            funcion.TerceraDimencion = ChB3D.Checked;
+            funcion.Precio = nupPrecio.Value;
+            sala.agregarFuncion(funcion);
+            try
+            {
+                await funcionService.put(funcion);
+                MessageBox.Show("se modifico la funcion");
 
+            }
+            catch
+            {
+                MessageBox.Show("no se pudo crear la funcion");
+            }
 
-
-
-
-
+        }
     }
 }

@@ -82,15 +82,14 @@ namespace DataCineDb.Service
 
         }
 
-        public void putFunciones(Salas sala)
+        public void putFunciones(Funciones funcion)
         {
 
-            foreach (Funciones funcion in sala.Funciones)
-            {
+           
                 List<Parametros> listParametros = new List<Parametros>();
                 listParametros.Add(new Parametros("@cod_funcion", funcion.Codigo));
                 if (funcion.Pelicula.Codigo > 0) listParametros.Add(new Parametros("@Cod_pelicula", funcion.Pelicula.Codigo));
-                if (sala.Codigo > 0) listParametros.Add(new Parametros("@Cod_sala", sala.Codigo));
+                if (funcion.Sala.Codigo > 0) listParametros.Add(new Parametros("@Cod_sala", funcion.Sala.Codigo));
                 if (funcion.Horario > (TimeSpan.FromHours(0) + TimeSpan.FromMinutes(0))) listParametros.Add(new Parametros("@Horario", funcion.Horario));
                 listParametros.Add(new Parametros("@terceraD", funcion.TerceraDimencion));
                 listParametros.Add(new Parametros("@subtitulos", funcion.Subtitulada));
@@ -100,8 +99,23 @@ namespace DataCineDb.Service
 
                 helper.Insertar("sp_update_funcion", listParametros);
 
-            }
 
+        }
+        public bool deleteFuncion(int codigo)
+        {
+            List<Parametros> listParametros = new List<Parametros>();
+            listParametros.Add(new Parametros("@cod_funcion", codigo));
+            try
+            {
+                helper.Insertar("sp_delete_funcion", listParametros);
+                return true;
+
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return false;
+            }
 
         }
     }
