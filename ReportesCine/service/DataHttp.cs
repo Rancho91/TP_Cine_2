@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.Reporting.WinForms;
 using System.Net.Http.Headers;
 using System.Windows.Forms;
+using System.Text;
 
 namespace ReportesCine.service
 {
@@ -42,7 +43,36 @@ namespace ReportesCine.service
                 }
             }
         }
+        public async Task<string> Post(string jsonData)
+        {
+            using (var client = new HttpClient(new HttpClientHandler
+            {
+                ServerCertificateCustomValidationCallback = (sender, cert, chain, sslPolicyErrors) => true
+            }))
+            {
+                try
+                {
+                    // Convierte los datos JSON en un contenido StringContent
+                    var content = new StringContent(jsonData, Encoding.UTF8, "application/json");
 
+                    // Realiza la solicitud POST
+                    var result = await client.PostAsync(Url + Route, content);
+
+                    // Lee y devuelve el contenido de la respuesta
+                    var responseContent = await result.Content.ReadAsStringAsync();
+
+                    Console.WriteLine($"Status Code: {result.StatusCode}");
+                    Console.WriteLine($"Response Content: {responseContent}");
+
+                    return responseContent;
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Exception: {ex.Message}");
+                    return null;
+                }
+            }
+        }
 
     }
 

@@ -17,6 +17,7 @@ namespace ReportesCine.Entidades.Maestras
         public TimeSpan Horario { get; set; }
         public DateTime Fecha { get; set; }
 
+        public Salas Sala { get; set; }
         public bool TerceraDimencion { get; set; }
         public bool Subtitulada { get; set; }
 
@@ -33,7 +34,7 @@ namespace ReportesCine.Entidades.Maestras
             Precio = 0;
             Subtitulada = false;
             TerceraDimencion= false;
-
+            Sala = new Salas();
             Butacas = new List<Butacas>();
         }
 
@@ -47,6 +48,7 @@ namespace ReportesCine.Entidades.Maestras
             Subtitulada = false;
             TerceraDimencion = false;
             Butacas = new List<Butacas>();
+            Sala = new Salas();
         }
 
         public Funciones(int codigo, Peliculas pelicula, DateTime fecha, TimeSpan horario, decimal precio, bool subtitulada, bool terceraDimencion, Idiomas idioma)
@@ -59,6 +61,7 @@ namespace ReportesCine.Entidades.Maestras
             Precio = precio;
             Subtitulada = subtitulada;
             TerceraDimencion = terceraDimencion;
+            Sala = new Salas();
 
         }
         public void agregarButaca(Butacas butaca)

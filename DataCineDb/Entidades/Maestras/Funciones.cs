@@ -21,7 +21,7 @@ namespace DataCineDb.Entidades.Maestras
         public bool Subtitulada { get; set; }
 
         public decimal Precio { get; set; }
-
+        public Salas Sala { get; set; }
         public List<Butacas> Butacas { get; set; }
         public Funciones()
         {
@@ -33,7 +33,7 @@ namespace DataCineDb.Entidades.Maestras
             Precio = 0;
             Subtitulada = false;
             TerceraDimencion= false;
-
+            Sala = new Salas();
             Butacas = new List<Butacas>();
         }
 
@@ -47,9 +47,10 @@ namespace DataCineDb.Entidades.Maestras
             Subtitulada = false;
             TerceraDimencion = false;
             Butacas = new List<Butacas>();
+            Sala = new Salas();
         }
 
-        public Funciones(int codigo, Peliculas pelicula, DateTime fecha, TimeSpan horario, decimal precio, bool subtitulada, bool terceraDimencion, Idiomas idioma)
+        public Funciones(int codigo, Peliculas pelicula, DateTime fecha, TimeSpan horario, decimal precio, bool subtitulada, bool terceraDimencion, Idiomas idioma, Salas sala)
         {
             Codigo = codigo;
             Pelicula = pelicula;
@@ -59,6 +60,7 @@ namespace DataCineDb.Entidades.Maestras
             Precio = precio;
             Subtitulada = subtitulada;
             TerceraDimencion = terceraDimencion;
+            Sala = sala;
 
         }
         public void agregarButaca(Butacas butaca)

@@ -19,7 +19,8 @@ namespace DataCineDb.Service
             DataTable dt = helper.Consultar("SP_GET_TODAS_FUNCIONES");
                 foreach (DataRow row in dt.Rows)
             {
-            
+                Salas sala = new Salas();
+                sala.Numero = (int)row[9];
                 funciones.Add(
                 new Funciones(
                 (int)row[0],
@@ -29,7 +30,8 @@ namespace DataCineDb.Service
                 (decimal)row[7],
                 (bool)row[6],
                 (bool)row[5],
-                new Idiomas(row[8].ToString())
+                new Idiomas(row[8].ToString()),
+                sala
 
                     ));
 

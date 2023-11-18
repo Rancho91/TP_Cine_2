@@ -22,7 +22,7 @@ namespace DataCineDb.Service
                 list.Add(new Idiomas(row[1].ToString(), (int)row[0]));
             }
             
-            return new List<Idiomas>();
+            return list;
         }
 
     }

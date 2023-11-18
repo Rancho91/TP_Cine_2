@@ -281,12 +281,14 @@
     <Compile Include="service\DataHttp.cs" />
     <Compile Include="service\FormaPagoService.cs" />
     <Compile Include="service\FuncionService.cs" />
+    <Compile Include="service\IdiomaService.cs" />
     <Compile Include="service\PeliculasService.cs" />
     <Compile Include="service\ReporteButacasDisponiblesService.cs" />
     <Compile Include="service\ReporteFacturasFormaPagoService.cs" />
     <Compile Include="service\ReportePeliculaGananciaService.cs" />
     <Compile Include="service\ReportePeliculasFechaHoraService.cs" />
     <Compile Include="service\ReportePeliculasGeneroClasiService.cs" />
+    <Compile Include="service\SalasService.cs" />
     <Compile Include="SqlServerTypes\Loader.cs" />
     <EmbeddedResource Include="FormReporte.resx">
       <DependentUpon>FormReporte.cs</DependentUpon>

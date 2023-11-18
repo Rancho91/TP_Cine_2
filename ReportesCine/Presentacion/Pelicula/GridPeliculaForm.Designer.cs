@@ -29,25 +29,26 @@
         private void InitializeComponent()
         {
             this.NuevoGB = new System.Windows.Forms.GroupBox();
-            this.cbPeliculas = new System.Windows.Forms.ComboBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
-            this.ChB3D = new System.Windows.Forms.CheckBox();
-            this.ChBSubtitulada = new System.Windows.Forms.CheckBox();
-            this.FechaDTP = new System.Windows.Forms.DateTimePicker();
-            this.sqlConnection1 = new Microsoft.Data.SqlClient.SqlConnection();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
-            this.nupPrecio = new System.Windows.Forms.NumericUpDown();
-            this.dataSetGananciaFormaPago1 = new ReportesCine.Reportes.Data.DataSetGananciaFormaPago();
-            this.label1 = new System.Windows.Forms.Label();
-            this.lblPelicula = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
+            this.btnCrear = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.lblPelicula = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.nupPrecio = new System.Windows.Forms.NumericUpDown();
+            this.nupMinutos = new System.Windows.Forms.NumericUpDown();
+            this.nudHora = new System.Windows.Forms.NumericUpDown();
+            this.FechaDTP = new System.Windows.Forms.DateTimePicker();
+            this.ChBSubtitulada = new System.Windows.Forms.CheckBox();
+            this.ChB3D = new System.Windows.Forms.CheckBox();
+            this.cbIdioma = new System.Windows.Forms.ComboBox();
+            this.cbSalas = new System.Windows.Forms.ComboBox();
+            this.cbPeliculas = new System.Windows.Forms.ComboBox();
+            this.sqlConnection1 = new Microsoft.Data.SqlClient.SqlConnection();
+            this.dataSetGananciaFormaPago1 = new ReportesCine.Reportes.Data.DataSetGananciaFormaPago();
+            this.dgvFunciones = new System.Windows.Forms.DataGridView();
             this.Codigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ClPelicula = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ClSala = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -59,13 +60,12 @@
             this.ClPrecio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnEditar = new System.Windows.Forms.DataGridViewButtonColumn();
             this.btnEliminar = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.btnCrear = new System.Windows.Forms.Button();
             this.NuevoGB.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nupPrecio)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nupMinutos)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudHora)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSetGananciaFormaPago1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvFunciones)).BeginInit();
             this.SuspendLayout();
             // 
             // NuevoGB
@@ -79,13 +79,13 @@
             this.NuevoGB.Controls.Add(this.lblPelicula);
             this.NuevoGB.Controls.Add(this.label1);
             this.NuevoGB.Controls.Add(this.nupPrecio);
-            this.NuevoGB.Controls.Add(this.numericUpDown2);
-            this.NuevoGB.Controls.Add(this.numericUpDown1);
+            this.NuevoGB.Controls.Add(this.nupMinutos);
+            this.NuevoGB.Controls.Add(this.nudHora);
             this.NuevoGB.Controls.Add(this.FechaDTP);
             this.NuevoGB.Controls.Add(this.ChBSubtitulada);
             this.NuevoGB.Controls.Add(this.ChB3D);
-            this.NuevoGB.Controls.Add(this.comboBox3);
-            this.NuevoGB.Controls.Add(this.comboBox2);
+            this.NuevoGB.Controls.Add(this.cbIdioma);
+            this.NuevoGB.Controls.Add(this.cbSalas);
             this.NuevoGB.Controls.Add(this.cbPeliculas);
             this.NuevoGB.Location = new System.Drawing.Point(12, 13);
             this.NuevoGB.Name = "NuevoGB";
@@ -95,40 +95,108 @@
             this.NuevoGB.Text = "Nueva Funcion";
             this.NuevoGB.Enter += new System.EventHandler(this.NuevoGB_Enter);
             // 
-            // cbPeliculas
+            // btnCrear
             // 
-            this.cbPeliculas.FormattingEnabled = true;
-            this.cbPeliculas.Location = new System.Drawing.Point(95, 19);
-            this.cbPeliculas.Name = "cbPeliculas";
-            this.cbPeliculas.Size = new System.Drawing.Size(121, 21);
-            this.cbPeliculas.TabIndex = 0;
-            this.cbPeliculas.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.btnCrear.Location = new System.Drawing.Point(745, 13);
+            this.btnCrear.Name = "btnCrear";
+            this.btnCrear.Size = new System.Drawing.Size(75, 64);
+            this.btnCrear.TabIndex = 16;
+            this.btnCrear.Text = "Crear";
+            this.btnCrear.UseVisualStyleBackColor = true;
+            this.btnCrear.Click += new System.EventHandler(this.btnCrear_Click);
             // 
-            // comboBox2
+            // label2
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(289, 19);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(121, 21);
-            this.comboBox2.TabIndex = 1;
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(562, 62);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(10, 13);
+            this.label2.TabIndex = 15;
+            this.label2.Text = ":";
             // 
-            // comboBox3
+            // label6
             // 
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(476, 16);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(121, 21);
-            this.comboBox3.TabIndex = 2;
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(327, 64);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(40, 13);
+            this.label6.TabIndex = 14;
+            this.label6.Text = "Precio:";
             // 
-            // ChB3D
+            // label5
             // 
-            this.ChB3D.AutoSize = true;
-            this.ChB3D.Location = new System.Drawing.Point(638, 57);
-            this.ChB3D.Name = "ChB3D";
-            this.ChB3D.Size = new System.Drawing.Size(40, 17);
-            this.ChB3D.TabIndex = 3;
-            this.ChB3D.Text = "3D";
-            this.ChB3D.UseVisualStyleBackColor = true;
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(473, 61);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(44, 13);
+            this.label5.TabIndex = 13;
+            this.label5.Text = "Horario:";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(31, 64);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(40, 13);
+            this.label4.TabIndex = 12;
+            this.label4.Text = "Fecha:";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(252, 24);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(31, 13);
+            this.label3.TabIndex = 11;
+            this.label3.Text = "Sala:";
+            // 
+            // lblPelicula
+            // 
+            this.lblPelicula.AutoSize = true;
+            this.lblPelicula.Location = new System.Drawing.Point(31, 24);
+            this.lblPelicula.Name = "lblPelicula";
+            this.lblPelicula.Size = new System.Drawing.Size(47, 13);
+            this.lblPelicula.TabIndex = 10;
+            this.lblPelicula.Text = "Pelicula:";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(429, 22);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(41, 13);
+            this.label1.TabIndex = 9;
+            this.label1.Text = "Idioma:";
+            // 
+            // nupPrecio
+            // 
+            this.nupPrecio.DecimalPlaces = 2;
+            this.nupPrecio.Location = new System.Drawing.Point(373, 61);
+            this.nupPrecio.Name = "nupPrecio";
+            this.nupPrecio.Size = new System.Drawing.Size(76, 20);
+            this.nupPrecio.TabIndex = 8;
+            // 
+            // nupMinutos
+            // 
+            this.nupMinutos.Location = new System.Drawing.Point(578, 57);
+            this.nupMinutos.Name = "nupMinutos";
+            this.nupMinutos.Size = new System.Drawing.Size(37, 20);
+            this.nupMinutos.TabIndex = 7;
+            // 
+            // nudHora
+            // 
+            this.nudHora.Location = new System.Drawing.Point(523, 57);
+            this.nudHora.Name = "nudHora";
+            this.nudHora.Size = new System.Drawing.Size(33, 20);
+            this.nudHora.TabIndex = 6;
+            // 
+            // FechaDTP
+            // 
+            this.FechaDTP.CustomFormat = "YYYY-MM-DD";
+            this.FechaDTP.Location = new System.Drawing.Point(95, 62);
+            this.FechaDTP.Name = "FechaDTP";
+            this.FechaDTP.Size = new System.Drawing.Size(217, 20);
+            this.FechaDTP.TabIndex = 5;
             // 
             // ChBSubtitulada
             // 
@@ -140,113 +208,55 @@
             this.ChBSubtitulada.Text = "Subtitulados";
             this.ChBSubtitulada.UseVisualStyleBackColor = true;
             // 
-            // FechaDTP
+            // ChB3D
             // 
-            this.FechaDTP.CustomFormat = "YYYY-MM-DD";
-            this.FechaDTP.Location = new System.Drawing.Point(95, 62);
-            this.FechaDTP.Name = "FechaDTP";
-            this.FechaDTP.Size = new System.Drawing.Size(217, 20);
-            this.FechaDTP.TabIndex = 5;
+            this.ChB3D.AutoSize = true;
+            this.ChB3D.Location = new System.Drawing.Point(638, 57);
+            this.ChB3D.Name = "ChB3D";
+            this.ChB3D.Size = new System.Drawing.Size(40, 17);
+            this.ChB3D.TabIndex = 3;
+            this.ChB3D.Text = "3D";
+            this.ChB3D.UseVisualStyleBackColor = true;
+            // 
+            // cbIdioma
+            // 
+            this.cbIdioma.FormattingEnabled = true;
+            this.cbIdioma.Location = new System.Drawing.Point(476, 16);
+            this.cbIdioma.Name = "cbIdioma";
+            this.cbIdioma.Size = new System.Drawing.Size(121, 21);
+            this.cbIdioma.TabIndex = 2;
+            // 
+            // cbSalas
+            // 
+            this.cbSalas.FormattingEnabled = true;
+            this.cbSalas.Location = new System.Drawing.Point(289, 19);
+            this.cbSalas.Name = "cbSalas";
+            this.cbSalas.Size = new System.Drawing.Size(121, 21);
+            this.cbSalas.TabIndex = 1;
+            // 
+            // cbPeliculas
+            // 
+            this.cbPeliculas.FormattingEnabled = true;
+            this.cbPeliculas.Location = new System.Drawing.Point(95, 19);
+            this.cbPeliculas.Name = "cbPeliculas";
+            this.cbPeliculas.Size = new System.Drawing.Size(121, 21);
+            this.cbPeliculas.TabIndex = 0;
+            this.cbPeliculas.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // sqlConnection1
             // 
             this.sqlConnection1.FireInfoMessageEventOnUserErrors = false;
-            // 
-            // numericUpDown1
-            // 
-            this.numericUpDown1.Location = new System.Drawing.Point(523, 57);
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(33, 20);
-            this.numericUpDown1.TabIndex = 6;
-            // 
-            // numericUpDown2
-            // 
-            this.numericUpDown2.Location = new System.Drawing.Point(578, 57);
-            this.numericUpDown2.Name = "numericUpDown2";
-            this.numericUpDown2.Size = new System.Drawing.Size(37, 20);
-            this.numericUpDown2.TabIndex = 7;
-            // 
-            // nupPrecio
-            // 
-            this.nupPrecio.DecimalPlaces = 2;
-            this.nupPrecio.Location = new System.Drawing.Point(373, 61);
-            this.nupPrecio.Name = "nupPrecio";
-            this.nupPrecio.Size = new System.Drawing.Size(76, 20);
-            this.nupPrecio.TabIndex = 8;
             // 
             // dataSetGananciaFormaPago1
             // 
             this.dataSetGananciaFormaPago1.DataSetName = "DataSetGananciaFormaPago";
             this.dataSetGananciaFormaPago1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
-            // label1
+            // dgvFunciones
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(429, 22);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(41, 13);
-            this.label1.TabIndex = 9;
-            this.label1.Text = "Idioma:";
-            // 
-            // lblPelicula
-            // 
-            this.lblPelicula.AutoSize = true;
-            this.lblPelicula.Location = new System.Drawing.Point(31, 24);
-            this.lblPelicula.Name = "lblPelicula";
-            this.lblPelicula.Size = new System.Drawing.Size(47, 13);
-            this.lblPelicula.TabIndex = 10;
-            this.lblPelicula.Text = "Pelicula:";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(252, 24);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(31, 13);
-            this.label3.TabIndex = 11;
-            this.label3.Text = "Sala:";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(31, 64);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(40, 13);
-            this.label4.TabIndex = 12;
-            this.label4.Text = "Fecha:";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(473, 61);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(44, 13);
-            this.label5.TabIndex = 13;
-            this.label5.Text = "Horario:";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(327, 64);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(40, 13);
-            this.label6.TabIndex = 14;
-            this.label6.Text = "Precio:";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(562, 62);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(10, 13);
-            this.label2.TabIndex = 15;
-            this.label2.Text = ":";
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvFunciones.AllowUserToAddRows = false;
+            this.dgvFunciones.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvFunciones.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Codigo,
             this.ClPelicula,
             this.ClSala,
@@ -258,10 +268,10 @@
             this.ClPrecio,
             this.btnEditar,
             this.btnEliminar});
-            this.dataGridView1.Location = new System.Drawing.Point(12, 122);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(1028, 210);
-            this.dataGridView1.TabIndex = 1;
+            this.dgvFunciones.Location = new System.Drawing.Point(12, 122);
+            this.dgvFunciones.Name = "dgvFunciones";
+            this.dgvFunciones.Size = new System.Drawing.Size(1028, 210);
+            this.dgvFunciones.TabIndex = 1;
             // 
             // Codigo
             // 
@@ -319,32 +329,23 @@
             this.btnEliminar.HeaderText = "Eliminar";
             this.btnEliminar.Name = "btnEliminar";
             // 
-            // btnCrear
-            // 
-            this.btnCrear.Location = new System.Drawing.Point(745, 13);
-            this.btnCrear.Name = "btnCrear";
-            this.btnCrear.Size = new System.Drawing.Size(75, 64);
-            this.btnCrear.TabIndex = 16;
-            this.btnCrear.Text = "Crear";
-            this.btnCrear.UseVisualStyleBackColor = true;
-            // 
             // GridPeliculaForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1049, 450);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dgvFunciones);
             this.Controls.Add(this.NuevoGB);
             this.Name = "GridPeliculaForm";
             this.Text = "GridPeliculaForm";
             this.Load += new System.EventHandler(this.GridPeliculaForm_Load);
             this.NuevoGB.ResumeLayout(false);
             this.NuevoGB.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nupPrecio)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nupMinutos)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudHora)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSetGananciaFormaPago1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvFunciones)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -355,13 +356,13 @@
         private System.Windows.Forms.DateTimePicker FechaDTP;
         private System.Windows.Forms.CheckBox ChBSubtitulada;
         private System.Windows.Forms.CheckBox ChB3D;
-        private System.Windows.Forms.ComboBox comboBox3;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox cbIdioma;
+        private System.Windows.Forms.ComboBox cbSalas;
         private System.Windows.Forms.ComboBox cbPeliculas;
         private Microsoft.Data.SqlClient.SqlConnection sqlConnection1;
         private System.Windows.Forms.NumericUpDown nupPrecio;
-        private System.Windows.Forms.NumericUpDown numericUpDown2;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.NumericUpDown nupMinutos;
+        private System.Windows.Forms.NumericUpDown nudHora;
         private Reportes.Data.DataSetGananciaFormaPago dataSetGananciaFormaPago1;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
@@ -370,7 +371,7 @@
         private System.Windows.Forms.Label lblPelicula;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgvFunciones;
         private System.Windows.Forms.DataGridViewTextBoxColumn Codigo;
         private System.Windows.Forms.DataGridViewTextBoxColumn ClPelicula;
         private System.Windows.Forms.DataGridViewTextBoxColumn ClSala;

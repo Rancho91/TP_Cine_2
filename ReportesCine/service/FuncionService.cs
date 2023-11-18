@@ -32,5 +32,21 @@ namespace ReportesCine.service
             }
             return list;
         }
+
+        public async Task Post(Salas sala)
+        {
+            try
+            {
+                string jsonSala = JsonConvert.SerializeObject(sala);
+
+                await http.Post(jsonSala);
+
+                MessageBox.Show("Funcion creada exitosamente");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error");
+            }
+        }
     }
 }
