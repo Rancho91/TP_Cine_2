@@ -248,16 +248,22 @@
     <Compile Include="LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Presentacion\Pelicula\EditarFuncionForms.cs">
+    <Compile Include="Presentacion\Facturas\FacturaForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Presentacion\Pelicula\EditarFuncionForms.Designer.cs">
+    <Compile Include="Presentacion\Facturas\FacturaForm.Designer.cs">
+      <DependentUpon>FacturaForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Funciones\EditarFuncionForms.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Funciones\EditarFuncionForms.Designer.cs">
       <DependentUpon>EditarFuncionForms.cs</DependentUpon>
     </Compile>
-    <Compile Include="Presentacion\Pelicula\GridFuncionaForm.cs">
+    <Compile Include="Presentacion\Funciones\GridFuncionaForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Presentacion\Pelicula\GridFuncionaForm.Designer.cs">
+    <Compile Include="Presentacion\Funciones\GridFuncionaForm.Designer.cs">
       <DependentUpon>GridFuncionaForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
@@ -302,10 +308,13 @@
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Presentacion\Pelicula\EditarFuncionForms.resx">
+    <EmbeddedResource Include="Presentacion\Facturas\FacturaForm.resx">
+      <DependentUpon>FacturaForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\Funciones\EditarFuncionForms.resx">
       <DependentUpon>EditarFuncionForms.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Presentacion\Pelicula\GridFuncionaForm.resx">
+    <EmbeddedResource Include="Presentacion\Funciones\GridFuncionaForm.resx">
       <DependentUpon>GridFuncionaForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">

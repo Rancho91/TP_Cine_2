@@ -16,5 +16,15 @@ namespace ReportesCine.Presentacion.Facturas
         {
             InitializeComponent();
         }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void butaca1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
