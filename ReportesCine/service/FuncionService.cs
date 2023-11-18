@@ -32,7 +32,20 @@ namespace ReportesCine.service
             }
             return list;
         }
-
+        public async Task<Funciones> GetId()
+        {
+            Funciones list = new Funciones();
+            try
+            {
+                string json = await http.Get();
+                list = JsonConvert.DeserializeObject<Funciones>(json);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            return list;
+        }
         public async Task Post(Salas sala)
         {
             try
@@ -55,6 +68,20 @@ namespace ReportesCine.service
                 await http.Delete();
 
                 MessageBox.Show("Funcion Eliminada exitosamente");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error");
+            }
+        }
+        public async Task put(Funciones funcion)
+        {
+            try
+            {
+                string jsonSala = JsonConvert.SerializeObject(funcion);
+                await http.Put(jsonSala);
+
+                MessageBox.Show("Funcion modificada exitosamente");
             }
             catch (Exception ex)
             {

@@ -13,7 +13,7 @@ using System.Windows.Forms;
 
 namespace ReportesCine.Presentacion.Pelicula
 {
-    public partial class GridPeliculaForm : Form
+    public partial class GridFuncionaForm : Form
     {
         List<Peliculas> listPelis;
         List<Salas> listSalas;
@@ -25,9 +25,10 @@ namespace ReportesCine.Presentacion.Pelicula
         FuncionService funcionService;
         Salas sala;
 
-        public GridPeliculaForm()
+        public GridFuncionaForm()
         {
             InitializeComponent();
+
             listPelis = new List<Peliculas>();
             peliculaService = new PeliculasService();
             salaService = new SalasService();
@@ -103,6 +104,7 @@ namespace ReportesCine.Presentacion.Pelicula
             {
                 MessageBox.Show("no se pudo crear la funcion");
             }
+            Cargar();
 
 
 
@@ -127,6 +129,7 @@ namespace ReportesCine.Presentacion.Pelicula
 
                     int codigoFuncion = Convert.ToInt32(dgvFunciones.Rows[e.RowIndex].Cells["codigo"].Value);
                     FuncionService deleteService = new FuncionService(codigoFuncion);
+                    
                     try
                     {
                         await deleteService.Delete();
@@ -137,7 +140,20 @@ namespace ReportesCine.Presentacion.Pelicula
                     {
                         MessageBox.Show(ex.Message);
                     }
-                    cargarDGV();
+                    Cargar();
+                }
+                
+            }
+            if (dgvFunciones.Columns[e.ColumnIndex].Name == "btnEditar")
+            {
+                if (e.RowIndex >= 0 && dgvFunciones.Rows[e.RowIndex].Cells["codigo"].Value != null)
+                {
+
+                    int codigoFuncion = Convert.ToInt32(dgvFunciones.Rows[e.RowIndex].Cells["codigo"].Value);
+                    EditarFuncionForms editarForm = new EditarFuncionForms(codigoFuncion);
+                    editarForm.ShowDialog();
+
+
                 }
             }
         }

@@ -248,11 +248,17 @@
     <Compile Include="LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Presentacion\Pelicula\GridPeliculaForm.cs">
+    <Compile Include="Presentacion\Pelicula\EditarFuncionForms.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Presentacion\Pelicula\GridPeliculaForm.Designer.cs">
-      <DependentUpon>GridPeliculaForm.cs</DependentUpon>
+    <Compile Include="Presentacion\Pelicula\EditarFuncionForms.Designer.cs">
+      <DependentUpon>EditarFuncionForms.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Pelicula\GridFuncionaForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Pelicula\GridFuncionaForm.Designer.cs">
+      <DependentUpon>GridFuncionaForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -296,8 +302,11 @@
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Presentacion\Pelicula\GridPeliculaForm.resx">
-      <DependentUpon>GridPeliculaForm.cs</DependentUpon>
+    <EmbeddedResource Include="Presentacion\Pelicula\EditarFuncionForms.resx">
+      <DependentUpon>EditarFuncionForms.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\Pelicula\GridFuncionaForm.resx">
+      <DependentUpon>GridFuncionaForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -964,6 +964,7 @@ C:\Users\ramir\Desktop\Proyectos Facu\TP_Cine-Ramiro\ReportesCine\bin\Debug\pt\M
 C:\Users\ramir\Desktop\Proyectos Facu\TP_Cine-Ramiro\ReportesCine\bin\Debug\ru\Microsoft.ReportViewer.WebForms.resources.dll
 C:\Users\ramir\Desktop\Proyectos Facu\TP_Cine-Ramiro\ReportesCine\bin\Debug\zh-CHS\Microsoft.ReportViewer.WebForms.resources.dll
 C:\Users\ramir\Desktop\Proyectos Facu\TP_Cine-Ramiro\ReportesCine\bin\Debug\zh-CHT\Microsoft.ReportViewer.WebForms.resources.dll
+<<<<<<< HEAD
 C:\Users\ramir\Desktop\Proyectos Facu\TP_Cine-Ramiro\ReportesCine\obj\Debug\ReportesCine.Presentacion.Pelicula.GridPeliculaForm.resources
 C:\Users\Fabri\Desktop\TpProgra\TP_Cine_2\ReportesCine\bin\Debug\SqlServerTypes\x64\msvcr120.dll
 C:\Users\Fabri\Desktop\TpProgra\TP_Cine_2\ReportesCine\bin\Debug\SqlServerTypes\x64\SqlServerSpatial140.dll
@@ -1129,3 +1130,7 @@ C:\Users\Fabri\Desktop\TpProgra\TP_Cine_2\ReportesCine\obj\Debug\ReportesCine.cs
 C:\Users\Fabri\Desktop\TpProgra\TP_Cine_2\ReportesCine\obj\Debug\ReportesCine.csproj.CopyComplete
 C:\Users\Fabri\Desktop\TpProgra\TP_Cine_2\ReportesCine\obj\Debug\ReportesCine.exe
 C:\Users\Fabri\Desktop\TpProgra\TP_Cine_2\ReportesCine\obj\Debug\ReportesCine.pdb
+=======
+C:\Users\ramir\Desktop\Proyectos Facu\TP_Cine-Ramiro\ReportesCine\obj\Debug\ReportesCine.Presentacion.Pelicula.EditarFuncionForms.resources
+C:\Users\ramir\Desktop\Proyectos Facu\TP_Cine-Ramiro\ReportesCine\obj\Debug\ReportesCine.Presentacion.Pelicula.GridFuncionaForm.resources
+>>>>>>> af50814748a569add3da57fbd5739f4d1caca503
