@@ -102,8 +102,8 @@ namespace DataCineDb.Data
             {
                 Desconectar();
             }
-    
         }
+
         public int InsertarNumeroFactura(string sp, string param, SqlTransaction t, List<Parametros> parametros)
         {
    

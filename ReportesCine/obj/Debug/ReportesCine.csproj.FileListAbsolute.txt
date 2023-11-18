@@ -964,3 +964,4 @@ C:\Users\ramir\Desktop\Proyectos Facu\TP_Cine-Ramiro\ReportesCine\bin\Debug\pt\M
 C:\Users\ramir\Desktop\Proyectos Facu\TP_Cine-Ramiro\ReportesCine\bin\Debug\ru\Microsoft.ReportViewer.WebForms.resources.dll
 C:\Users\ramir\Desktop\Proyectos Facu\TP_Cine-Ramiro\ReportesCine\bin\Debug\zh-CHS\Microsoft.ReportViewer.WebForms.resources.dll
 C:\Users\ramir\Desktop\Proyectos Facu\TP_Cine-Ramiro\ReportesCine\bin\Debug\zh-CHT\Microsoft.ReportViewer.WebForms.resources.dll
+C:\Users\ramir\Desktop\Proyectos Facu\TP_Cine-Ramiro\ReportesCine\obj\Debug\ReportesCine.Presentacion.Pelicula.GridPeliculaForm.resources

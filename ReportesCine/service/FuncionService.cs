@@ -13,6 +13,10 @@ namespace ReportesCine.service
         {
             http = new DataHttp("Funciones");
         }
+        public FuncionService(int id)
+        {
+            http = new DataHttp($"Funciones/{id}");
+        }
 
         public async Task< List<Funciones>> Get()
         {

@@ -1,4 +1,5 @@
 ﻿using CineApi.ReportesCine;
+using ReportesCine.Presentacion.Pelicula;
 using ReportesCine.Reportes.forms;
 using System;
 using System.Collections.Generic;
@@ -36,6 +37,12 @@ namespace ReportesCine
         private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
 
+        }
+
+        private void funcionesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            GridPeliculaForm form = new GridPeliculaForm();
+            form.ShowDialog();
         }
     }
 }
