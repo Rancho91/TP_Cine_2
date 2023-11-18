@@ -109,7 +109,28 @@ namespace DataCineDb.Service
                 return error;
             }
 
+            
+        }
+        public List<Peliculas> GetPeliculas(int id)
+        {
+            List<Peliculas> peliculas = new List<Peliculas>();
+            List<Parametros> parametros = new List<Parametros>();
+            parametros.Add(new Parametros("@cod_pelicula", id));
+            DataTable dt = helper.Consultar("sp_get_Pelicula_ID", parametros);
 
+            foreach (DataRow row in dt.Rows)
+            {
+                peliculas.Add(
+                    new Peliculas(
+                         (int)row[0],
+                        row[2].ToString(),
+                       new Generos(row[1].ToString()),
+                       new Clasificaciones(row[4].ToString()),
+                       new Paises(row[3].ToString()),
+                       TimeSpan.Parse(row[5].ToString())
+                        ));
+            }
+            return peliculas;
         }
     }
 }

@@ -85,11 +85,25 @@ namespace CineApi.Controllers
             }
         }
 
-        //// PUT api/<ValuesController>/5
-        //[HttpPut("{id}")]
-        //public void Put(int id, [FromBody] string value)
-        //{
-        //}
+        // PUT api/<ValuesController>/5
+        [HttpPut("{id}")]
+        public IActionResult Put(int id, [FromBody] Salas sala)
+        {
+            try
+            {
+                Console.WriteLine(sala);
+                service.putFunciones(sala);
+                return Ok(sala);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Excepción: {ex.Message}");
+
+                Console.WriteLine($"Stack Trace: {ex.StackTrace}");
+
+                return BadRequest("Se ha producido un error al obtener los géneros.");
+            }
+        }
 
         //// DELETE api/<ValuesController>/5
         //[HttpDelete("{id}")]

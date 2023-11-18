@@ -23,7 +23,7 @@ namespace DataCineDb.Entidades.Maestras
             Clasificacion = new Clasificaciones();
             Pais = new Paises();
 
-            Duracion = TimeSpan.FromHours(2) + TimeSpan.FromMinutes(30);
+            Duracion = TimeSpan.FromHours(0) + TimeSpan.FromMinutes(0);
         }
 
         public Peliculas(string nombre)

@@ -58,8 +58,7 @@ namespace DataCineDb.Service
                      vendida,
                     false
               )
-
-                    );
+                );
 
             }
             return funcion;
@@ -76,7 +75,7 @@ namespace DataCineDb.Service
                     listParametros.Add(new Parametros("@Horario", funcion.Horario));
                     listParametros.Add(new Parametros("@terceraDimencion", funcion.TerceraDimencion));
                     listParametros.Add(new Parametros("@subtitulos", funcion.Subtitulada));
-                listParametros.Add(new Parametros("@fecha", funcion.Fecha));
+                    listParametros.Add(new Parametros("@fecha", funcion.Fecha));
                     listParametros.Add(new Parametros("@Precio", funcion.Precio));
                     listParametros.Add(new Parametros("@Cod_idioma", funcion.Idioma.Codigo));
                     helper.Insertar("SP_FUNCIONES_INSERT", listParametros);
@@ -84,6 +83,29 @@ namespace DataCineDb.Service
              
           
             
+
+
+        }
+
+        public void putFunciones(Salas sala)
+        {
+
+            foreach (Funciones funcion in sala.Funciones)
+            {
+                List<Parametros> listParametros = new List<Parametros>();
+                listParametros.Add(new Parametros("@cod_funcion", funcion.Codigo));
+                if (funcion.Pelicula.Codigo > 0) listParametros.Add(new Parametros("@Cod_pelicula", funcion.Pelicula.Codigo));
+                if (sala.Codigo > 0) listParametros.Add(new Parametros("@Cod_sala", sala.Codigo));
+                if (funcion.Horario > (TimeSpan.FromHours(0) + TimeSpan.FromMinutes(0))) listParametros.Add(new Parametros("@Horario", funcion.Horario));
+                listParametros.Add(new Parametros("@terceraD", funcion.TerceraDimencion));
+                listParametros.Add(new Parametros("@subtitulos", funcion.Subtitulada));
+                listParametros.Add(new Parametros("@fecha", funcion.Fecha));
+                if(funcion.Precio >0) listParametros.Add(new Parametros("@Precio", funcion.Precio));
+                if(funcion.Idioma.Codigo>0) listParametros.Add(new Parametros("@Cod_idioma", funcion.Idioma.Codigo));
+
+                helper.Insertar("sp_update_funcion", listParametros);
+
+            }
 
 
         }

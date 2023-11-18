@@ -35,9 +35,23 @@ namespace CineApi.Controllers
 
         // GET api/<ValuesController>/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public IActionResult Get(int id)
         {
-            return "value";
+            try
+            {
+                List<Peliculas> peliculas = service.GetPeliculas(id);
+                if (peliculas == null || peliculas.Count == 0)
+                {
+                    return BadRequest("No se encontraron datos de géneros.");
+                }
+                return Ok(peliculas);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Excepción: {ex.Message}");
+                Console.WriteLine($"Stack Trace: {ex.StackTrace}");
+                return BadRequest("Se ha producido un error");
+            }
         }
 
         // POST api/<ValuesController>
