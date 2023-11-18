@@ -32,7 +32,20 @@ namespace ReportesCine.service
             }
             return list;
         }
-
+        public async Task<Funciones> GetId()
+        {
+            Funciones list = new Funciones();
+            try
+            {
+                string json = await http.Get();
+                list = JsonConvert.DeserializeObject<Funciones>(json);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            return list;
+        }
         public async Task Post(Salas sala)
         {
             try

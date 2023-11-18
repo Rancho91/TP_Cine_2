@@ -41,7 +41,7 @@ namespace ReportesCine
 
         private void funcionesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            GridPeliculaForm form = new GridPeliculaForm();
+            GridFuncionaForm form = new GridFuncionaForm();
             form.ShowDialog();
         }
     }

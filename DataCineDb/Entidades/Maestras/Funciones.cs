@@ -61,6 +61,7 @@ namespace DataCineDb.Entidades.Maestras
             Subtitulada = subtitulada;
             TerceraDimencion = terceraDimencion;
             Sala = sala;
+            Butacas = new List<Butacas>();
 
         }
         public void agregarButaca(Butacas butaca)

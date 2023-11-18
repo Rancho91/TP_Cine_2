@@ -1,6 +1,6 @@
 ﻿namespace ReportesCine.Presentacion.Pelicula
 {
-    partial class GridPeliculaForm
+    partial class GridFuncionaForm
     {
         /// <summary>
         /// Required designer variable.
@@ -58,8 +58,8 @@
             this.Cl3D = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ClSubtitulos = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ClPrecio = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnEditar = new System.Windows.Forms.DataGridViewButtonColumn();
             this.btnEliminar = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.btnEditar = new System.Windows.Forms.DataGridViewButtonColumn();
             this.NuevoGB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nupPrecio)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nupMinutos)).BeginInit();
@@ -266,8 +266,8 @@
             this.Cl3D,
             this.ClSubtitulos,
             this.ClPrecio,
-            this.btnEditar,
-            this.btnEliminar});
+            this.btnEliminar,
+            this.btnEditar});
             this.dgvFunciones.Location = new System.Drawing.Point(12, 122);
             this.dgvFunciones.Name = "dgvFunciones";
             this.dgvFunciones.Size = new System.Drawing.Size(1028, 210);
@@ -320,15 +320,15 @@
             this.ClPrecio.HeaderText = "Precio";
             this.ClPrecio.Name = "ClPrecio";
             // 
-            // btnEditar
-            // 
-            this.btnEditar.HeaderText = "Editar";
-            this.btnEditar.Name = "btnEditar";
-            // 
             // btnEliminar
             // 
             this.btnEliminar.HeaderText = "Eliminar";
             this.btnEliminar.Name = "btnEliminar";
+            // 
+            // btnEditar
+            // 
+            this.btnEditar.HeaderText = "Editar";
+            this.btnEditar.Name = "btnEditar";
             // 
             // GridPeliculaForm
             // 
@@ -373,6 +373,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DataGridView dgvFunciones;
+        private System.Windows.Forms.Button btnCrear;
         private System.Windows.Forms.DataGridViewTextBoxColumn Codigo;
         private System.Windows.Forms.DataGridViewTextBoxColumn ClPelicula;
         private System.Windows.Forms.DataGridViewTextBoxColumn ClSala;
@@ -382,8 +383,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Cl3D;
         private System.Windows.Forms.DataGridViewTextBoxColumn ClSubtitulos;
         private System.Windows.Forms.DataGridViewTextBoxColumn ClPrecio;
-        private System.Windows.Forms.DataGridViewButtonColumn btnEditar;
         private System.Windows.Forms.DataGridViewButtonColumn btnEliminar;
-        private System.Windows.Forms.Button btnCrear;
+        private System.Windows.Forms.DataGridViewButtonColumn btnEditar;
     }
 }
