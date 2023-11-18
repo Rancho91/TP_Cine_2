@@ -272,6 +272,7 @@
             this.dgvFunciones.Name = "dgvFunciones";
             this.dgvFunciones.Size = new System.Drawing.Size(1028, 210);
             this.dgvFunciones.TabIndex = 1;
+            this.dgvFunciones.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvFunciones_CellContentClick);
             // 
             // Codigo
             // 

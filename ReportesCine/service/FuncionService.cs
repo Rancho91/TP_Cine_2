@@ -48,5 +48,18 @@ namespace ReportesCine.service
                 MessageBox.Show(ex.Message, "Error");
             }
         }
+        public async Task Delete()
+        {
+            try
+            {
+                await http.Delete();
+
+                MessageBox.Show("Funcion Eliminada exitosamente");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error");
+            }
+        }
     }
 }

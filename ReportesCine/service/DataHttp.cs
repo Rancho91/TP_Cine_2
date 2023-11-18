@@ -74,6 +74,34 @@ namespace ReportesCine.service
             }
         }
 
+        public async Task<string> Delete()
+        {
+            using (var client = new HttpClient(new HttpClientHandler
+            {
+                ServerCertificateCustomValidationCallback = (sender, cert, chain, sslPolicyErrors) => true
+            }))
+            {
+                try
+                {
+                    // Realiza la solicitud DELETE
+                    var result = await client.DeleteAsync(Url + Route);
+
+                    // Lee y devuelve el contenido de la respuesta
+                    var responseContent = await result.Content.ReadAsStringAsync();
+
+                    Console.WriteLine($"Status Code: {result.StatusCode}");
+                    Console.WriteLine($"Response Content: {responseContent}");
+
+                    return responseContent;
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Exception: {ex.Message}");
+                    return null;
+                }
+            }
+        }
+
     }
 
 }

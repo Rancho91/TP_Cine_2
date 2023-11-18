@@ -44,9 +44,9 @@ namespace ReportesCine.Presentacion.Pelicula
 
         }
 
-        private void GridPeliculaForm_Load(object sender, EventArgs e)
+        private async void GridPeliculaForm_Load(object sender, EventArgs e)
         {
-
+            
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -118,5 +118,28 @@ namespace ReportesCine.Presentacion.Pelicula
             }
         }
 
+        private async void dgvFunciones_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgvFunciones.Columns[e.ColumnIndex].Name == "btnEliminar")
+            {
+                if (e.RowIndex >= 0 && dgvFunciones.Rows[e.RowIndex].Cells["codigo"].Value != null)
+                {
+
+                    int codigoFuncion = Convert.ToInt32(dgvFunciones.Rows[e.RowIndex].Cells["codigo"].Value);
+                    FuncionService deleteService = new FuncionService(codigoFuncion);
+                    try
+                    {
+                        await deleteService.Delete();
+                        dgvFunciones.Rows.RemoveAt(e.RowIndex);
+
+                    }
+                    catch(Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                    cargarDGV();
+                }
+            }
+        }
     }
 }
