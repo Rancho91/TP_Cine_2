@@ -55,6 +55,7 @@
             this.cboFunciones = new System.Windows.Forms.ComboBox();
             this.Funcion = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -333,7 +334,7 @@
             // cboFunciones
             // 
             this.cboFunciones.FormattingEnabled = true;
-            this.cboFunciones.Location = new System.Drawing.Point(69, 9);
+            this.cboFunciones.Location = new System.Drawing.Point(82, 49);
             this.cboFunciones.Name = "cboFunciones";
             this.cboFunciones.Size = new System.Drawing.Size(40, 21);
             this.cboFunciones.TabIndex = 45;
@@ -344,7 +345,7 @@
             this.Funcion.BackColor = System.Drawing.Color.Firebrick;
             this.Funcion.Font = new System.Drawing.Font("Ebrima", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Funcion.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.Funcion.Location = new System.Drawing.Point(12, 76);
+            this.Funcion.Location = new System.Drawing.Point(12, 50);
             this.Funcion.Name = "Funcion";
             this.Funcion.Size = new System.Drawing.Size(64, 20);
             this.Funcion.TabIndex = 46;
@@ -358,9 +359,17 @@
             this.label1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.label1.Location = new System.Drawing.Point(12, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(51, 20);
+            this.label1.Size = new System.Drawing.Size(37, 20);
             this.label1.TabIndex = 47;
-            this.label1.Text = "label1";
+            this.label1.Text = "Sala";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(55, 9);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(40, 21);
+            this.comboBox1.TabIndex = 48;
             // 
             // FacturaForm
             // 
@@ -368,6 +377,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.ClientSize = new System.Drawing.Size(881, 509);
+            this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.Funcion);
             this.Controls.Add(this.cboFunciones);
@@ -432,5 +442,6 @@
         private System.Windows.Forms.ComboBox cboFunciones;
         private System.Windows.Forms.Label Funcion;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox comboBox1;
     }
 }

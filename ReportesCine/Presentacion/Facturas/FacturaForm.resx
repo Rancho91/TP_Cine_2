@@ -121,7 +121,7 @@
   <data name="pictureBox1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAMoAAAG6CAYAAABJMNndAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        vwAADr8BOAVTJAAA/vVJREFUeF7s/XWDHUeab42qmEElMPbMez/Bfe+ZM9MzzW53m0m2ZTEzMzMzM7Nk
+        vgAADr4B6kKxwAAA/vVJREFUeF7s/XWDHUeab42qmEElMPbMez/Bfe+ZM9MzzW53m0m2ZTEzMzMzM7Nk
         kWWQmdpNM+d8qbhrRe6s2rVrF6lKMuUfvx25EyMjYmXkk0/AgP+3pCQ8U1YZXh1QFl4fMCC8XDYgvFRW
         El4tKw/DSivCsLKyqLfKy8Pb5RVhOBpRVhFGlleG0eVVXWpkRXUYjt5m+a2c3uC41zlevVxWFV4oqQh/
         LikPz5SWhd9xnV+VloRflg4I/0Fc1K8HlIQ/DigNL6LXWR7OulGEk/g/o6Q0zCacT7iY+K9keS3hes63
@@ -1215,7 +1215,7 @@
   <data name="pictureBox2.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAMoAAAG6CAYAAABJMNndAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        vgAADr4B6kKxwAAA/vVJREFUeF7s/XWDHUeab42qmEElMPbMez/Bfe+ZM9MzzW53m0m2ZTEzMzMzM7Nk
+        vQAADr0BR/uQrQAA/vVJREFUeF7s/XWDHUeab42qmEElMPbMez/Bfe+ZM9MzzW53m0m2ZTEzMzMzM7Nk
         kWWQmdpNM+d8qbhrRe6s2rVrF6lKMuUfvx25EyMjYmXkk0/AgP+3pCQ8U1YZXh1QFl4fMCC8XDYgvFRW
         El4tKw/DSivCsLKyqLfKy8Pb5RVhOBpRVhFGlleG0eVVXWpkRXUYjt5m+a2c3uC41zlevVxWFV4oqQh/
         LikPz5SWhd9xnV+VloRflg4I/0Fc1K8HlIQ/DigNL6LXWR7OulGEk/g/o6Q0zCacT7iY+K9keS3hes63
@@ -2309,7 +2309,7 @@
   <data name="pictureBox3.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAA5EAAAFfCAYAAADXr0hSAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        vwAADr8BOAVTJAAA/7JJREFUeF7s/WWQXMe2oA13d3W3ZJAtspjBYstiti2y0DKIzLbMzMzMdI59fHyY
+        vgAADr4B6kKxwAAA/7JJREFUeF7s/WWQXMe2oA13d3W3ZJAtspjBYstiti2y0DKIzLbMzMzMdI59fHyY
         7r3zzsz7vTMRwzMRM7+GI4aZJ4aZGep7nszK1lappK4GW/K9KyOW997JmXu3lU+tlSs7CPWQkJCQkJCQ
         kJCQkJCQ30TS2Y+0KtO+tIwMCQkJCQkJCQkJCQkJ+bZKK3CsSqsy7Uon/zmVtCzwNUirtgcirepsllbl
         Biqt6h1uadVuVVqVCQkJCQkJCQkJCTmbpdW6tllalRuotKq3Kq3KVKVVmWZpVa4qzfm7OjpPkuY8zdKq
