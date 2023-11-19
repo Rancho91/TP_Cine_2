@@ -52,12 +52,6 @@ namespace CineApi.ReportesCine
             cboFuncionReporte.DropDownStyle = ComboBoxStyle.DropDownList;
         }
 
-       
-
-        private void cboFuncionReporte_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
 
         private async void button1_Click(object sender, EventArgs e)
         {
@@ -82,7 +76,7 @@ namespace CineApi.ReportesCine
 
                 }
 
-                reportViewer2.LocalReport.ReportPath = @"C:\Users\ramir\Desktop\Proyectos Facu\TP_Cine-Ramiro\ReportesCine\Reportes\Report1.rdlc";
+                reportViewer2.LocalReport.ReportPath = @"C:\Users\Sofi\Desktop\Cine\TP_Cine_2\ReportesCine\Reportes\ButacasDisponiblesXFuncion.rdlc";
                 reportViewer2.LocalReport.DataSources.Add(new ReportDataSource("DataSet1", lst));
                 List<ReportParameter> paramList = new List<ReportParameter>();
 
@@ -106,11 +100,6 @@ namespace CineApi.ReportesCine
                 // Manejar la excepción, por ejemplo, mostrar un mensaje de error o registrarla.
                 MessageBox.Show($"Error al obtener datos: {ex.Message}");
             }
-        }
-
-        private void reportViewer2_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

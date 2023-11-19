@@ -13,7 +13,7 @@ using System.Windows.Forms;
 
 namespace ReportesCine.Presentacion.Pelicula
 {
-    public partial class GridFuncionaForm : Form
+    public partial class GridFuncionForm : Form
     {
         List<Peliculas> listPelis;
         List<Salas> listSalas;
@@ -25,7 +25,7 @@ namespace ReportesCine.Presentacion.Pelicula
         FuncionService funcionService;
         Salas sala;
 
-        public GridFuncionaForm()
+        public GridFuncionForm()
         {
             InitializeComponent();
 

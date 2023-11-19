@@ -13,10 +13,10 @@ using Microsoft.Reporting.WinForms;
 
 namespace ReportesCine.Reportes.forms
 {
-    public partial class GananciaFormaPagoForm : Form
+    public partial class GananciaFormaPagoFormReporte : Form
     {
         FormaPagoService FPService;
-        public GananciaFormaPagoForm()
+        public GananciaFormaPagoFormReporte()
         {
             InitializeComponent();
             FPService = new FormaPagoService();

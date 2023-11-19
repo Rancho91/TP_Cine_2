@@ -1,6 +1,6 @@
 ﻿namespace ReportesCine.Presentacion.Pelicula
 {
-    partial class GridFuncionaForm
+    partial class GridFuncionForm
     {
         /// <summary>
         /// Required designer variable.

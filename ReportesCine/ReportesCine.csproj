@@ -236,17 +236,23 @@
     <Compile Include="Entidades\Reportes\ReporteFacturasFormaPago.cs" />
     <Compile Include="Entidades\Reportes\ReportePeliculasGanancia.cs" />
     <Compile Include="Entidades\Reportes\reportePeliculasXFecha.cs" />
-    <Compile Include="FormReporte.cs">
+    <Compile Include="Reportes\Forms\ButacasDisponiblesFormReporte.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormReporte.Designer.cs">
-      <DependentUpon>FormReporte.cs</DependentUpon>
+    <Compile Include="Reportes\Forms\ButacasDisponiblesFormReporte.Designer.cs">
+      <DependentUpon>ButacasDisponiblesFormReporte.cs</DependentUpon>
     </Compile>
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Facturas\CrearFacturaForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Facturas\CrearFacturaForm.Designer.cs">
+      <DependentUpon>CrearFacturaForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Presentacion\Facturas\FacturaForm.cs">
       <SubType>Form</SubType>
@@ -260,11 +266,11 @@
     <Compile Include="Presentacion\Funciones\EditarFuncionForms.Designer.cs">
       <DependentUpon>EditarFuncionForms.cs</DependentUpon>
     </Compile>
-    <Compile Include="Presentacion\Funciones\GridFuncionaForm.cs">
+    <Compile Include="Presentacion\Funciones\GridFuncionForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Presentacion\Funciones\GridFuncionaForm.Designer.cs">
-      <DependentUpon>GridFuncionaForm.cs</DependentUpon>
+    <Compile Include="Presentacion\Funciones\GridFuncionForm.Designer.cs">
+      <DependentUpon>GridFuncionForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -284,11 +290,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ReporteButacasDataSet.xsd</DependentUpon>
     </Compile>
-    <Compile Include="Reportes\forms\GananciaFormaPagoForm.cs">
+    <Compile Include="Reportes\Forms\GananciaFormaPagoFormReporte.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Reportes\forms\GananciaFormaPagoForm.Designer.cs">
-      <DependentUpon>GananciaFormaPagoForm.cs</DependentUpon>
+    <Compile Include="Reportes\Forms\GananciaFormaPagoFormReporte.Designer.cs">
+      <DependentUpon>GananciaFormaPagoFormReporte.cs</DependentUpon>
     </Compile>
     <Compile Include="service\DataHttp.cs" />
     <Compile Include="service\FormaPagoService.cs" />
@@ -302,8 +308,8 @@
     <Compile Include="service\ReportePeliculasGeneroClasiService.cs" />
     <Compile Include="service\SalasService.cs" />
     <Compile Include="SqlServerTypes\Loader.cs" />
-    <EmbeddedResource Include="FormReporte.resx">
-      <DependentUpon>FormReporte.cs</DependentUpon>
+    <EmbeddedResource Include="Reportes\Forms\ButacasDisponiblesFormReporte.resx">
+      <DependentUpon>ButacasDisponiblesFormReporte.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
@@ -314,8 +320,8 @@
     <EmbeddedResource Include="Presentacion\Funciones\EditarFuncionForms.resx">
       <DependentUpon>EditarFuncionForms.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Presentacion\Funciones\GridFuncionaForm.resx">
-      <DependentUpon>GridFuncionaForm.cs</DependentUpon>
+    <EmbeddedResource Include="Presentacion\Funciones\GridFuncionForm.resx">
+      <DependentUpon>GridFuncionForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -325,12 +331,13 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="Reportes\forms\GananciaFormaPagoForm.resx">
-      <DependentUpon>GananciaFormaPagoForm.cs</DependentUpon>
+    <EmbeddedResource Include="Reportes\Forms\GananciaFormaPagoFormReporte.resx">
+      <DependentUpon>GananciaFormaPagoFormReporte.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Reportes\InformeGananciaFoirmaPago.rdlc" />
-    <EmbeddedResource Include="Reportes\Report1.rdlc" />
+    <EmbeddedResource Include="Reportes\InformeGananciaFormaPago.rdlc" />
+    <EmbeddedResource Include="Reportes\ButacasDisponiblesXFuncion.rdlc" />
     <None Include="packages.config" />
     <None Include="Properties\DataSources\ReportesCine.Entidades.Reportes.ReporteButacasDisponibles.datasource" />
     <None Include="Properties\DataSources\ReportesCine.Entidades.Reportes.ReporteFacturasFormaPago.datasource" />
@@ -372,6 +379,12 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\butaca verde.jpg" />
+    <None Include="Resources\butaca roja.jpg" />
+    <None Include="Resources\butaca naranja.jpg" />
+    <None Include="Resources\Cinta.png" />
+    <None Include="Resources\Cine_12.svg.png" />
+    <None Include="Resources\camara-de-video.png" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

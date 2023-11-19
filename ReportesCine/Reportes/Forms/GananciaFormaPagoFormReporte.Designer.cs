@@ -1,6 +1,6 @@
 ﻿namespace ReportesCine.Reportes.forms
 {
-    partial class GananciaFormaPagoForm
+    partial class GananciaFormaPagoFormReporte
     {
         /// <summary>
         /// Required designer variable.

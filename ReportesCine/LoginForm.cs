@@ -1,4 +1,5 @@
 ﻿using CineApi.ReportesCine;
+using ReportesCine.Presentacion.Facturas;
 using ReportesCine.Presentacion.Pelicula;
 using ReportesCine.Reportes.forms;
 using System;
@@ -30,7 +31,7 @@ namespace ReportesCine
 
         private void gananciaFormaPagoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            GananciaFormaPagoForm form = new GananciaFormaPagoForm();
+            GananciaFormaPagoFormReporte form = new GananciaFormaPagoFormReporte();
             form.ShowDialog();
         }
 
@@ -41,8 +42,19 @@ namespace ReportesCine
 
         private void funcionesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            GridFuncionaForm form = new GridFuncionaForm();
+            GridFuncionForm form = new GridFuncionForm();
             form.ShowDialog();
+        }
+
+        private void generarFacturaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FacturaForm form = new FacturaForm();
+            form.ShowDialog();
+        }
+
+        private void LoginForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

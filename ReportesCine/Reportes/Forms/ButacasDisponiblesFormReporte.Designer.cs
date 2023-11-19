@@ -69,7 +69,6 @@
             this.cboFuncionReporte.Name = "cboFuncionReporte";
             this.cboFuncionReporte.Size = new System.Drawing.Size(48, 21);
             this.cboFuncionReporte.TabIndex = 3;
-            this.cboFuncionReporte.SelectedIndexChanged += new System.EventHandler(this.cboFuncionReporte_SelectedIndexChanged);
             // 
             // label2
             // 
@@ -99,7 +98,6 @@
             this.reportViewer2.ServerReport.BearerToken = null;
             this.reportViewer2.Size = new System.Drawing.Size(773, 266);
             this.reportViewer2.TabIndex = 6;
-            this.reportViewer2.Load += new System.EventHandler(this.reportViewer2_Load);
             // 
             // Form1
             // 
