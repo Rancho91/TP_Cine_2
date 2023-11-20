@@ -260,12 +260,6 @@
     <Compile Include="LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Presentacion\Facturas\CrearFacturaForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Presentacion\Facturas\CrearFacturaForm.Designer.cs">
-      <DependentUpon>CrearFacturaForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="Presentacion\Facturas\FacturaForm.cs">
       <SubType>Form</SubType>
     </Compile>

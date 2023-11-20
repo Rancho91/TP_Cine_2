@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ReportesCine.Entidades.Factura
 {
-    public class Facturas
+    public class FacturasE
     {
         public int Numero { get; set; }
 
@@ -23,7 +23,7 @@ namespace ReportesCine.Entidades.Factura
         public TiposFacturas TipoFactura { get; set; }
 
         public int Descuento { get; set; }
-        public Facturas()
+        public FacturasE()
         {
             Numero = 0;
             Fecha = DateTime.Now;
@@ -34,7 +34,7 @@ namespace ReportesCine.Entidades.Factura
             Funciones = new List<Funciones>();
 
         }
-        public Facturas(int descuento, int numero, DateTime fecha, Clientes cliente, FormasPagos formaPago, TiposFacturas tiposFacturas)
+        public FacturasE(int descuento, int numero, DateTime fecha, Clientes cliente, FormasPagos formaPago, TiposFacturas tiposFacturas)
         {
             Numero = numero;
             Fecha = fecha;

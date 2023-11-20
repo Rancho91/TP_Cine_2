@@ -59,9 +59,9 @@
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(43, 180);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(44, 13);
+            this.label5.Size = new System.Drawing.Size(53, 13);
             this.label5.TabIndex = 31;
-            this.label5.Text = "Horario:";
+            this.label5.Text = "Duracion:";
             // 
             // nupMinutos
             // 
@@ -95,6 +95,7 @@
             this.btnEditarPelicula.TabIndex = 28;
             this.btnEditarPelicula.Text = "Editar";
             this.btnEditarPelicula.UseVisualStyleBackColor = true;
+            this.btnEditarPelicula.Click += new System.EventHandler(this.btnEditarPelicula_Click);
             // 
             // cboPais
             // 

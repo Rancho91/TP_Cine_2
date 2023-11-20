@@ -47,8 +47,7 @@ namespace DataCineDb.Service
 
             if (funcion != 0)
                 listParametros.Add(new Parametros("@Codigo_funcion", funcion));
-            
-           listParametros.Add(new Parametros("@Estado", estado));
+            if(estado != "Ñ") listParametros.Add(new Parametros("@Estado", estado));
        
 
             DataTable dt = helper.Consultar("sp_butacas_disponibles_x_funcion", listParametros);

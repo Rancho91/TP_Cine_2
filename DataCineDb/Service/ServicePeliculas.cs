@@ -124,9 +124,9 @@ namespace DataCineDb.Service
                     new Peliculas(
                          (int)row[0],
                         row[2].ToString(),
-                       new Generos(row[1].ToString()),
-                       new Clasificaciones(row[4].ToString()),
-                       new Paises(row[3].ToString()),
+                       new Generos("",(int)row[1]),
+                       new Clasificaciones("",(int)row[4]),
+                       new Paises("",(int)row[3]),
                        TimeSpan.Parse(row[5].ToString())
                         ));
             }

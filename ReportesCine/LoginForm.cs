@@ -63,5 +63,11 @@ namespace ReportesCine
             FormPeliculas form = new FormPeliculas();
             form.ShowDialog();
         }
+
+        private void nuevaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FacturaForm form = new FacturaForm();
+            form.ShowDialog();
+        }
     }
 }

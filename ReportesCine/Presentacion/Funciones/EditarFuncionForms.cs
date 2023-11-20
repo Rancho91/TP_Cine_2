@@ -104,5 +104,15 @@ namespace ReportesCine.Presentacion.Pelicula
             }
 
         }
+
+        private void btnSalir_Click(object sender, EventArgs e)
+        {
+            DialogResult resultado = MessageBox.Show("¿Quieres salir?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (resultado == DialogResult.Yes)
+            {
+                this.Close();
+            }
+        }
     }
 }

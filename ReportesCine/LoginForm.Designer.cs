@@ -40,6 +40,8 @@
             this.peliculasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.funcionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.facturasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.nuevaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -57,7 +59,8 @@
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuToolStripMenuItem,
             this.reportesToolStripMenuItem,
-            this.administrarToolStripMenuItem});
+            this.administrarToolStripMenuItem,
+            this.facturasToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(800, 24);
@@ -120,14 +123,14 @@
             // peliculasToolStripMenuItem
             // 
             this.peliculasToolStripMenuItem.Name = "peliculasToolStripMenuItem";
-            this.peliculasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.peliculasToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
             this.peliculasToolStripMenuItem.Text = "Peliculas";
             this.peliculasToolStripMenuItem.Click += new System.EventHandler(this.peliculasToolStripMenuItem_Click);
             // 
             // funcionesToolStripMenuItem
             // 
             this.funcionesToolStripMenuItem.Name = "funcionesToolStripMenuItem";
-            this.funcionesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.funcionesToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
             this.funcionesToolStripMenuItem.Text = "Funciones";
             this.funcionesToolStripMenuItem.Click += new System.EventHandler(this.funcionesToolStripMenuItem_Click);
             // 
@@ -140,6 +143,22 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
+            // 
+            // facturasToolStripMenuItem
+            // 
+            this.facturasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.nuevaToolStripMenuItem});
+            this.facturasToolStripMenuItem.ForeColor = System.Drawing.Color.Snow;
+            this.facturasToolStripMenuItem.Name = "facturasToolStripMenuItem";
+            this.facturasToolStripMenuItem.Size = new System.Drawing.Size(63, 20);
+            this.facturasToolStripMenuItem.Text = "Facturas";
+            // 
+            // nuevaToolStripMenuItem
+            // 
+            this.nuevaToolStripMenuItem.Name = "nuevaToolStripMenuItem";
+            this.nuevaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.nuevaToolStripMenuItem.Text = "Nueva";
+            this.nuevaToolStripMenuItem.Click += new System.EventHandler(this.nuevaToolStripMenuItem_Click);
             // 
             // LoginForm
             // 
@@ -174,5 +193,7 @@
         private System.Windows.Forms.ImageList imageList1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.ToolStripMenuItem generarFacturaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem facturasToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem nuevaToolStripMenuItem;
     }
 }

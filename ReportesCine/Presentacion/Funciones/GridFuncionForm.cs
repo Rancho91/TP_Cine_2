@@ -133,7 +133,13 @@ namespace ReportesCine.Presentacion.Pelicula
 
                     int codigoFuncion = Convert.ToInt32(dgvFunciones.Rows[e.RowIndex].Cells["codigo"].Value);
                     FuncionService deleteService = new FuncionService(codigoFuncion);
-                    
+                    DateTime fechaCelda = (DateTime)dgvFunciones.Rows[e.RowIndex].Cells["fecha"].Value;
+
+                    if (fechaCelda < DateTime.Now)
+                    {
+                        MessageBox.Show("Error: La fecha es menor que la fecha actual.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
                     try
                     {
                         await deleteService.Delete();
@@ -153,16 +159,11 @@ namespace ReportesCine.Presentacion.Pelicula
                 if (e.RowIndex >= 0 && dgvFunciones.Rows[e.RowIndex].Cells["codigo"].Value != null)
                 {
 
-                    DateTime fechaCelda = (DateTime)dgvFunciones.Rows[e.RowIndex].Cells["fecha"].Value;
-
-                    if (fechaCelda < DateTime.Now)
-                    {
-                        MessageBox.Show("Error: La fecha es menor que la fecha actual.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
-                    }
+                   
                     int codigoFuncion = Convert.ToInt32(dgvFunciones.Rows[e.RowIndex].Cells["codigo"].Value);
                     EditarFuncionForms editarForm = new EditarFuncionForms(codigoFuncion);
                     editarForm.ShowDialog();
+                    Cargar();
 
                 }
             }

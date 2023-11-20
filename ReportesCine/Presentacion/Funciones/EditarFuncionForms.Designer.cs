@@ -45,6 +45,7 @@
             this.cbSalas = new System.Windows.Forms.ComboBox();
             this.cbPeliculas = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.btnSalir = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.nupPrecio)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nupMinutos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudHora)).BeginInit();
@@ -53,7 +54,7 @@
             // btnEditar
             // 
             this.btnEditar.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnEditar.Location = new System.Drawing.Point(70, 168);
+            this.btnEditar.Location = new System.Drawing.Point(87, 167);
             this.btnEditar.Name = "btnEditar";
             this.btnEditar.Size = new System.Drawing.Size(75, 64);
             this.btnEditar.TabIndex = 32;
@@ -205,11 +206,23 @@
             this.label2.TabIndex = 33;
             this.label2.Text = ":";
             // 
+            // btnSalir
+            // 
+            this.btnSalir.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnSalir.Location = new System.Drawing.Point(220, 167);
+            this.btnSalir.Name = "btnSalir";
+            this.btnSalir.Size = new System.Drawing.Size(75, 64);
+            this.btnSalir.TabIndex = 34;
+            this.btnSalir.Text = "Salir";
+            this.btnSalir.UseVisualStyleBackColor = true;
+            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
+            // 
             // EditarFuncionForms
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(433, 259);
+            this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.btnEditar);
             this.Controls.Add(this.label6);
@@ -257,5 +270,6 @@
         private System.Windows.Forms.ComboBox cbSalas;
         private System.Windows.Forms.ComboBox cbPeliculas;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button btnSalir;
     }
 }

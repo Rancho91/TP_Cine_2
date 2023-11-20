@@ -36,13 +36,13 @@ namespace ReportesCine.service
             return list;
         }
 
-        public async Task<PeliculasE> GetId()
+        public async Task<List<PeliculasE>> GetId()
         {
-            PeliculasE list = new PeliculasE();
+            List<PeliculasE> list = new List<PeliculasE>();
             try
             {
                 string json = await http.Get();
-                list = JsonConvert.DeserializeObject<PeliculasE>(json);
+                list = JsonConvert.DeserializeObject<List<PeliculasE>>(json);
             }
             catch (Exception ex)
             {

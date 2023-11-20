@@ -37,6 +37,10 @@
             this.label2 = new System.Windows.Forms.Label();
             this.cboGenero = new System.Windows.Forms.ComboBox();
             this.grbPeliculas = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.nupMinutos = new System.Windows.Forms.NumericUpDown();
+            this.nudHora = new System.Windows.Forms.NumericUpDown();
             this.btnAgregarPelicula = new System.Windows.Forms.Button();
             this.dgvPeliculas = new System.Windows.Forms.DataGridView();
             this.ColumnCodigoPelicula = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -47,14 +51,10 @@
             this.ColumnDuracion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnEditarPelicula = new System.Windows.Forms.DataGridViewButtonColumn();
             this.ColumnEliminarPelicula = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.nupMinutos = new System.Windows.Forms.NumericUpDown();
-            this.nudHora = new System.Windows.Forms.NumericUpDown();
             this.grbPeliculas.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvPeliculas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nupMinutos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudHora)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPeliculas)).BeginInit();
             this.SuspendLayout();
             // 
             // lblCodigoPelicula
@@ -148,6 +148,48 @@
             this.grbPeliculas.Text = "Agregar Peliculas";
             this.grbPeliculas.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(584, 28);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(10, 13);
+            this.label1.TabIndex = 19;
+            this.label1.Text = ":";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(486, 28);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(53, 13);
+            this.label5.TabIndex = 18;
+            this.label5.Text = "Duracion:";
+            // 
+            // nupMinutos
+            // 
+            this.nupMinutos.Location = new System.Drawing.Point(600, 26);
+            this.nupMinutos.Maximum = new decimal(new int[] {
+            59,
+            0,
+            0,
+            0});
+            this.nupMinutos.Name = "nupMinutos";
+            this.nupMinutos.Size = new System.Drawing.Size(37, 20);
+            this.nupMinutos.TabIndex = 17;
+            // 
+            // nudHora
+            // 
+            this.nudHora.Location = new System.Drawing.Point(545, 25);
+            this.nudHora.Maximum = new decimal(new int[] {
+            23,
+            0,
+            0,
+            0});
+            this.nudHora.Name = "nudHora";
+            this.nudHora.Size = new System.Drawing.Size(33, 20);
+            this.nudHora.TabIndex = 16;
+            // 
             // btnAgregarPelicula
             // 
             this.btnAgregarPelicula.Location = new System.Drawing.Point(690, 28);
@@ -175,12 +217,14 @@
             this.dgvPeliculas.Name = "dgvPeliculas";
             this.dgvPeliculas.Size = new System.Drawing.Size(929, 150);
             this.dgvPeliculas.TabIndex = 13;
+            this.dgvPeliculas.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPeliculas_CellContentClick);
             // 
             // ColumnCodigoPelicula
             // 
             this.ColumnCodigoPelicula.HeaderText = "Codigo Pelicula";
             this.ColumnCodigoPelicula.Name = "ColumnCodigoPelicula";
             this.ColumnCodigoPelicula.ReadOnly = true;
+            this.ColumnCodigoPelicula.Visible = false;
             this.ColumnCodigoPelicula.Width = 110;
             // 
             // ColumnGeneroPelicula
@@ -223,48 +267,6 @@
             this.ColumnEliminarPelicula.HeaderText = "ELIMINAR";
             this.ColumnEliminarPelicula.Name = "ColumnEliminarPelicula";
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(575, 28);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(10, 13);
-            this.label1.TabIndex = 19;
-            this.label1.Text = ":";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(486, 32);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(44, 13);
-            this.label5.TabIndex = 18;
-            this.label5.Text = "Horario:";
-            // 
-            // nupMinutos
-            // 
-            this.nupMinutos.Location = new System.Drawing.Point(591, 26);
-            this.nupMinutos.Maximum = new decimal(new int[] {
-            59,
-            0,
-            0,
-            0});
-            this.nupMinutos.Name = "nupMinutos";
-            this.nupMinutos.Size = new System.Drawing.Size(37, 20);
-            this.nupMinutos.TabIndex = 17;
-            // 
-            // nudHora
-            // 
-            this.nudHora.Location = new System.Drawing.Point(536, 26);
-            this.nudHora.Maximum = new decimal(new int[] {
-            23,
-            0,
-            0,
-            0});
-            this.nudHora.Name = "nudHora";
-            this.nudHora.Size = new System.Drawing.Size(33, 20);
-            this.nudHora.TabIndex = 16;
-            // 
             // FormPeliculas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -277,9 +279,9 @@
             this.Load += new System.EventHandler(this.FormPeliculas_Load);
             this.grbPeliculas.ResumeLayout(false);
             this.grbPeliculas.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvPeliculas)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nupMinutos)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudHora)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPeliculas)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -297,6 +299,10 @@
         private System.Windows.Forms.GroupBox grbPeliculas;
         private System.Windows.Forms.Button btnAgregarPelicula;
         private System.Windows.Forms.DataGridView dgvPeliculas;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.NumericUpDown nupMinutos;
+        private System.Windows.Forms.NumericUpDown nudHora;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCodigoPelicula;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnGeneroPelicula;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnNombrePelicula;
@@ -305,9 +311,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnDuracion;
         private System.Windows.Forms.DataGridViewButtonColumn ColumnEditarPelicula;
         private System.Windows.Forms.DataGridViewButtonColumn ColumnEliminarPelicula;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.NumericUpDown nupMinutos;
-        private System.Windows.Forms.NumericUpDown nudHora;
     }
 }

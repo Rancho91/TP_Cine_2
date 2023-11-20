@@ -34,7 +34,7 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.butaca12 = new System.Windows.Forms.Button();
-            this.bataca6 = new System.Windows.Forms.Button();
+            this.butaca6 = new System.Windows.Forms.Button();
             this.butaca5 = new System.Windows.Forms.Button();
             this.butaca18 = new System.Windows.Forms.Button();
             this.butaca3 = new System.Windows.Forms.Button();
@@ -47,7 +47,7 @@
             this.butaca16 = new System.Windows.Forms.Button();
             this.butaca10 = new System.Windows.Forms.Button();
             this.butaca7 = new System.Windows.Forms.Button();
-            this.bataca17 = new System.Windows.Forms.Button();
+            this.butaca17 = new System.Windows.Forms.Button();
             this.butaca14 = new System.Windows.Forms.Button();
             this.butaca19 = new System.Windows.Forms.Button();
             this.butaca11 = new System.Windows.Forms.Button();
@@ -56,6 +56,7 @@
             this.Funcion = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.btnBuscar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -72,6 +73,7 @@
             this.butaca1.TabIndex = 3;
             this.butaca1.TextAlign = System.Drawing.ContentAlignment.BottomRight;
             this.butaca1.UseVisualStyleBackColor = true;
+            this.butaca1.Click += new System.EventHandler(this.butaca1_Click);
             // 
             // pictureBox1
             // 
@@ -115,17 +117,17 @@
             this.butaca12.TextAlign = System.Drawing.ContentAlignment.BottomRight;
             this.butaca12.UseVisualStyleBackColor = true;
             // 
-            // bataca6
+            // butaca6
             // 
-            this.bataca6.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bataca6.BackgroundImage")));
-            this.bataca6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.bataca6.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.bataca6.Location = new System.Drawing.Point(380, 283);
-            this.bataca6.Name = "bataca6";
-            this.bataca6.Size = new System.Drawing.Size(36, 38);
-            this.bataca6.TabIndex = 27;
-            this.bataca6.TextAlign = System.Drawing.ContentAlignment.BottomRight;
-            this.bataca6.UseVisualStyleBackColor = true;
+            this.butaca6.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("butaca6.BackgroundImage")));
+            this.butaca6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.butaca6.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.butaca6.Location = new System.Drawing.Point(380, 283);
+            this.butaca6.Name = "butaca6";
+            this.butaca6.Size = new System.Drawing.Size(36, 38);
+            this.butaca6.TabIndex = 27;
+            this.butaca6.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+            this.butaca6.UseVisualStyleBackColor = true;
             // 
             // butaca5
             // 
@@ -271,17 +273,18 @@
             this.butaca7.TextAlign = System.Drawing.ContentAlignment.BottomRight;
             this.butaca7.UseVisualStyleBackColor = true;
             // 
-            // bataca17
+            // butaca17
             // 
-            this.bataca17.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bataca17.BackgroundImage")));
-            this.bataca17.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.bataca17.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.bataca17.Location = new System.Drawing.Point(309, 371);
-            this.bataca17.Name = "bataca17";
-            this.bataca17.Size = new System.Drawing.Size(36, 38);
-            this.bataca17.TabIndex = 40;
-            this.bataca17.TextAlign = System.Drawing.ContentAlignment.BottomRight;
-            this.bataca17.UseVisualStyleBackColor = true;
+            this.butaca17.BackgroundImage = global::ReportesCine.Properties.Resources.butaca_verde;
+            this.butaca17.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.butaca17.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.butaca17.Location = new System.Drawing.Point(309, 371);
+            this.butaca17.Name = "butaca17";
+            this.butaca17.Size = new System.Drawing.Size(36, 38);
+            this.butaca17.TabIndex = 40;
+            this.butaca17.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+            this.butaca17.UseVisualStyleBackColor = true;
+            this.butaca17.Click += new System.EventHandler(this.bataca17_Click);
             // 
             // butaca14
             // 
@@ -338,6 +341,7 @@
             this.cboFunciones.Name = "cboFunciones";
             this.cboFunciones.Size = new System.Drawing.Size(40, 21);
             this.cboFunciones.TabIndex = 45;
+            this.cboFunciones.SelectedIndexChanged += new System.EventHandler(this.cboFunciones_SelectedIndexChanged);
             // 
             // Funcion
             // 
@@ -371,12 +375,23 @@
             this.comboBox1.Size = new System.Drawing.Size(40, 21);
             this.comboBox1.TabIndex = 48;
             // 
+            // btnBuscar
+            // 
+            this.btnBuscar.Location = new System.Drawing.Point(31, 345);
+            this.btnBuscar.Name = "btnBuscar";
+            this.btnBuscar.Size = new System.Drawing.Size(75, 23);
+            this.btnBuscar.TabIndex = 49;
+            this.btnBuscar.Text = "Buscar";
+            this.btnBuscar.UseVisualStyleBackColor = true;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
+            // 
             // FacturaForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.ClientSize = new System.Drawing.Size(881, 509);
+            this.Controls.Add(this.btnBuscar);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.Funcion);
@@ -385,7 +400,7 @@
             this.Controls.Add(this.butaca11);
             this.Controls.Add(this.butaca19);
             this.Controls.Add(this.butaca14);
-            this.Controls.Add(this.bataca17);
+            this.Controls.Add(this.butaca17);
             this.Controls.Add(this.butaca7);
             this.Controls.Add(this.butaca10);
             this.Controls.Add(this.butaca16);
@@ -398,7 +413,7 @@
             this.Controls.Add(this.butaca3);
             this.Controls.Add(this.butaca18);
             this.Controls.Add(this.butaca5);
-            this.Controls.Add(this.bataca6);
+            this.Controls.Add(this.butaca6);
             this.Controls.Add(this.butaca12);
             this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.pictureBox2);
@@ -421,7 +436,7 @@
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.Button butaca12;
-        private System.Windows.Forms.Button bataca6;
+        private System.Windows.Forms.Button butaca6;
         private System.Windows.Forms.Button butaca5;
         private System.Windows.Forms.Button butaca18;
         private System.Windows.Forms.Button butaca3;
@@ -434,7 +449,7 @@
         private System.Windows.Forms.Button butaca16;
         private System.Windows.Forms.Button butaca10;
         private System.Windows.Forms.Button butaca7;
-        private System.Windows.Forms.Button bataca17;
+        private System.Windows.Forms.Button butaca17;
         private System.Windows.Forms.Button butaca14;
         private System.Windows.Forms.Button butaca19;
         private System.Windows.Forms.Button butaca11;
@@ -443,5 +458,6 @@
         private System.Windows.Forms.Label Funcion;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Button btnBuscar;
     }
 }

@@ -1,6 +1,8 @@
 ﻿using ReportesCine.Entidades;
 using ReportesCine.Entidades.Auxiliares;
 using ReportesCine.Entidades.Maestras;
+using ReportesCine.Presentacion.Pelicula;
+using ReportesCine.Presentacion.Peliculas;
 using ReportesCine.service;
 using System;
 using System.Collections.Generic;
@@ -108,6 +110,46 @@ namespace ReportesCine.Presentacion.FormPeliculas
                 MessageBox.Show("No se pudo crear la pelicula");
             }
 
+        }
+
+        private async void dgvPeliculas_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgvPeliculas.Columns[e.ColumnIndex].Name == "ColumnEditarPelicula")
+            {
+                if (e.RowIndex >= 0 && dgvPeliculas.Rows[e.RowIndex].Cells["ColumnCodigoPelicula"].Value != null)
+                {
+
+                    int codigoFuncion = Convert.ToInt32(dgvPeliculas.Rows[e.RowIndex].Cells["ColumnCodigoPelicula"].Value);
+                    PeliculasEService deleteService = new PeliculasEService(codigoFuncion);
+
+                    try
+                    {
+                        await deleteService.Delete();
+                        dgvPeliculas.Rows.RemoveAt(e.RowIndex);
+
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                    Cargar();
+                }
+
+            }
+            if (dgvPeliculas.Columns[e.ColumnIndex].Name == "ColumnEliminarPelicula")
+            {
+                if (e.RowIndex >= 0 && dgvPeliculas.Rows[e.RowIndex].Cells["ColumnCodigoPelicula"].Value != null)
+                {
+
+
+             
+                    int codigoFuncion = Convert.ToInt32(dgvPeliculas.Rows[e.RowIndex].Cells["ColumnCodigoPelicula"].Value);
+                    FormEditarPelicula editarForm = new FormEditarPelicula(codigoFuncion);
+                    editarForm.ShowDialog();
+                    Cargar();
+
+                }
+            }
         }
     }
 }
