@@ -52,7 +52,6 @@ namespace ReportesCine.Presentacion.Facturas
             peliculasService = new PeliculasEService();
             butacas = new List<ReporteButacasDisponibles>();
             factura = new FacturasE();
-            llenarFunciones();
             llenarPeliculas();
         }
 
@@ -76,12 +75,14 @@ namespace ReportesCine.Presentacion.Facturas
                     int codigoPeliculaSeleccionada = (int)cboPeliculas.SelectedValue;
 
                     // Obtener las funciones correspondientes a la película seleccionada
-                    List<Funciones> funcionesPorPelicula = await funcionService.Get(codigoPeliculaSeleccionada);
+                    List<Funciones> funcionesPorPelicula = await funcionService.Get();
 
                     cboFunciones.DataSource = funcionesPorPelicula;
-                    cboFunciones.DisplayMember = "codigo"; // Ajusta este campo según el nombre de tu propiedad en Funciones
-                    cboFunciones.ValueMember = "codigo"; // Ajusta este campo según el nombre de tu propiedad en Funciones
+                    cboFunciones.ValueMember = "codigo"; 
                     cboFunciones.DropDownStyle = ComboBoxStyle.DropDownList;
+
+                    lbFunciones.DataSource = funcionesPorPelicula;
+                    lbFunciones.DisplayMember = "ToString";
                 }
             };
         }

@@ -54,7 +54,6 @@ namespace DataCineDb.Service
                 funcion.Subtitulada = (bool)row["SUBTITULOS"];
                 funcion.Precio = (decimal)row["PRECIO"];
                 funcion.Idioma.Codigo = (int)row["NombreIdioma"];
-
                 funciones.Add(funcion);
             }
 

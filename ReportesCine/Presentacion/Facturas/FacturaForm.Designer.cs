@@ -57,6 +57,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.cboPeliculas = new System.Windows.Forms.ComboBox();
             this.btnBuscar = new System.Windows.Forms.Button();
+            this.lbFunciones = new System.Windows.Forms.ListBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -337,9 +338,9 @@
             // cboFunciones
             // 
             this.cboFunciones.FormattingEnabled = true;
-            this.cboFunciones.Location = new System.Drawing.Point(82, 69);
+            this.cboFunciones.Location = new System.Drawing.Point(12, 102);
             this.cboFunciones.Name = "cboFunciones";
-            this.cboFunciones.Size = new System.Drawing.Size(40, 21);
+            this.cboFunciones.Size = new System.Drawing.Size(170, 21);
             this.cboFunciones.TabIndex = 45;
             this.cboFunciones.SelectedIndexChanged += new System.EventHandler(this.cboFunciones_SelectedIndexChanged);
             // 
@@ -385,12 +386,21 @@
             this.btnBuscar.UseVisualStyleBackColor = true;
             this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
+            // lbFunciones
+            // 
+            this.lbFunciones.FormattingEnabled = true;
+            this.lbFunciones.Location = new System.Drawing.Point(12, 134);
+            this.lbFunciones.Name = "lbFunciones";
+            this.lbFunciones.Size = new System.Drawing.Size(170, 95);
+            this.lbFunciones.TabIndex = 50;
+            // 
             // FacturaForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.ClientSize = new System.Drawing.Size(881, 509);
+            this.Controls.Add(this.lbFunciones);
             this.Controls.Add(this.btnBuscar);
             this.Controls.Add(this.cboPeliculas);
             this.Controls.Add(this.label1);
@@ -459,5 +469,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox cboPeliculas;
         private System.Windows.Forms.Button btnBuscar;
+        private System.Windows.Forms.ListBox lbFunciones;
     }
 }
