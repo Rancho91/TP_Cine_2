@@ -48,7 +48,7 @@ namespace ReportesCine.Reportes.forms
 
                 reportViewer1.LocalReport.DataSources.Clear();
 
-                ReporteFacturasFormaPagoService reporteDBService = new ReporteFacturasFormaPagoService(new DateTime(2020, 1, 1), new DateTime(2023, 1, 1), 0 );
+                ReporteFacturasFormaPagoService reporteDBService = new ReporteFacturasFormaPagoService(DateTime.Parse(dtpFechaInicio.Value.ToString()), DateTime.Parse(dtpFechaFinal.Value.ToString()), (int)nudDescuento.Value);
                 List<ReporteFacturasFormaPago> lst = await reporteDBService.GetReporte();
 
                 if (lst.Count == 0)
@@ -56,7 +56,7 @@ namespace ReportesCine.Reportes.forms
                     MessageBox.Show($"reporte sin informacion");
                 }
 
-                reportViewer1.LocalReport.ReportPath = @"C:\Users\ramir\Desktop\Proyectos Facu\TP_Cine-Ramiro\ReportesCine\Reportes\InformeGananciaFoirmaPago.rdlc";
+                reportViewer1.LocalReport.ReportPath = @"C:\Users\ramir\Desktop\Proyecto Progra\TP_Cine_2\ReportesCine\Reportes\InformeGananciaFoirmaPago.rdlc";
                 reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("DataSetGananciaFormaPago", lst));
                 List<ReportParameter> paramList = new List<ReportParameter>();
 

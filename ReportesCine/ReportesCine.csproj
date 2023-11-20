@@ -352,7 +352,7 @@
     <EmbeddedResource Include="Reportes\Forms\GananciaFormaPagoFormReporte.resx">
       <DependentUpon>GananciaFormaPagoFormReporte.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Reportes\InformeGananciaFormaPago.rdlc" />
+    <EmbeddedResource Include="Reportes\InformeGananciaFoirmaPago.rdlc" />
     <EmbeddedResource Include="Reportes\ButacasDisponiblesXFuncion.rdlc" />
     <None Include="packages.config" />
     <None Include="Properties\DataSources\ReportesCine.Entidades.Reportes.ReporteButacasDisponibles.datasource" />
