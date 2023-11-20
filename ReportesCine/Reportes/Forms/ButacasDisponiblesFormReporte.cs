@@ -57,7 +57,6 @@ namespace CineApi.ReportesCine
         {
             try
             {
-
                 int funcion = 0;
 
                 if (cboFuncionReporte.SelectedItem != null)
@@ -92,7 +91,6 @@ namespace CineApi.ReportesCine
                 reportViewer2.LocalReport.SetParameters(paramList);
 
                 reportViewer2.RefreshReport();
-
 
             }
             catch (Exception ex)
