@@ -16,6 +16,7 @@ namespace ReportesCine.service
         {
             http = new DataHttp("Peliculas");
         }
+
         public PeliculasEService(int id)
         {
             http = new DataHttp($"Peliculas/{id}");

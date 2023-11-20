@@ -1,4 +1,5 @@
-﻿using DataCineDb.Data;
+﻿
+using DataCineDb.Data;
 using DataCineDb.Entidades;
 using DataCineDb.Entidades.Maestras;
 using System;
@@ -13,6 +14,7 @@ namespace DataCineDb.Service
     public class ServicePeliculas
     {
         DbHelper helper = DbHelper.ObtenerInstancia();
+
         public List<Peliculas> GetPeliculas()
         {
             DataTable dt = helper.Consultar("SP_GET_TODAS_PELICULAS");
@@ -32,6 +34,33 @@ namespace DataCineDb.Service
             }
             return peliculas;
         }
+
+        public List<Funciones> GetFuncionesPorPelicula(int codigoPelicula)
+        {
+            List<Funciones> funciones = new List<Funciones>();
+            List<Parametros> parametros = new List<Parametros>();
+            parametros.Add(new Parametros("@codigo_pelicula", codigoPelicula));
+
+            DataTable dt = helper.Consultar("sp_funciones_por_pelicula_y_sala_con_idioma", parametros);
+
+            foreach (DataRow row in dt.Rows)
+            {
+                Funciones funcion = new Funciones();
+                funcion.Codigo = (int)row["COD_FUNCION"];
+                funcion.Pelicula.Codigo = (int)row["COD_PELICULA"];
+                funcion.Horario = TimeSpan.Parse(row["HORARIO"].ToString());
+                funcion.Fecha = DateTime.Parse(row["FECHA"].ToString());
+                funcion.TerceraDimencion = (bool)row["TERCERA_DIMENCION"];
+                funcion.Subtitulada = (bool)row["SUBTITULOS"];
+                funcion.Precio = (decimal)row["PRECIO"];
+                funcion.Idioma.Codigo = (int)row["NombreIdioma"];
+
+                funciones.Add(funcion);
+            }
+
+            return funciones;
+        }
+
         public bool postPelicula(Peliculas pelicula)
         {
             bool error=false;

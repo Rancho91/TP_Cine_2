@@ -22,6 +22,7 @@ namespace ReportesCine.Presentacion.Facturas
     {
 
         private FuncionService funcionService;
+        private PeliculasEService peliculasService;
 
 
         private Dictionary<Button, bool> botonesEstado = new Dictionary<Button, bool>();
@@ -48,25 +49,42 @@ namespace ReportesCine.Presentacion.Facturas
         private void FacturaForm_Load(object sender, EventArgs e)
         {
             funcionService = new FuncionService();
+            peliculasService = new PeliculasEService();
             butacas = new List<ReporteButacasDisponibles>();
             factura = new FacturasE();
             llenarFunciones();
+            llenarPeliculas();
         }
 
-        private async void llenarFunciones()
+        private async void llenarPeliculas()
         {
 
-            List<Funciones> lst = await funcionService.Get();
+            List<PeliculasE> lst = await peliculasService.Get();
 
-            cboFunciones.DataSource = lst;
+            cboPeliculas.DataSource = lst;
 
-            cboFunciones.DisplayMember = "codigo";
+            cboPeliculas.DisplayMember = "nombre";
 
-            cboFunciones.ValueMember = "codigo";
+            cboPeliculas.ValueMember = "codigo";
 
-            cboFunciones.DropDownStyle = ComboBoxStyle.DropDownList;
+            cboPeliculas.DropDownStyle = ComboBoxStyle.DropDownList;
+
+            cboPeliculas.SelectedIndexChanged += async (sender, args) =>
+            {
+                if (cboPeliculas.SelectedValue != null && cboPeliculas.SelectedIndex != -1)
+                {
+                    int codigoPeliculaSeleccionada = (int)cboPeliculas.SelectedValue;
+
+                    // Obtener las funciones correspondientes a la película seleccionada
+                    List<Funciones> funcionesPorPelicula = await funcionService.Get(codigoPeliculaSeleccionada);
+
+                    cboFunciones.DataSource = funcionesPorPelicula;
+                    cboFunciones.DisplayMember = "codigo"; // Ajusta este campo según el nombre de tu propiedad en Funciones
+                    cboFunciones.ValueMember = "codigo"; // Ajusta este campo según el nombre de tu propiedad en Funciones
+                    cboFunciones.DropDownStyle = ComboBoxStyle.DropDownList;
+                }
+            };
         }
-
 
         private void CambiarImagenBoton(Button boton)
         {

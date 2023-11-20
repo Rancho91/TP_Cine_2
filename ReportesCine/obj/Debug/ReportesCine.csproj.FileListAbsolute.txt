@@ -1302,3 +1302,5 @@ C:\Users\ramir\Desktop\Proyecto Progra\TP_Cine_2\ReportesCine\obj\Debug\Reportes
 C:\Users\ramir\Desktop\Proyecto Progra\TP_Cine_2\ReportesCine\obj\Debug\ReportesCine.exe
 C:\Users\ramir\Desktop\Proyecto Progra\TP_Cine_2\ReportesCine\obj\Debug\ReportesCine.pdb
 C:\Users\ramir\Desktop\Proyecto Progra\TP_Cine_2\ReportesCine\obj\Debug\ReportesCine.Presentacion.Peliculas.FormEditarPelicula.resources
+C:\Users\Sofi\Desktop\Cine\TP_Cine_2\ReportesCine\obj\Debug\ReportesCine.Presentacion.Peliculas.FormEditarPelicula.resources
+C:\Users\Sofi\Desktop\Cine\TP_Cine_2\ReportesCine\obj\Debug\ReportesCine.Presentacion.FormPeliculas.FormPeliculas.resources
