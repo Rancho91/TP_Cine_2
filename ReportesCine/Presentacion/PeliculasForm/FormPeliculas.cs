@@ -94,7 +94,17 @@ namespace ReportesCine.Presentacion.FormPeliculas
 
         private async void btnAgregarPelicula_Click(object sender, EventArgs e)
         {
+            if(txtNombrePelicula.Text == string.Empty || txtNombrePelicula.Text == "")
+            {
+                MessageBox.Show("Error: Debe ingresar el nombre de la pelicula", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             pelicula.Nombre = txtNombrePelicula.Text;
+            if((int)nudHora.Value ==0 && (int)nupMinutos.Value == 0)
+            {
+                MessageBox.Show("Error: Debe ingresar la duracion de la pelicula", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             pelicula.Duracion = TimeSpan.FromHours((int)nudHora.Value) + TimeSpan.FromMinutes((int)nupMinutos.Value);
             pelicula.Pais.Codigo = (int)cboPais.SelectedValue;
             pelicula.Clasificacion.Codigo = (int)cboClasificacion.SelectedValue;
@@ -103,6 +113,8 @@ namespace ReportesCine.Presentacion.FormPeliculas
             {
                 await peService.Post(pelicula);
                 MessageBox.Show("Pelicula Creada");
+                limpiar();
+                Cargar();
 
             }
             catch (Exception ex)
@@ -126,13 +138,13 @@ namespace ReportesCine.Presentacion.FormPeliculas
                     {
                         await deleteService.Delete();
                         dgvPeliculas.Rows.RemoveAt(e.RowIndex);
+                        Cargar();
 
                     }
                     catch (Exception ex)
                     {
                         MessageBox.Show(ex.Message);
                     }
-                    Cargar();
                 }
 
             }
@@ -150,6 +162,12 @@ namespace ReportesCine.Presentacion.FormPeliculas
 
                 }
             }
+        }
+        private void limpiar()
+        {
+            txtNombrePelicula.Text = "";
+            nudHora.Value = 0;
+            nupMinutos.Value = 0;
         }
     }
 }
