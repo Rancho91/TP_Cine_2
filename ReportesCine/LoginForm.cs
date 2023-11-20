@@ -69,5 +69,6 @@ namespace ReportesCine
             FacturaForm form = new FacturaForm();
             form.ShowDialog();
         }
+
     }
 }

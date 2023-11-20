@@ -33,7 +33,7 @@ namespace ReportesCine.service
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                Console.WriteLine($"Stack Trace: {ex.Message}");
             }
             return list;
         }
@@ -48,7 +48,7 @@ namespace ReportesCine.service
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                Console.WriteLine($"Stack Trace: {ex.Message}");
             }
             return list;
         }
@@ -61,11 +61,10 @@ namespace ReportesCine.service
 
                 await http.Post(jsonSala);
 
-                MessageBox.Show("Funcion creada exitosamente");
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Error");
+                Console.WriteLine($"Stack Trace: {ex.Message}");
             }
         }
         public async Task Delete()
@@ -74,11 +73,10 @@ namespace ReportesCine.service
             {
                 await http.Delete();
 
-                MessageBox.Show("Funcion Eliminada exitosamente");
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Error");
+                Console.WriteLine($"Stack Trace: {ex.Message}");
             }
         }
         public async Task put(PeliculasE funcion)
@@ -88,7 +86,6 @@ namespace ReportesCine.service
                 string jsonSala = JsonConvert.SerializeObject(funcion);
                 await http.Put(jsonSala);
 
-                MessageBox.Show("Funcion modificada exitosamente");
             }
             catch (Exception ex)
             {

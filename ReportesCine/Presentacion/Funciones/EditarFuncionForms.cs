@@ -37,6 +37,7 @@ namespace ReportesCine.Presentacion.Pelicula
             sala = new Salas();
             funcionService = new FuncionService(CodigoFuncion);
             funcion = new Funciones();
+            funcion.Codigo = CodigoFuncion;
             cargarForm();
 
         }
@@ -83,19 +84,45 @@ namespace ReportesCine.Presentacion.Pelicula
 
         private async void btnEditar_Click(object sender, EventArgs e)
         {
-            sala.Codigo = (int)cbSalas.SelectedValue;
+            if((int)cbSalas.SelectedValue < 1)
+            {
+                MessageBox.Show("Error: Debe seleccionar una sala.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            funcion.Sala.Codigo = (int)cbSalas.SelectedValue;
+            
+            if ((int)cbPeliculas.SelectedValue < 1)
+            {
+                MessageBox.Show("Error: Debe seleccionar una pelicula.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+
+            }
             funcion.Pelicula.Codigo = (int)cbPeliculas.SelectedValue;
             funcion.Idioma.Codigo = (int)cbIdioma.SelectedValue;
-            funcion.Fecha = DateTime.Parse(FechaDTP.Text);
+            DateTime fechaSeleccionada = DateTime.Parse(FechaDTP.Value.ToString());
+            if (DateTime.Now.AddDays(-1) > DateTime.Parse(FechaDTP.Value.ToString()))
+            {
+                MessageBox.Show("Error: La fecha seleccionada no puede ser menor que la fecha actual.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            funcion.Fecha = fechaSeleccionada;
+
             funcion.Horario = TimeSpan.FromHours((int)nudHora.Value) + TimeSpan.FromMinutes((int)nupMinutos.Value);
+
             funcion.Subtitulada = ChBSubtitulada.Checked;
             funcion.TerceraDimencion = ChB3D.Checked;
+            if (nupPrecio.Value < 1000)
+            {
+                MessageBox.Show("Error: No puede haber precios a 100.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             funcion.Precio = nupPrecio.Value;
             sala.agregarFuncion(funcion);
             try
             {
                 await funcionService.put(funcion);
                 MessageBox.Show("se modifico la funcion");
+                this.Close();
 
             }
             catch

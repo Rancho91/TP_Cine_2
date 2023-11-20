@@ -31,7 +31,7 @@ namespace ReportesCine.service
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                Console.WriteLine($"Stack Trace: {ex.Message}");
             }
             return list;
         }

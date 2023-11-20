@@ -32,9 +32,9 @@ namespace ReportesCine.service
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message);
-                }
-                return list;
+                Console.WriteLine($"Stack Trace: {ex.StackTrace}");
+            }
+            return list;
             }
         }
 

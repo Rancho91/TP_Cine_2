@@ -28,7 +28,8 @@ namespace ReportesCine.service
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show($"Stack Trace: {ex.Message}");
+
             }
             return list;
         }

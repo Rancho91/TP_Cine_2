@@ -85,24 +85,46 @@ namespace ReportesCine.Presentacion.Pelicula
 
         private async void btnCrear_Click(object sender, EventArgs e)
         {
+            if ((int)cbSalas.SelectedValue < 1)
+            {
+                MessageBox.Show("Error: Debe seleccionar una sala.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            Salas sala = new Salas();
             sala.Codigo = (int)cbSalas.SelectedValue;
             Funciones funcion = new Funciones();
+            if ((int)cbPeliculas.SelectedValue < 1)
+            {
+                MessageBox.Show("Error: Debe seleccionar una pelicula.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+
+            }
             funcion.Pelicula.Codigo = (int)cbPeliculas.SelectedValue;
             funcion.Idioma.Codigo = (int)cbIdioma.SelectedValue;
 
-            DateTime fechaSeleccionada = FechaDTP.Value;
-            if (fechaSeleccionada <  FechaDTP.Value)
+            DateTime fechaSeleccionada = DateTime.Parse(FechaDTP.Value.ToString());
+            if (DateTime.Now > DateTime.Parse(FechaDTP.Value.ToString()))
             {
                 MessageBox.Show("Error: La fecha seleccionada no puede ser menor que la fecha actual.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
+            funcion.Fecha = fechaSeleccionada;
             funcion.Horario = TimeSpan.FromHours((int)nudHora.Value) + TimeSpan.FromMinutes((int)nupMinutos.Value);
+            
             funcion.Subtitulada = ChBSubtitulada.Checked;
             funcion.TerceraDimencion = ChB3D.Checked;
+            if(nupPrecio.Value <1000)
+            {
+                MessageBox.Show("Error: No puede haber precios a 100.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             funcion.Precio = nupPrecio.Value;
             sala.agregarFuncion(funcion);
             try
             {
                 await funcionService.Post(sala);
+                MessageBox.Show("Funcion creada exitosamente");
+
             }
             catch
             {
@@ -133,9 +155,9 @@ namespace ReportesCine.Presentacion.Pelicula
 
                     int codigoFuncion = Convert.ToInt32(dgvFunciones.Rows[e.RowIndex].Cells["codigo"].Value);
                     FuncionService deleteService = new FuncionService(codigoFuncion);
-                    DateTime fechaCelda = (DateTime)dgvFunciones.Rows[e.RowIndex].Cells["fecha"].Value;
+                    DateTime fechaCelda = DateTime.Parse(dgvFunciones.Rows[e.RowIndex].Cells["ClFecha"].Value.ToString());
 
-                    if (fechaCelda < DateTime.Now)
+                    if (fechaCelda < DateTime.Now.AddDays(-1))
                     {
                         MessageBox.Show("Error: La fecha es menor que la fecha actual.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
@@ -144,13 +166,13 @@ namespace ReportesCine.Presentacion.Pelicula
                     {
                         await deleteService.Delete();
                         dgvFunciones.Rows.RemoveAt(e.RowIndex);
+                        Cargar();
 
                     }
-                    catch(Exception ex)
+                    catch (Exception ex)
                     {
                         MessageBox.Show(ex.Message);
                     }
-                    Cargar();
                 }
                 
             }
