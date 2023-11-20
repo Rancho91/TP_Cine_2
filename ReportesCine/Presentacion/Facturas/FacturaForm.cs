@@ -23,7 +23,7 @@ namespace ReportesCine.Presentacion.Facturas
 
         private FuncionService funcionService;
         private PeliculasEService peliculasService;
-        private PeliculasXFuncion pxfService;
+        private PeliculasXFuncionService pxfService;
 
         private Dictionary<Button, bool> botonesEstado = new Dictionary<Button, bool>();
 
@@ -50,7 +50,6 @@ namespace ReportesCine.Presentacion.Facturas
         {
             funcionService = new FuncionService();
             peliculasService = new PeliculasEService();
-
             butacas = new List<ReporteButacasDisponibles>();
             factura = new FacturasE();
             llenarPeliculas();
@@ -73,7 +72,7 @@ namespace ReportesCine.Presentacion.Facturas
             {
                 if (cboPeliculas.SelectedValue != null && cboPeliculas.SelectedIndex != -1)
                 {
-                    pxfService = new PeliculasXFuncion((int)cboPeliculas.SelectedValue);
+                    pxfService = new PeliculasXFuncionService((int)cboPeliculas.SelectedValue);
 
                     // Obtener las funciones correspondientes a la película seleccionada
                     List<Funciones> funcionesPorPelicula = await pxfService.GetIdPeliculasXFunciones();
@@ -82,6 +81,9 @@ namespace ReportesCine.Presentacion.Facturas
                     cboFunciones.DisplayMember = "codigo"; // Ajusta este campo según el nombre de tu propiedad en Funciones
                     cboFunciones.ValueMember = "codigo"; // Ajusta este campo según el nombre de tu propiedad en Funciones
                     cboFunciones.DropDownStyle = ComboBoxStyle.DropDownList;
+
+                    lstBoxFunc.DataSource = funcionesPorPelicula;
+                    lstBoxFunc.DisplayMember = "ToString";
                 }
             };
         }
@@ -107,47 +109,82 @@ namespace ReportesCine.Presentacion.Facturas
             }
         }
 
+        private Button ObtenerBotonPorCodigoButaca(int codigoButaca)
+        {
+            foreach (Button boton in botonesEstado.Keys)
+            {
+                int codigo = (int)boton.Tag;
+                if (codigo == codigoButaca)
+                {
+                    return boton;
+                }
+            }
+            return null; // En caso de no encontrar el botón con el código de butaca especificado
+        }
+
         private void Boton_Click(object sender, EventArgs e)
         {
-            Button boton = (Button)sender;
-
-            if (boton.Name != "btnBuscar")
+            try
             {
-                // Obtén el código de la butaca del Tag del botón
-                int codigoButaca =(int)boton.Tag ;
+                Button boton = (Button)sender;
 
-                // Busca la butaca en la lista de butacas asociadas a la función
-                Butacas oButaca = funcion.Butacas.FirstOrDefault(b => b.Codigo == codigoButaca);
-
-                if (oButaca == null)
+                if (boton.Name != "btnBuscar" && boton.Name != "btnGenerar" && boton.Name != "btnSalir" && boton.Name != "btnCancelar")
                 {
-                    
-                    Butacas newButaca = new Butacas();
-                    newButaca.Codigo = codigoButaca;
-                    funcion.Butacas.Add(newButaca);
-                    // Añade aquí la lógica adicional según tus necesidades
-                    // Por ejemplo, puedes actualizar la interfaz de usuario o realizar otras operaciones relacionadas con la compra de la butaca
-                    MessageBox.Show($"Butaca {codigoButaca} comprada correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                else
-                {
-                    // Si la butaca ya está en la lista, retírala
-                    funcion.Butacas.Remove(oButaca);
-                    // Añade aquí la lógica adicional según tus necesidades
-                    // Por ejemplo, puedes actualizar la interfaz de usuario o realizar otras operaciones relacionadas con la cancelación de la compra
-                    MessageBox.Show($"Butaca {codigoButaca} cancelada correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
+                    // Obtén el código de la butaca del Tag del botón
+                    int codigoButaca = (int)boton.Tag;
 
-                CambiarImagenBoton(boton);
+                    // Busca la butaca en la lista de butacas asociadas a la función
+                    Butacas oButaca = funcion.Butacas.FirstOrDefault(b => b.Codigo == codigoButaca);
+
+                    if (oButaca == null)
+                    {
+
+                        Butacas newButaca = new Butacas();
+                        newButaca.Codigo = codigoButaca;
+                        funcion.Butacas.Add(newButaca);
+                        // Añade aquí la lógica adicional según tus necesidades
+                        // Por ejemplo, puedes actualizar la interfaz de usuario o realizar otras operaciones relacionadas con la compra de la butaca
+                        MessageBox.Show($"Butaca {codigoButaca} comprada correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        // Si la butaca ya está en la lista, retírala
+                        funcion.Butacas.Remove(oButaca);
+                        // Añade aquí la lógica adicional según tus necesidades
+                        // Por ejemplo, puedes actualizar la interfaz de usuario o realizar otras operaciones relacionadas con la cancelación de la compra
+                        MessageBox.Show($"Butaca {codigoButaca} cancelada correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+
+                    CambiarImagenBoton(boton);
+                }
+                else if (boton.Name == "btnSalir")
+                {
+                    btnSalir_Click(sender, e);
+                }
+                else if (boton.Name == "btnCancelar")
+                {
+                    cargarButacas();
+                    lstBoxFunc.Enabled = true;
+                    cboFunciones.Enabled = true;
+
+                    MessageBox.Show("Cancelación de butacas realizada correctamente.", "Cancelación", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
-
+            catch(Exception ex)
+            {
+                MessageBox.Show($"Error al cerrar el formulario: {ex.Message}");
+            }
         }
     
 
     private async void btnBuscar_Click(object sender, EventArgs e)
         {
-            serviceButacas = new ReporteButacasDisponiblesService(1,"Ñ");
+            funcion = new Funciones();
+            funcion.Codigo = (int)cboFunciones.SelectedValue;
+            serviceButacas = new ReporteButacasDisponiblesService((int)cboFunciones.SelectedValue,"Ñ");
             butacas = await serviceButacas.GetReporte();
+            cboFunciones.Enabled = false;
+            lstBoxFunc.Enabled = false;
             cargarButacas();
         }
 
@@ -185,53 +222,6 @@ namespace ReportesCine.Presentacion.Facturas
             }
         }
 
-        private void butaca1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void cboFunciones_SelectedIndexChanged(object sender, EventArgs e)
-        {
-           funcion = new Funciones();
-            if (cboFunciones.SelectedItem != null)
-            {
-                funcion = (Funciones)cboFunciones.SelectedItem;
-            }
-        }
-
-        private void bataca17_Click(object sender, EventArgs e)
-        {
-            // Obtén el botón que activó el evento
-            Button boton = (Button)sender;
-
-            // Obtén el índice del botón en la lista de botones
-            int indiceBoton = ObtenerIndiceBoton(boton);
-
-            // Verifica si el botón está en estado verde
-            if (!botonesEstado[boton])
-            {
-                // El botón está en estado verde, crea una nueva butaca
-                Butacas butaca = new Butacas();
-                butaca.Codigo = butacas[indiceBoton].Codigo;
-
-                // Agrega aquí la lógica para trabajar con la nueva butaca
-                // ...
-
-                // Por ejemplo, puedes mostrar un mensaje con el código de la butaca creada
-            }
-            else
-            {
-                // El botón está en estado rojo, busca el código en la lista de butacas y retíralo del array
-                int codigoButaca = butacas[indiceBoton].Codigo;
-
-                // Agrega aquí la lógica para trabajar con la butaca roja
-                // ...
-
-                // Por ejemplo, puedes mostrar un mensaje con el código de la butaca a retirar
-                MessageBox.Show($"Butaca roja con código: {codigoButaca}", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-        }
-
         private int ObtenerIndiceBoton(Button boton)
         {
             // Este método obtiene el índice del botón en la lista de botones
@@ -246,6 +236,16 @@ namespace ReportesCine.Presentacion.Facturas
             }
 
             return -1; // Retorna -1 si no se encuentra el botón (esto debería ser manejado según tus necesidades)
+        }
+
+        private void btnSalir_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("¿Estás seguro de que quieres salir?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+            {
+                this.Close(); // Cierra el formulario actual
+            }
         }
     }
 }

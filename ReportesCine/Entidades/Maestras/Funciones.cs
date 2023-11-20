@@ -72,5 +72,10 @@ namespace ReportesCine.Entidades.Maestras
         {
             Butacas.RemoveAt(index);
         }
+
+        public override string ToString()
+        {
+            return $"{Fecha:yyyy-MM-dd} / {Horario.Hours:D2}:{Horario.Minutes:D2}";
+        }
     }
 }
