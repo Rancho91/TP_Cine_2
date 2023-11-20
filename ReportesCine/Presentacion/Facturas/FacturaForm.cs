@@ -23,7 +23,7 @@ namespace ReportesCine.Presentacion.Facturas
 
         private FuncionService funcionService;
         private PeliculasEService peliculasService;
-
+        private PeliculasXFuncion pxfService;
 
         private Dictionary<Button, bool> botonesEstado = new Dictionary<Button, bool>();
 
@@ -50,6 +50,7 @@ namespace ReportesCine.Presentacion.Facturas
         {
             funcionService = new FuncionService();
             peliculasService = new PeliculasEService();
+
             butacas = new List<ReporteButacasDisponibles>();
             factura = new FacturasE();
             llenarPeliculas();
@@ -72,10 +73,10 @@ namespace ReportesCine.Presentacion.Facturas
             {
                 if (cboPeliculas.SelectedValue != null && cboPeliculas.SelectedIndex != -1)
                 {
-                    int codigoPeliculaSeleccionada = (int)cboPeliculas.SelectedValue;
+                    pxfService = new PeliculasXFuncion((int)cboPeliculas.SelectedValue);
 
                     // Obtener las funciones correspondientes a la película seleccionada
-                    List<Funciones> funcionesPorPelicula = await funcionService.Get();
+                    List<Funciones> funcionesPorPelicula = await pxfService.GetIdPeliculasXFunciones();
 
                     cboFunciones.DataSource = funcionesPorPelicula;
                     cboFunciones.ValueMember = "codigo"; 
