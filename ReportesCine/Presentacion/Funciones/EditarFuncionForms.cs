@@ -15,11 +15,11 @@ namespace ReportesCine.Presentacion.Pelicula
 {
     public partial class EditarFuncionForms : Form
     {
-        List<Peliculas> listPelis;
+        List<PeliculasE> listPelis;
         List<Salas> listSalas;
         List<Idiomas> idiomas;
         Funciones funcion;
-        PeliculasService peliculaService;
+        PeliculasEService peliculaService;
         SalasService salaService;
         IdiomaService idiomaService;
         FuncionService funcionService;
@@ -28,8 +28,8 @@ namespace ReportesCine.Presentacion.Pelicula
         public EditarFuncionForms(int CodigoFuncion)
         {
             InitializeComponent();
-            listPelis = new List<Peliculas>();
-            peliculaService = new PeliculasService();
+            listPelis = new List<PeliculasE>();
+            peliculaService = new PeliculasEService();
             salaService = new SalasService();
             listSalas = new List<Salas>();
             idiomas = new List<Idiomas>();

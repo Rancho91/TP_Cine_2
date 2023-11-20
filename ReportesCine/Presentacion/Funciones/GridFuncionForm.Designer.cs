@@ -179,6 +179,11 @@
             // nupMinutos
             // 
             this.nupMinutos.Location = new System.Drawing.Point(578, 57);
+            this.nupMinutos.Maximum = new decimal(new int[] {
+            59,
+            0,
+            0,
+            0});
             this.nupMinutos.Name = "nupMinutos";
             this.nupMinutos.Size = new System.Drawing.Size(37, 20);
             this.nupMinutos.TabIndex = 7;
@@ -186,16 +191,22 @@
             // nudHora
             // 
             this.nudHora.Location = new System.Drawing.Point(523, 57);
+            this.nudHora.Maximum = new decimal(new int[] {
+            23,
+            0,
+            0,
+            0});
             this.nudHora.Name = "nudHora";
             this.nudHora.Size = new System.Drawing.Size(33, 20);
             this.nudHora.TabIndex = 6;
             // 
             // FechaDTP
             // 
-            this.FechaDTP.CustomFormat = "YYYY-MM-DD";
+            this.FechaDTP.CustomFormat = "yyyy-MM-dd";
+            this.FechaDTP.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.FechaDTP.Location = new System.Drawing.Point(95, 62);
             this.FechaDTP.Name = "FechaDTP";
-            this.FechaDTP.Size = new System.Drawing.Size(217, 20);
+            this.FechaDTP.Size = new System.Drawing.Size(81, 20);
             this.FechaDTP.TabIndex = 5;
             // 
             // ChBSubtitulada
@@ -330,14 +341,14 @@
             this.btnEditar.HeaderText = "Editar";
             this.btnEditar.Name = "btnEditar";
             // 
-            // GridPeliculaForm
+            // GridFuncionForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1049, 450);
             this.Controls.Add(this.dgvFunciones);
             this.Controls.Add(this.NuevoGB);
-            this.Name = "GridPeliculaForm";
+            this.Name = "GridFuncionForm";
             this.Text = "GridPeliculaForm";
             this.Load += new System.EventHandler(this.GridPeliculaForm_Load);
             this.NuevoGB.ResumeLayout(false);

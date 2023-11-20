@@ -73,7 +73,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(20, 134);
+            this.label5.Location = new System.Drawing.Point(20, 132);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(44, 13);
             this.label5.TabIndex = 30;
@@ -82,7 +82,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(225, 15);
+            this.label4.Location = new System.Drawing.Point(243, 17);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(40, 13);
             this.label4.TabIndex = 29;
@@ -100,7 +100,7 @@
             // lblPelicula
             // 
             this.lblPelicula.AutoSize = true;
-            this.lblPelicula.Location = new System.Drawing.Point(6, 17);
+            this.lblPelicula.Location = new System.Drawing.Point(17, 17);
             this.lblPelicula.Name = "lblPelicula";
             this.lblPelicula.Size = new System.Drawing.Size(47, 13);
             this.lblPelicula.TabIndex = 27;
@@ -125,13 +125,14 @@
             0,
             0});
             this.nupPrecio.Name = "nupPrecio";
-            this.nupPrecio.Size = new System.Drawing.Size(76, 20);
+            this.nupPrecio.Size = new System.Drawing.Size(88, 20);
             this.nupPrecio.TabIndex = 25;
             // 
             // nupMinutos
             // 
             this.nupMinutos.Location = new System.Drawing.Point(125, 130);
             this.nupMinutos.Name = "nupMinutos";
+            this.nupMinutos.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.nupMinutos.Size = new System.Drawing.Size(37, 20);
             this.nupMinutos.TabIndex = 24;
             // 
@@ -144,10 +145,11 @@
             // 
             // FechaDTP
             // 
-            this.FechaDTP.CustomFormat = "YYYY-MM-DD";
+            this.FechaDTP.CustomFormat = "";
+            this.FechaDTP.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.FechaDTP.Location = new System.Drawing.Point(289, 13);
             this.FechaDTP.Name = "FechaDTP";
-            this.FechaDTP.Size = new System.Drawing.Size(217, 20);
+            this.FechaDTP.Size = new System.Drawing.Size(88, 20);
             this.FechaDTP.TabIndex = 22;
             // 
             // ChBSubtitulada
@@ -173,7 +175,7 @@
             // cbIdioma
             // 
             this.cbIdioma.FormattingEnabled = true;
-            this.cbIdioma.Location = new System.Drawing.Point(70, 88);
+            this.cbIdioma.Location = new System.Drawing.Point(70, 92);
             this.cbIdioma.Name = "cbIdioma";
             this.cbIdioma.Size = new System.Drawing.Size(121, 21);
             this.cbIdioma.TabIndex = 19;
@@ -181,7 +183,7 @@
             // cbSalas
             // 
             this.cbSalas.FormattingEnabled = true;
-            this.cbSalas.Location = new System.Drawing.Point(70, 49);
+            this.cbSalas.Location = new System.Drawing.Point(70, 52);
             this.cbSalas.Name = "cbSalas";
             this.cbSalas.Size = new System.Drawing.Size(121, 21);
             this.cbSalas.TabIndex = 18;
@@ -189,7 +191,7 @@
             // cbPeliculas
             // 
             this.cbPeliculas.FormattingEnabled = true;
-            this.cbPeliculas.Location = new System.Drawing.Point(70, 12);
+            this.cbPeliculas.Location = new System.Drawing.Point(70, 14);
             this.cbPeliculas.Name = "cbPeliculas";
             this.cbPeliculas.Size = new System.Drawing.Size(121, 21);
             this.cbPeliculas.TabIndex = 17;

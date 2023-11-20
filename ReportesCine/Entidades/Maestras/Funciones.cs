@@ -12,7 +12,7 @@ namespace ReportesCine.Entidades.Maestras
     {
 
         public int Codigo { get; set; }
-        public Peliculas Pelicula { get; set; }
+        public PeliculasE Pelicula { get; set; }
         public Idiomas Idioma { get; set; }
         public TimeSpan Horario { get; set; }
         public DateTime Fecha { get; set; }
@@ -29,7 +29,7 @@ namespace ReportesCine.Entidades.Maestras
             Codigo = 0;
             Fecha= DateTime.Now;
             Idioma = new Idiomas();
-            Pelicula = new Peliculas();
+            Pelicula = new PeliculasE();
             Horario = TimeSpan.FromHours(0) + TimeSpan.FromMinutes(0);
             Precio = 0;
             Subtitulada = false;
@@ -38,7 +38,7 @@ namespace ReportesCine.Entidades.Maestras
             Butacas = new List<Butacas>();
         }
 
-        public Funciones(int codigo, Peliculas pelicula, DateTime fecha, TimeSpan horario)
+        public Funciones(int codigo, PeliculasE pelicula, DateTime fecha, TimeSpan horario)
         {
             Codigo = codigo;
             Pelicula = pelicula;
@@ -51,7 +51,7 @@ namespace ReportesCine.Entidades.Maestras
             Sala = new Salas();
         }
 
-        public Funciones(int codigo, Peliculas pelicula, DateTime fecha, TimeSpan horario, decimal precio, bool subtitulada, bool terceraDimencion, Idiomas idioma)
+        public Funciones(int codigo, PeliculasE pelicula, DateTime fecha, TimeSpan horario, decimal precio, bool subtitulada, bool terceraDimencion, Idiomas idioma)
         {
             Codigo = codigo;
             Pelicula = pelicula;

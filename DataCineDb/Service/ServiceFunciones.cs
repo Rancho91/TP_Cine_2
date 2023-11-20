@@ -17,23 +17,22 @@ namespace DataCineDb.Service
         {
             List<Funciones> funciones = new List<Funciones>();
             DataTable dt = helper.Consultar("SP_GET_TODAS_FUNCIONES");
-                foreach (DataRow row in dt.Rows)
+            foreach (DataRow row in dt.Rows)
             {
-                Salas sala = new Salas();
-                sala.Numero = (int)row[9];
-                funciones.Add(
-                new Funciones(
-                (int)row[0],
-                 new Peliculas(row[1].ToString()),
-                DateTime.Parse(row[3].ToString()),
-                TimeSpan.Parse(row[2].ToString()),
-                (decimal)row[7],
-                (bool)row[6],
-                (bool)row[5],
-                new Idiomas(row[8].ToString()),
-                sala
+                Funciones funcion = new Funciones();
+                funcion.Codigo = (int)row[0];
 
-                    ));
+                funcion.Pelicula.Nombre =  row[1].ToString();
+                funcion.Sala.Codigo = (int)row[2];
+                funcion.Horario = TimeSpan.Parse(row[3].ToString());
+                funcion.Fecha = DateTime.Parse(row[4].ToString());
+                funcion.TerceraDimencion = (bool)row[5];
+                funcion.Subtitulada = (bool)row[6];
+                funcion.Precio = (decimal)row[7];
+                funcion.Idioma.Idioma = row[8].ToString();
+                funcion.Sala.Numero = (int)row[9];
+
+                funciones.Add(funcion);
 
             }
             return funciones;

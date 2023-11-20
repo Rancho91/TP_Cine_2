@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using ReportesCine.Entidades.Maestras;
 namespace ReportesCine.Entidades.Reportes
 {
-    public class ReportePeliculasGanancia : Peliculas
+    public class ReportePeliculasGanancia : PeliculasE
     {
         public decimal Ganancia { get; set; }
         public int CantidadButacas { get; set; }

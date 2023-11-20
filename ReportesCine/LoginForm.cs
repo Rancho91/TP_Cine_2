@@ -1,5 +1,6 @@
 ﻿using CineApi.ReportesCine;
 using ReportesCine.Presentacion.Facturas;
+using ReportesCine.Presentacion.FormPeliculas;
 using ReportesCine.Presentacion.Pelicula;
 using ReportesCine.Reportes.forms;
 using System;
@@ -55,6 +56,12 @@ namespace ReportesCine
         private void LoginForm_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void peliculasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormPeliculas form = new FormPeliculas();
+            form.ShowDialog();
         }
     }
 }

@@ -236,6 +236,18 @@
     <Compile Include="Entidades\Reportes\ReporteFacturasFormaPago.cs" />
     <Compile Include="Entidades\Reportes\ReportePeliculasGanancia.cs" />
     <Compile Include="Entidades\Reportes\reportePeliculasXFecha.cs" />
+    <Compile Include="Presentacion\PeliculasForm\FormEditarPelicula.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\PeliculasForm\FormEditarPelicula.Designer.cs">
+      <DependentUpon>FormEditarPelicula.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\PeliculasForm\FormPeliculas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\PeliculasForm\FormPeliculas.designer.cs">
+      <DependentUpon>FormPeliculas.cs</DependentUpon>
+    </Compile>
     <Compile Include="Reportes\Forms\ButacasDisponiblesFormReporte.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -296,10 +308,13 @@
     <Compile Include="Reportes\Forms\GananciaFormaPagoFormReporte.Designer.cs">
       <DependentUpon>GananciaFormaPagoFormReporte.cs</DependentUpon>
     </Compile>
+    <Compile Include="service\ClasificacionService.cs" />
     <Compile Include="service\DataHttp.cs" />
     <Compile Include="service\FormaPagoService.cs" />
     <Compile Include="service\FuncionService.cs" />
+    <Compile Include="service\GeneroService.cs" />
     <Compile Include="service\IdiomaService.cs" />
+    <Compile Include="service\PaisService.cs" />
     <Compile Include="service\PeliculasService.cs" />
     <Compile Include="service\ReporteButacasDisponiblesService.cs" />
     <Compile Include="service\ReporteFacturasFormaPagoService.cs" />
@@ -308,6 +323,12 @@
     <Compile Include="service\ReportePeliculasGeneroClasiService.cs" />
     <Compile Include="service\SalasService.cs" />
     <Compile Include="SqlServerTypes\Loader.cs" />
+    <EmbeddedResource Include="Presentacion\PeliculasForm\FormEditarPelicula.resx">
+      <DependentUpon>FormEditarPelicula.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\PeliculasForm\FormPeliculas.resx">
+      <DependentUpon>FormPeliculas.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reportes\Forms\ButacasDisponiblesFormReporte.resx">
       <DependentUpon>ButacasDisponiblesFormReporte.cs</DependentUpon>
     </EmbeddedResource>

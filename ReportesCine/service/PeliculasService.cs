@@ -9,25 +9,25 @@ using System.Windows.Forms;
 
 namespace ReportesCine.service
 {
-    internal class PeliculasService
+    internal class PeliculasEService
     {
         private DataHttp http { get; set; }
-        public PeliculasService()
+        public PeliculasEService()
         {
             http = new DataHttp("Peliculas");
         }
-        public PeliculasService(int id)
+        public PeliculasEService(int id)
         {
             http = new DataHttp($"Peliculas/{id}");
         }
 
-        public async Task<List<Peliculas>> Get()
+        public async Task<List<PeliculasE>> Get()
         {
-            List<Peliculas> list = new List<Peliculas>();
+            List<PeliculasE> list = new List<PeliculasE>();
             try
             {
                 string json = await http.Get();
-                list = JsonConvert.DeserializeObject<List<Peliculas>>(json);
+                list = JsonConvert.DeserializeObject<List<PeliculasE>>(json);
             }
             catch (Exception ex)
             {
@@ -35,5 +35,64 @@ namespace ReportesCine.service
             }
             return list;
         }
+
+        public async Task<PeliculasE> GetId()
+        {
+            PeliculasE list = new PeliculasE();
+            try
+            {
+                string json = await http.Get();
+                list = JsonConvert.DeserializeObject<PeliculasE>(json);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            return list;
+        }
+        public async Task Post(PeliculasE pelicula)
+        {
+            try
+            {
+                string jsonSala = JsonConvert.SerializeObject(pelicula);
+
+                await http.Post(jsonSala);
+
+                MessageBox.Show("Funcion creada exitosamente");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error");
+            }
+        }
+        public async Task Delete()
+        {
+            try
+            {
+                await http.Delete();
+
+                MessageBox.Show("Funcion Eliminada exitosamente");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error");
+            }
+        }
+        public async Task put(PeliculasE funcion)
+        {
+            try
+            {
+                string jsonSala = JsonConvert.SerializeObject(funcion);
+                await http.Put(jsonSala);
+
+                MessageBox.Show("Funcion modificada exitosamente");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error");
+            }
+        }
+
+
     }
 }

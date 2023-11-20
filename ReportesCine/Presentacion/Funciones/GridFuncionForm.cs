@@ -15,11 +15,11 @@ namespace ReportesCine.Presentacion.Pelicula
 {
     public partial class GridFuncionForm : Form
     {
-        List<Peliculas> listPelis;
+        List<PeliculasE> listPelis;
         List<Salas> listSalas;
         List<Idiomas> idiomas;
         List<Funciones> listFunciones;
-        PeliculasService peliculaService;
+        PeliculasEService peliculaService;
         SalasService salaService;
         IdiomaService idiomaService;
         FuncionService funcionService;
@@ -29,8 +29,8 @@ namespace ReportesCine.Presentacion.Pelicula
         {
             InitializeComponent();
 
-            listPelis = new List<Peliculas>();
-            peliculaService = new PeliculasService();
+            listPelis = new List<PeliculasE>();
+            peliculaService = new PeliculasEService();
             salaService = new SalasService();
             listSalas = new List<Salas>();
             idiomas = new List<Idiomas>();
@@ -89,7 +89,12 @@ namespace ReportesCine.Presentacion.Pelicula
             Funciones funcion = new Funciones();
             funcion.Pelicula.Codigo = (int)cbPeliculas.SelectedValue;
             funcion.Idioma.Codigo = (int)cbIdioma.SelectedValue;
-            funcion.Fecha = DateTime.Parse(FechaDTP.Text);
+
+            DateTime fechaSeleccionada = FechaDTP.Value;
+            if (fechaSeleccionada <  FechaDTP.Value)
+            {
+                MessageBox.Show("Error: La fecha seleccionada no puede ser menor que la fecha actual.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             funcion.Horario = TimeSpan.FromHours((int)nudHora.Value) + TimeSpan.FromMinutes((int)nupMinutos.Value);
             funcion.Subtitulada = ChBSubtitulada.Checked;
             funcion.TerceraDimencion = ChB3D.Checked;
@@ -98,7 +103,6 @@ namespace ReportesCine.Presentacion.Pelicula
             try
             {
                 await funcionService.Post(sala);
-
             }
             catch
             {
@@ -116,7 +120,7 @@ namespace ReportesCine.Presentacion.Pelicula
             dgvFunciones.Rows.Clear();
             foreach (Funciones funcion in listFunciones)
             {
-                dgvFunciones.Rows.Add(funcion.Codigo, funcion.Pelicula.Nombre, funcion.Sala.Numero, funcion.Horario, funcion.Idioma.Idioma,funcion.Fecha, funcion.TerceraDimencion, funcion.Subtitulada, funcion.Precio, "Eliminar","Editar");
+                dgvFunciones.Rows.Add(funcion.Codigo, funcion.Pelicula.Nombre, funcion.Sala.Numero, funcion.Horario, funcion.Idioma.Idioma, funcion.Fecha.ToString("yyyy-MM-dd"), funcion.TerceraDimencion, funcion.Subtitulada, funcion.Precio, "Eliminar","Editar");
             }
         }
 
@@ -149,10 +153,16 @@ namespace ReportesCine.Presentacion.Pelicula
                 if (e.RowIndex >= 0 && dgvFunciones.Rows[e.RowIndex].Cells["codigo"].Value != null)
                 {
 
+                    DateTime fechaCelda = (DateTime)dgvFunciones.Rows[e.RowIndex].Cells["fecha"].Value;
+
+                    if (fechaCelda < DateTime.Now)
+                    {
+                        MessageBox.Show("Error: La fecha es menor que la fecha actual.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
                     int codigoFuncion = Convert.ToInt32(dgvFunciones.Rows[e.RowIndex].Cells["codigo"].Value);
                     EditarFuncionForms editarForm = new EditarFuncionForms(codigoFuncion);
                     editarForm.ShowDialog();
-
 
                 }
             }

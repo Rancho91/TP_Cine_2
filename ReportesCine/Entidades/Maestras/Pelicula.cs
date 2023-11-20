@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ReportesCine.Entidades.Maestras
 {
-    public class Peliculas
+    public class PeliculasE
     {
         public int Codigo { get; set; }
         public string Nombre { get; set; }
@@ -15,7 +15,7 @@ namespace ReportesCine.Entidades.Maestras
         public Paises Pais { get; set; }
 
         public TimeSpan Duracion { get; set; }
-        public Peliculas()
+        public PeliculasE()
         {
             Codigo = 0;
             Nombre=string.Empty;
@@ -26,7 +26,7 @@ namespace ReportesCine.Entidades.Maestras
             Duracion = TimeSpan.FromHours(2) + TimeSpan.FromMinutes(30);
         }
 
-        public Peliculas(string nombre)
+        public PeliculasE(string nombre)
         {
             Codigo = 0;
             Nombre =nombre;
@@ -36,7 +36,7 @@ namespace ReportesCine.Entidades.Maestras
 
             Duracion = TimeSpan.FromHours(0) + TimeSpan.FromMinutes(0);
         }
-        public Peliculas(int codigo, string nombre, Generos genero, Clasificaciones clasificacion, Paises pais, TimeSpan duracion)
+        public PeliculasE(int codigo, string nombre, Generos genero, Clasificaciones clasificacion, Paises pais, TimeSpan duracion)
         {
             Codigo = codigo;
             Nombre = nombre;
