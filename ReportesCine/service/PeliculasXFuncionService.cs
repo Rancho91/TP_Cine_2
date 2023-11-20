@@ -9,11 +9,11 @@ using System.Windows.Forms;
 
 namespace ReportesCine.service
 {
-    internal class PeliculasXFuncion
+    internal class PeliculasXFuncionService
     {
         private DataHttp http { get; set; }
 
-        public PeliculasXFuncion(int id)
+        public PeliculasXFuncionService(int id)
         {
             http = new DataHttp($"Peliculas/peliculasXFunciones/{id}");
         }

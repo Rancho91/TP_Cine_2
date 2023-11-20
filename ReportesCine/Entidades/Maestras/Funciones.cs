@@ -75,7 +75,7 @@ namespace ReportesCine.Entidades.Maestras
 
         public override string ToString()
         {
-            return $" {Fecha.ToString("yyyy-MM-dd")} / {Horario.ToString()}";
+            return $"{Fecha:yyyy-MM-dd} / {Horario.Hours:D2}:{Horario.Minutes:D2}";
         }
     }
 }
