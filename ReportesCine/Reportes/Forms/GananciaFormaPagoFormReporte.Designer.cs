@@ -30,6 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            this.dataSetGananciaFormaPagoBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.dataSetGananciaFormaPago = new ReportesCine.Reportes.Data.DataSetGananciaFormaPago();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -37,15 +39,23 @@
             this.dtpFechaFinal = new System.Windows.Forms.DateTimePicker();
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.btnBuscar = new System.Windows.Forms.Button();
-            this.dataSetGananciaFormaPago = new ReportesCine.Reportes.Data.DataSetGananciaFormaPago();
             this.dataSetGananciaFormaPagoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.DataTable2BindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dataSetGananciaFormaPagoBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.dataSetGananciaFormaPagoBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSetGananciaFormaPago)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSetGananciaFormaPagoBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DataTable2BindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataSetGananciaFormaPagoBindingSource1)).BeginInit();
             this.SuspendLayout();
+            // 
+            // dataSetGananciaFormaPagoBindingSource1
+            // 
+            this.dataSetGananciaFormaPagoBindingSource1.DataSource = this.dataSetGananciaFormaPago;
+            this.dataSetGananciaFormaPagoBindingSource1.Position = 0;
+            // 
+            // dataSetGananciaFormaPago
+            // 
+            this.dataSetGananciaFormaPago.DataSetName = "DataSetGananciaFormaPago";
+            this.dataSetGananciaFormaPago.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // label1
             // 
@@ -115,11 +125,6 @@
             this.btnBuscar.UseVisualStyleBackColor = true;
             this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
-            // dataSetGananciaFormaPago
-            // 
-            this.dataSetGananciaFormaPago.DataSetName = "DataSetGananciaFormaPago";
-            this.dataSetGananciaFormaPago.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
             // dataSetGananciaFormaPagoBindingSource
             // 
             this.dataSetGananciaFormaPagoBindingSource.DataSource = this.dataSetGananciaFormaPago;
@@ -130,12 +135,7 @@
             this.DataTable2BindingSource.DataMember = "DataTable2";
             this.DataTable2BindingSource.DataSource = this.dataSetGananciaFormaPago;
             // 
-            // dataSetGananciaFormaPagoBindingSource1
-            // 
-            this.dataSetGananciaFormaPagoBindingSource1.DataSource = this.dataSetGananciaFormaPago;
-            this.dataSetGananciaFormaPagoBindingSource1.Position = 0;
-            // 
-            // GananciaFormaPagoForm
+            // GananciaFormaPagoFormReporte
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -147,13 +147,13 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Name = "GananciaFormaPagoForm";
+            this.Name = "GananciaFormaPagoFormReporte";
             this.Text = "GananciaFormaPagoForm";
             this.Load += new System.EventHandler(this.GananciaFormaPagoForm_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dataSetGananciaFormaPagoBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSetGananciaFormaPago)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSetGananciaFormaPagoBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DataTable2BindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataSetGananciaFormaPagoBindingSource1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lblCodigoPelicula = new System.Windows.Forms.Label();
             this.txtNombrePelicula = new System.Windows.Forms.TextBox();
             this.lblGenero = new System.Windows.Forms.Label();
@@ -43,6 +45,7 @@
             this.nudHora = new System.Windows.Forms.NumericUpDown();
             this.btnAgregarPelicula = new System.Windows.Forms.Button();
             this.dgvPeliculas = new System.Windows.Forms.DataGridView();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.ColumnCodigoPelicula = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnGeneroPelicula = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnNombrePelicula = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -55,6 +58,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.nupMinutos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudHora)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPeliculas)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // lblCodigoPelicula
@@ -97,7 +101,7 @@
             this.cboPais.FormattingEnabled = true;
             this.cboPais.Location = new System.Drawing.Point(355, 24);
             this.cboPais.Name = "cboPais";
-            this.cboPais.Size = new System.Drawing.Size(121, 21);
+            this.cboPais.Size = new System.Drawing.Size(175, 21);
             this.cboPais.TabIndex = 8;
             // 
             // cboClasificacion
@@ -122,11 +126,13 @@
             this.cboGenero.FormattingEnabled = true;
             this.cboGenero.Location = new System.Drawing.Point(92, 62);
             this.cboGenero.Name = "cboGenero";
-            this.cboGenero.Size = new System.Drawing.Size(121, 21);
+            this.cboGenero.Size = new System.Drawing.Size(181, 21);
             this.cboGenero.TabIndex = 11;
             // 
             // grbPeliculas
             // 
+            this.grbPeliculas.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.grbPeliculas.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.grbPeliculas.Controls.Add(this.label1);
             this.grbPeliculas.Controls.Add(this.label5);
             this.grbPeliculas.Controls.Add(this.nupMinutos);
@@ -140,9 +146,9 @@
             this.grbPeliculas.Controls.Add(this.lblCodigoPelicula);
             this.grbPeliculas.Controls.Add(this.txtNombrePelicula);
             this.grbPeliculas.Controls.Add(this.lblGenero);
-            this.grbPeliculas.Location = new System.Drawing.Point(12, 12);
+            this.grbPeliculas.Location = new System.Drawing.Point(21, 12);
             this.grbPeliculas.Name = "grbPeliculas";
-            this.grbPeliculas.Size = new System.Drawing.Size(938, 131);
+            this.grbPeliculas.Size = new System.Drawing.Size(1017, 148);
             this.grbPeliculas.TabIndex = 12;
             this.grbPeliculas.TabStop = false;
             this.grbPeliculas.Text = "Agregar Peliculas";
@@ -151,7 +157,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(584, 28);
+            this.label1.Location = new System.Drawing.Point(689, 28);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(10, 13);
             this.label1.TabIndex = 19;
@@ -160,7 +166,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(486, 28);
+            this.label5.Location = new System.Drawing.Point(562, 32);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(53, 13);
             this.label5.TabIndex = 18;
@@ -168,33 +174,34 @@
             // 
             // nupMinutos
             // 
-            this.nupMinutos.Location = new System.Drawing.Point(600, 26);
+            this.nupMinutos.Location = new System.Drawing.Point(714, 26);
             this.nupMinutos.Maximum = new decimal(new int[] {
             59,
             0,
             0,
             0});
             this.nupMinutos.Name = "nupMinutos";
-            this.nupMinutos.Size = new System.Drawing.Size(37, 20);
+            this.nupMinutos.Size = new System.Drawing.Size(60, 20);
             this.nupMinutos.TabIndex = 17;
             // 
             // nudHora
             // 
-            this.nudHora.Location = new System.Drawing.Point(545, 25);
+            this.nudHora.Location = new System.Drawing.Point(634, 25);
             this.nudHora.Maximum = new decimal(new int[] {
             23,
             0,
             0,
             0});
             this.nudHora.Name = "nudHora";
-            this.nudHora.Size = new System.Drawing.Size(33, 20);
+            this.nudHora.Size = new System.Drawing.Size(49, 20);
             this.nudHora.TabIndex = 16;
             // 
             // btnAgregarPelicula
             // 
-            this.btnAgregarPelicula.Location = new System.Drawing.Point(690, 28);
+            this.btnAgregarPelicula.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnAgregarPelicula.Location = new System.Drawing.Point(833, 35);
             this.btnAgregarPelicula.Name = "btnAgregarPelicula";
-            this.btnAgregarPelicula.Size = new System.Drawing.Size(118, 58);
+            this.btnAgregarPelicula.Size = new System.Drawing.Size(151, 73);
             this.btnAgregarPelicula.TabIndex = 14;
             this.btnAgregarPelicula.Text = "AGREGAR";
             this.btnAgregarPelicula.UseVisualStyleBackColor = true;
@@ -203,6 +210,16 @@
             // dgvPeliculas
             // 
             this.dgvPeliculas.AllowUserToAddRows = false;
+            this.dgvPeliculas.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.dgvPeliculas.BackgroundColor = System.Drawing.SystemColors.ControlDarkDark;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.Desktop;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvPeliculas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvPeliculas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvPeliculas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ColumnCodigoPelicula,
@@ -215,9 +232,23 @@
             this.ColumnEliminarPelicula});
             this.dgvPeliculas.Location = new System.Drawing.Point(21, 166);
             this.dgvPeliculas.Name = "dgvPeliculas";
-            this.dgvPeliculas.Size = new System.Drawing.Size(929, 150);
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            this.dgvPeliculas.RowsDefaultCellStyle = dataGridViewCellStyle2;
+            this.dgvPeliculas.Size = new System.Drawing.Size(1017, 363);
             this.dgvPeliculas.TabIndex = 13;
             this.dgvPeliculas.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPeliculas_CellContentClick);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox1.Image = global::ReportesCine.Properties.Resources.Cine_12_svg;
+            this.pictureBox1.Location = new System.Drawing.Point(1053, 426);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(143, 103);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 14;
+            this.pictureBox1.TabStop = false;
             // 
             // ColumnCodigoPelicula
             // 
@@ -232,48 +263,59 @@
             this.ColumnGeneroPelicula.HeaderText = "Genero";
             this.ColumnGeneroPelicula.Name = "ColumnGeneroPelicula";
             this.ColumnGeneroPelicula.ReadOnly = true;
+            this.ColumnGeneroPelicula.Width = 120;
             // 
             // ColumnNombrePelicula
             // 
             this.ColumnNombrePelicula.HeaderText = "Nombre";
             this.ColumnNombrePelicula.Name = "ColumnNombrePelicula";
             this.ColumnNombrePelicula.ReadOnly = true;
+            this.ColumnNombrePelicula.Width = 120;
             // 
             // ColumnCodigoPaisPelicula
             // 
             this.ColumnCodigoPaisPelicula.HeaderText = "Pais";
             this.ColumnCodigoPaisPelicula.Name = "ColumnCodigoPaisPelicula";
             this.ColumnCodigoPaisPelicula.ReadOnly = true;
+            this.ColumnCodigoPaisPelicula.Width = 150;
             // 
             // ColumnClasificacion
             // 
             this.ColumnClasificacion.HeaderText = "Clasificacion";
             this.ColumnClasificacion.Name = "ColumnClasificacion";
             this.ColumnClasificacion.ReadOnly = true;
+            this.ColumnClasificacion.Width = 130;
             // 
             // ColumnDuracion
             // 
             this.ColumnDuracion.HeaderText = "Duracion";
             this.ColumnDuracion.Name = "ColumnDuracion";
             this.ColumnDuracion.ReadOnly = true;
+            this.ColumnDuracion.Width = 130;
             // 
             // ColumnEditarPelicula
             // 
             this.ColumnEditarPelicula.HeaderText = "EDITAR";
             this.ColumnEditarPelicula.Name = "ColumnEditarPelicula";
+            this.ColumnEditarPelicula.Width = 160;
             // 
             // ColumnEliminarPelicula
             // 
             this.ColumnEliminarPelicula.HeaderText = "ELIMINAR";
             this.ColumnEliminarPelicula.Name = "ColumnEliminarPelicula";
+            this.ColumnEliminarPelicula.Width = 160;
             // 
             // FormPeliculas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1008, 450);
+            this.AutoSize = true;
+            this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.ClientSize = new System.Drawing.Size(1235, 551);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.dgvPeliculas);
             this.Controls.Add(this.grbPeliculas);
+            this.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.Name = "FormPeliculas";
             this.Text = "FormPeliculas";
             this.Load += new System.EventHandler(this.FormPeliculas_Load);
@@ -282,6 +324,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.nupMinutos)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudHora)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPeliculas)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -303,6 +346,7 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.NumericUpDown nupMinutos;
         private System.Windows.Forms.NumericUpDown nudHora;
+        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCodigoPelicula;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnGeneroPelicula;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnNombrePelicula;

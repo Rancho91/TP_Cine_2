@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Sofi\\Desktop\\Cine\\TP_Cine_2\\DataCineDb\\DataCineDb.csproj": {}
+    "C:\\Users\\Fabri\\Desktop\\b\\TP_Cine_2\\DataCineDb\\DataCineDb.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Sofi\\Desktop\\Cine\\TP_Cine_2\\DataCineDb\\DataCineDb.csproj": {
+    "C:\\Users\\Fabri\\Desktop\\b\\TP_Cine_2\\DataCineDb\\DataCineDb.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Sofi\\Desktop\\Cine\\TP_Cine_2\\DataCineDb\\DataCineDb.csproj",
+        "projectUniqueName": "C:\\Users\\Fabri\\Desktop\\b\\TP_Cine_2\\DataCineDb\\DataCineDb.csproj",
         "projectName": "DataCineDb",
-        "projectPath": "C:\\Users\\Sofi\\Desktop\\Cine\\TP_Cine_2\\DataCineDb\\DataCineDb.csproj",
-        "packagesPath": "C:\\Users\\Sofi\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Sofi\\Desktop\\Cine\\TP_Cine_2\\DataCineDb\\obj\\",
+        "projectPath": "C:\\Users\\Fabri\\Desktop\\b\\TP_Cine_2\\DataCineDb\\DataCineDb.csproj",
+        "packagesPath": "C:\\Users\\Fabri\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Fabri\\Desktop\\b\\TP_Cine_2\\DataCineDb\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Sofi\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Fabri\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -65,7 +65,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
         }
       }
     }
