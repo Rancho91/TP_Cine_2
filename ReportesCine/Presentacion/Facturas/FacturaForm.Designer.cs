@@ -483,11 +483,7 @@
             // 
             // lbFunciones
             // 
-            this.lbFunciones.FormattingEnabled = true;
-            this.lbFunciones.Location = new System.Drawing.Point(12, 134);
-            this.lbFunciones.Name = "lbFunciones";
-            this.lbFunciones.Size = new System.Drawing.Size(170, 95);
-            this.lbFunciones.TabIndex = 50;
+
             // 
             // FacturaForm
             // 
