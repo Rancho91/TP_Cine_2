@@ -41,12 +41,10 @@
             this.btnBuscar = new System.Windows.Forms.Button();
             this.dataSetGananciaFormaPagoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.DataTable2BindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.nudDescuento = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.dataSetGananciaFormaPagoBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSetGananciaFormaPago)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSetGananciaFormaPagoBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DataTable2BindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudDescuento)).BeginInit();
             this.SuspendLayout();
             // 
             // dataSetGananciaFormaPagoBindingSource1
@@ -152,22 +150,9 @@
             this.DataTable2BindingSource.DataMember = "DataTable2";
             this.DataTable2BindingSource.DataSource = this.dataSetGananciaFormaPago;
             // 
-            // nudDescuento
-            // 
-            this.nudDescuento.Location = new System.Drawing.Point(104, 28);
-            this.nudDescuento.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.nudDescuento.Maximum = new decimal(new int[] {
-            25,
-            0,
-            0,
-            0});
-            this.nudDescuento.Name = "nudDescuento";
-            this.nudDescuento.Size = new System.Drawing.Size(66, 20);
-            this.nudDescuento.TabIndex = 8;
-            // 
             // GananciaFormaPagoFormReporte
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.ClientSize = new System.Drawing.Size(860, 377);
@@ -179,18 +164,13 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.MaximumSize = new System.Drawing.Size(876, 416);
-            this.MinimumSize = new System.Drawing.Size(876, 416);
             this.Name = "GananciaFormaPagoFormReporte";
-            this.Text = "Reporte Forma de Pago";
+            this.Text = "GananciaFormaPagoForm";
             this.Load += new System.EventHandler(this.GananciaFormaPagoForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataSetGananciaFormaPagoBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSetGananciaFormaPago)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSetGananciaFormaPagoBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DataTable2BindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudDescuento)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

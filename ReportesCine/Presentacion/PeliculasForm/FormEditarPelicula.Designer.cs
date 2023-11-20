@@ -41,14 +41,16 @@
             this.lblCodigoPelicula = new System.Windows.Forms.Label();
             this.txtNombrePelicula = new System.Windows.Forms.TextBox();
             this.lblGenero = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.nupMinutos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudHora)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(141, 182);
+            this.label1.Location = new System.Drawing.Point(181, 175);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(10, 13);
             this.label1.TabIndex = 32;
@@ -65,36 +67,38 @@
             // 
             // nupMinutos
             // 
-            this.nupMinutos.Location = new System.Drawing.Point(157, 180);
+            this.nupMinutos.Location = new System.Drawing.Point(201, 173);
             this.nupMinutos.Maximum = new decimal(new int[] {
             59,
             0,
             0,
             0});
             this.nupMinutos.Name = "nupMinutos";
-            this.nupMinutos.Size = new System.Drawing.Size(37, 20);
+            this.nupMinutos.Size = new System.Drawing.Size(76, 20);
             this.nupMinutos.TabIndex = 30;
             // 
             // nudHora
             // 
-            this.nudHora.Location = new System.Drawing.Point(102, 180);
+            this.nudHora.Location = new System.Drawing.Point(102, 173);
             this.nudHora.Maximum = new decimal(new int[] {
             23,
             0,
             0,
             0});
             this.nudHora.Name = "nudHora";
-            this.nudHora.Size = new System.Drawing.Size(33, 20);
+            this.nudHora.Size = new System.Drawing.Size(73, 20);
             this.nudHora.TabIndex = 29;
             // 
             // btnEditarPelicula
             // 
-            this.btnEditarPelicula.Location = new System.Drawing.Point(33, 217);
+            this.btnEditarPelicula.BackColor = System.Drawing.SystemColors.ButtonShadow;
+            this.btnEditarPelicula.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnEditarPelicula.Location = new System.Drawing.Point(122, 232);
             this.btnEditarPelicula.Name = "btnEditarPelicula";
             this.btnEditarPelicula.Size = new System.Drawing.Size(118, 39);
             this.btnEditarPelicula.TabIndex = 28;
             this.btnEditarPelicula.Text = "Editar";
-            this.btnEditarPelicula.UseVisualStyleBackColor = true;
+            this.btnEditarPelicula.UseVisualStyleBackColor = false;
             this.btnEditarPelicula.Click += new System.EventHandler(this.btnEditarPelicula_Click);
             // 
             // cboPais
@@ -102,7 +106,7 @@
             this.cboPais.FormattingEnabled = true;
             this.cboPais.Location = new System.Drawing.Point(102, 128);
             this.cboPais.Name = "cboPais";
-            this.cboPais.Size = new System.Drawing.Size(121, 21);
+            this.cboPais.Size = new System.Drawing.Size(175, 21);
             this.cboPais.TabIndex = 24;
             // 
             // cboClasificacion
@@ -116,7 +120,7 @@
             // lblPais
             // 
             this.lblPais.AutoSize = true;
-            this.lblPais.Location = new System.Drawing.Point(60, 136);
+            this.lblPais.Location = new System.Drawing.Point(66, 136);
             this.lblPais.Name = "lblPais";
             this.lblPais.Size = new System.Drawing.Size(27, 13);
             this.lblPais.TabIndex = 23;
@@ -125,7 +129,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 92);
+            this.label2.Location = new System.Drawing.Point(27, 92);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(66, 13);
             this.label2.TabIndex = 26;
@@ -136,7 +140,7 @@
             this.cboGenero.FormattingEnabled = true;
             this.cboGenero.Location = new System.Drawing.Point(102, 53);
             this.cboGenero.Name = "cboGenero";
-            this.cboGenero.Size = new System.Drawing.Size(121, 21);
+            this.cboGenero.Size = new System.Drawing.Size(175, 21);
             this.cboGenero.TabIndex = 27;
             // 
             // lblCodigoPelicula
@@ -158,17 +162,30 @@
             // lblGenero
             // 
             this.lblGenero.AutoSize = true;
-            this.lblGenero.Location = new System.Drawing.Point(22, 56);
+            this.lblGenero.Location = new System.Drawing.Point(51, 56);
             this.lblGenero.Name = "lblGenero";
             this.lblGenero.Size = new System.Drawing.Size(42, 13);
             this.lblGenero.TabIndex = 22;
             this.lblGenero.Text = "Genero";
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::ReportesCine.Properties.Resources.Cine_12_svg;
+            this.pictureBox1.Location = new System.Drawing.Point(273, 240);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(73, 46);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 33;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            // 
             // FormEditarPelicula
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.ClientSize = new System.Drawing.Size(358, 298);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.nupMinutos);
@@ -182,11 +199,13 @@
             this.Controls.Add(this.lblCodigoPelicula);
             this.Controls.Add(this.txtNombrePelicula);
             this.Controls.Add(this.lblGenero);
+            this.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.Name = "FormEditarPelicula";
             this.Text = "FormEditarPelicula";
             this.Load += new System.EventHandler(this.FormEditarPelicula_Load);
             ((System.ComponentModel.ISupportInitialize)(this.nupMinutos)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudHora)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -207,5 +226,6 @@
         private System.Windows.Forms.Label lblCodigoPelicula;
         private System.Windows.Forms.TextBox txtNombrePelicula;
         private System.Windows.Forms.Label lblGenero;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

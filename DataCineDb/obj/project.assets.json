@@ -664,11 +664,16 @@
     ]
   },
   "packageFolders": {
+<<<<<<< HEAD
     "C:\\Users\\ramir\\.nuget\\packages\\": {}
+=======
+    "C:\\Users\\Fabri\\.nuget\\packages\\": {}
+>>>>>>> 9214c33c07be82e699023de532d57a9a48502997
   },
   "project": {
     "version": "1.0.0",
     "restore": {
+<<<<<<< HEAD
       "projectUniqueName": "C:\\Users\\ramir\\Desktop\\Proyecto Progra\\TP_Cine_2\\DataCineDb\\DataCineDb.csproj",
       "projectName": "DataCineDb",
       "projectPath": "C:\\Users\\ramir\\Desktop\\Proyecto Progra\\TP_Cine_2\\DataCineDb\\DataCineDb.csproj",
@@ -677,6 +682,16 @@
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\ramir\\AppData\\Roaming\\NuGet\\NuGet.Config",
+=======
+      "projectUniqueName": "C:\\Users\\Fabri\\Desktop\\b\\TP_Cine_2\\DataCineDb\\DataCineDb.csproj",
+      "projectName": "DataCineDb",
+      "projectPath": "C:\\Users\\Fabri\\Desktop\\b\\TP_Cine_2\\DataCineDb\\DataCineDb.csproj",
+      "packagesPath": "C:\\Users\\Fabri\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Fabri\\Desktop\\b\\TP_Cine_2\\DataCineDb\\obj\\",
+      "projectStyle": "PackageReference",
+      "configFilePaths": [
+        "C:\\Users\\Fabri\\AppData\\Roaming\\NuGet\\NuGet.Config",
+>>>>>>> 9214c33c07be82e699023de532d57a9a48502997
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

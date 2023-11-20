@@ -92,5 +92,10 @@ namespace ReportesCine.Presentacion.Peliculas
                 MessageBox.Show("No se pudo modificar la pelicula");
             }
         }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
