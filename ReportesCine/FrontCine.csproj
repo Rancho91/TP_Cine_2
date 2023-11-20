@@ -303,6 +303,7 @@
       <DependentUpon>GananciaFormaPagoFormReporte.cs</DependentUpon>
     </Compile>
     <Compile Include="service\ClasificacionService.cs" />
+    <Compile Include="service\ClientesService.cs" />
     <Compile Include="service\DataHttp.cs" />
     <Compile Include="service\FormaPagoService.cs" />
     <Compile Include="service\FuncionService.cs" />
