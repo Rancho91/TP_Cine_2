@@ -22,6 +22,7 @@ namespace ReportesCine.service
             http = new DataHttp($"Peliculas/{id}");
         }
 
+
         public async Task<List<PeliculasE>> Get()
         {
             List<PeliculasE> list = new List<PeliculasE>();
@@ -51,6 +52,7 @@ namespace ReportesCine.service
             }
             return list;
         }
+
         public async Task Post(PeliculasE pelicula)
         {
             try

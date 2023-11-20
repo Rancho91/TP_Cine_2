@@ -53,7 +53,7 @@ namespace DataCineDb.Service
                 funcion.TerceraDimencion = (bool)row["TERCERA_DIMENCION"];
                 funcion.Subtitulada = (bool)row["SUBTITULOS"];
                 funcion.Precio = (decimal)row["PRECIO"];
-                funcion.Idioma.Codigo = (int)row["NombreIdioma"];
+                funcion.Idioma.Idioma = row["NombreIdioma"].ToString(); ;
 
                 funciones.Add(funcion);
             }

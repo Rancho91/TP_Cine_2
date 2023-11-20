@@ -310,6 +310,7 @@
     <Compile Include="service\IdiomaService.cs" />
     <Compile Include="service\PaisService.cs" />
     <Compile Include="service\PeliculasService.cs" />
+    <Compile Include="service\PeliculasXFuncion.cs" />
     <Compile Include="service\ReporteButacasDisponiblesService.cs" />
     <Compile Include="service\ReporteFacturasFormaPagoService.cs" />
     <Compile Include="service\ReportePeliculaGananciaService.cs" />
