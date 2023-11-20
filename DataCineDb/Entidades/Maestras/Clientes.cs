@@ -36,5 +36,10 @@ namespace DataCineDb.Entidades.Maestras
 
         }
 
+        public override string ToString()
+        {
+            return Apellido + ", " + Nombre + " - " + Documento;
+        }
+
     }
 }

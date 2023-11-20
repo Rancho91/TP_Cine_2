@@ -24,6 +24,8 @@ namespace ReportesCine.Presentacion.Facturas
         private FuncionService funcionService;
         private PeliculasEService peliculasService;
         private PeliculasXFuncionService pxfService;
+        private FormaPagoService fpService;
+        private ClientesService clientesService;
 
         private Dictionary<Button, bool> botonesEstado = new Dictionary<Button, bool>();
 
@@ -50,9 +52,39 @@ namespace ReportesCine.Presentacion.Facturas
         {
             funcionService = new FuncionService();
             peliculasService = new PeliculasEService();
+            fpService = new FormaPagoService();
+            clientesService = new ClientesService();
             butacas = new List<ReporteButacasDisponibles>();
             factura = new FacturasE();
+            llenarClientes();
             llenarPeliculas();
+            llenarFormasDePago();
+        }
+
+        private async void llenarClientes()
+        {
+            List<Clientes> lst = await clientesService.Get();
+
+            cboClientes.DataSource = lst;
+
+            cboClientes.DisplayMember = "ToString";
+
+            cboClientes.ValueMember = "codigo";
+
+            cboClientes.DropDownStyle = ComboBoxStyle.DropDownList;
+        }
+
+        private async void llenarFormasDePago()
+        {
+            List<FormasPagos> lst = await fpService.Get();
+
+            cboFormaDePago.DataSource = lst;
+
+            cboFormaDePago.DisplayMember = "formaPago";
+
+            cboFormaDePago.ValueMember = "codigo";
+
+            cboFormaDePago.DropDownStyle = ComboBoxStyle.DropDownList;
         }
 
         private async void llenarPeliculas()
@@ -127,7 +159,7 @@ namespace ReportesCine.Presentacion.Facturas
             {
                 Button boton = (Button)sender;
 
-                if (boton.Name != "btnBuscar" && boton.Name != "btnGenerar" && boton.Name != "btnSalir" && boton.Name != "btnCancelar")
+                if (boton.Name != "btnBuscar" && boton.Name != "btnGuardar" && boton.Name != "btnSalir" && boton.Name != "btnCancelar")
                 {
                     // Obtén el código de la butaca del Tag del botón
                     int codigoButaca = (int)boton.Tag;
@@ -165,7 +197,10 @@ namespace ReportesCine.Presentacion.Facturas
                     cargarButacas();
                     lstBoxFunc.Enabled = true;
                     cboFunciones.Enabled = true;
-
+                    lstBoxFunc.DataSource = null;
+                    lstBoxFunc.Items.Clear();
+                    cboPeliculas.SelectedIndex = -1;
+                    cboFunciones.SelectedIndex = -1;
                     MessageBox.Show("Cancelación de butacas realizada correctamente.", "Cancelación", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
