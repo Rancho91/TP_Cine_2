@@ -1,0 +1,698 @@
+create procedure sp_get_Peliculas_Codigo
+@cod int
+as
+begin
+select cod_pelicula, g.DESCRIPCION, p.NOMBRE, pa.DESCRIPCION, c.DESCRIPCION, DURACION
+from peliculas p
+join generos g on g.COD_GENERO = p.COD_GENERO
+join PAISES pa on pa.COD_PAIS = p.COD_PAIS
+join CLASIFICACIONES c on c.COD_CLASIFICACION = p.COD_CLASIFICACION
+where p.COD_PELICULA = @cod
+end;
+go
+
+create procedure sp_get_todas_Peliculas
+as
+begin
+select cod_pelicula, g.DESCRIPCION, p.NOMBRE, pa.DESCRIPCION, c.DESCRIPCION, DURACION
+from peliculas p
+join generos g on g.COD_GENERO = p.COD_GENERO
+join PAISES pa on pa.COD_PAIS = p.COD_PAIS
+join CLASIFICACIONES c on c.COD_CLASIFICACION = p.COD_CLASIFICACION
+end;
+go
+
+
+
+create proc sp_get_Generos
+as
+begin
+select COD_GENERO, DESCRIPCION
+from GENEROS
+end;
+go
+
+create proc sp_get_paises
+as
+begin
+select cod_pais, descripcion
+from PAISES
+end;
+go
+
+create proc sp_get_Clasificaciones
+as
+begin
+select cod_clasificacion, descripcion
+from CLASIFICACIONES
+end;
+go
+
+create procedure sp_get_salas
+as
+begin
+	select COD_SALA, COD_TIPO_SALA, NUMERO
+	from SALAS
+
+end;
+go
+
+
+
+CREATE PROCEDURE SP_Crear_Factura
+    @Descuento int,
+    @FormaPago int, 
+    @codCliente int,
+    @TipoFactura int,
+    @NroFactura int output
+AS
+BEGIN
+    -- Declarar una variable local para el nuevo número de factura
+    DECLARE @NuevoNroFactura int
+
+    -- Obtener el último número de factura
+    SELECT TOP 1 @NuevoNroFactura = NRO_FACTURA
+    FROM FACTURAS
+    ORDER BY NRO_FACTURA DESC
+
+    IF @NuevoNroFactura IS NULL
+    BEGIN
+        SET @NuevoNroFactura = 1
+    END
+    ELSE
+    BEGIN
+        SET @NuevoNroFactura = @NuevoNroFactura + 1
+    END
+
+    INSERT INTO FACTURAS (NRO_FACTURA, Fecha, Cod_cliente, Cod_Tipo_Factura, Cod_Forma_pago, Descuento) 
+    VALUES (@NuevoNroFactura, GETDATE(), @codCliente, @TipoFactura, @FormaPago, @Descuento)
+
+    -- Devolver el nuevo número de factura
+    SET @NroFactura = @NuevoNroFactura
+END
+
+go
+/*select * from BUTACAS_FUNCIONES_FACTURAS*/
+
+create procedure sp_crear_detalle_factura
+@funcion int,
+@butaca int,
+@nroFactura int,
+@precio decimal(6,2)
+as
+begin
+	DECLARE @cod_funcion int, @cod_butaca int, @factura int
+
+		SELECT @cod_funcion = COD_BUTACA,
+		@cod_butaca = COD_BUTACA,
+		@factura = NRO_FACTURA
+		FROM BUTACAS_FUNCIONES_FACTURAS
+		WHERE COD_BUTACA = @butaca and COD_FUNCION = @funcion
+		ORDER BY COD_BUTACA, COD_FUNCION DESC
+
+		IF @cod_funcion is null and @cod_butaca IS NULL
+
+		BEGIN
+		insert into BUTACAS_FUNCIONES_FACTURAS( COD_BUTACA, COD_FUNCION, NRO_FACTURA, VENDIDA, PRECIO)
+									values( @butaca, @Funcion, @nroFactura, 1 ,@precio)
+		END
+		IF
+		 @factura is null 
+		begin
+		  update BUTACAS_FUNCIONES_FACTURAS
+		  set NRO_FACTURA = @nroFactura
+		  where COD_BUTACA = @butaca and COD_FUNCION = @funcion
+		end		
+ end
+ go
+
+
+create procedure SP_Funciones_Butacas
+ @cod_funcion int
+as 
+begin
+select f.COD_FUNCION, f.COD_PELICULA, f.cod_sala, f.HORARIO,f.FECHA,f.TERCERA_DIMENCION,f.SUBTITULOS, f.Precio, f.Cod_idioma
+from FUNCIONES f
+
+where COD_FUNCION = @cod_funcion
+end
+
+
+
+go
+
+create proc SP_GET_IDIOMAS
+as 
+begin
+select * from IDIOMAS
+end
+
+go
+
+
+
+create procedure SP_GET_FORMA_PAGO
+as
+begin
+select *
+from FORMAS_PAGOS
+end
+
+
+go
+
+create procedure SP_GET_TODAS_FUNCIONES
+as
+begin
+select f.COD_FUNCION, p.NOMBRE 'Pelicula', f.COD_SALA, HORARIO, FECHA, TERCERA_DIMENCION, SUBTITULOS, precio, i.IDIOMA 'Idioma', s.NUMERO
+from FUNCIONES f
+join IDIOMAS i on i.COD_IDIOMA = f.COD_IDIOMA
+join PELICULAS p on p.COD_PELICULA = f.COD_PELICULA
+join Salas s on s.COD_SALA = f.COD_SALA
+order by f.FECHA desc
+end
+
+
+go
+
+/* Consultas Reporte */
+
+
+create procedure sp_consultar_Butacas_peliculas
+  @genero VARCHAR(20) = '',
+  @sala VARCHAR(2) = '', -- Establece el valor por defecto que desees
+  @order INT = 1
+as
+begin
+select p.NOMBRE, SUM(BFF.PRECIO) 'Ganancia', COUNT(COD_BUTACA)'Cantidad_Butacas', g.DESCRIPCION 'Genero'
+from PELICULAS p
+left join GENEROS g on g.COD_GENERO = p.COD_GENERO
+left join FUNCIONES f on f.COD_PELICULA = p.COD_PELICULA
+left join BUTACAS_FUNCIONES_FACTURAS BFF on BFF.COD_FUNCION = f.COD_FUNCION
+join SALAS s on s.COD_SALA = f.COD_SALA 
+where convert(varchar(2), s.COD_SALA) like '%'+ @sala + '%' and g.DESCRIPCION like '%' + @genero
+group by p.NOMBRE, g.DESCRIPCION
+order by 
+	CASE WHEN @order = 1 THEN 2 END DESC,
+    CASE WHEN @order = 0 THEN 2 END ASC
+end;
+
+
+
+go
+
+
+create PROCEDURE sp_butacas_disponibles_x_funcion
+ @codigo_funcion INT = 1,
+ @estado NVARCHAR(50) = NULL
+ AS
+ BEGIN
+    -- Consulta para butacas disponibles y no disponibles para la función seleccionada
+    SELECT B.COD_BUTACA,
+           B.FILA,
+           B.NUMERO,
+           CASE
+               WHEN BFF.VENDIDA is  NULL THEN 'Disponible'
+			   when bff.VENDIDA = 0 then 'Disponible'
+               ELSE 'No Disponible'
+           END AS Estado
+    FROM BUTACAS B
+    JOIN SALAS S ON B.COD_SALA = S.COD_SALA
+    LEFT JOIN BUTACAS_FUNCIONES_FACTURAS BFF ON B.COD_BUTACA = BFF.COD_BUTACA 
+        AND BFF.COD_FUNCION = @codigo_funcion
+    WHERE S.COD_SALA = (SELECT COD_SALA FROM FUNCIONES WHERE COD_FUNCION = @codigo_funcion)
+        AND (@estado IS NULL OR
+            (CASE
+               WHEN BFF.COD_BUTACA IS NOT NULL THEN 'No Disponible'
+               ELSE 'Disponible'
+           END) = @estado);
+END;
+
+go
+
+
+
+CREATE PROCEDURE SP_PELICUAS_X_GENERO
+    @Genero NVARCHAR(70)='', @DURACION TIME='00:00', @Clasificacion NVARCHAR(70)=''
+AS
+BEGIN
+    SELECT G.DESCRIPCION 'Género',
+           P.NOMBRE  'Pelicula',
+		   P.DURACION  'Duracion de la Película',
+		   PA.DESCRIPCION 'Pais de origen',
+		   C.DESCRIPCION 'Clasificacion',
+		   p.cod_pelicula,
+		   (select sum(bff.PRECIO) from BUTACAS_FUNCIONES_FACTURAS bff join FUNCIONES f on f.COD_FUNCION = bff.COD_FUNCION
+			where p.COD_PELICULA = f.COD_PELICULA and bff.VENDIDA = 1)
+    FROM Peliculas P
+	left join generos g on g.COD_GENERO = p.COD_GENERO
+	join PAISES Pa on pa.COD_PAIS = p.COD_PAIS
+	join CLASIFICACIONES C on c.COD_CLASIFICACION = p.COD_CLASIFICACION
+    WHERE P.COD_GENERO = G.COD_GENERO and Pa.COD_PAIS = P.COD_PAIS and C.COD_CLASIFICACION = P.COD_CLASIFICACION
+	and G.DESCRIPCION like '%' + @genero AND P.DURACION > @DURACION and C.DESCRIPCION like '%' + @Clasificacion
+	order by G.DESCRIPCION, P.NOMBRE
+END;
+
+
+go
+
+
+create PROCEDURE sp_pelicuas_x_fecha_hora
+@fechaInicio DATE = null,
+@fechaFinal Date = null ,
+@hora TIME = '06:00'
+AS
+BEGIN
+if @fechaInicio = null
+	begin
+		set @fechaInicio = GETDATE()
+	end
+if @fechaFinal = null
+begin
+	set @fechaFinal = GETDATE()+7
+end
+if @fechaFinal < @fechaInicio
+	begin
+	raiserror('La fecha final no puede ser menor que la inicial', 1,1,1)
+	return
+end
+SELECT F.COD_FUNCION,
+       P.NOMBRE 'PELICULA',
+       S.COD_SALA 'SALA',
+       F.FECHA 'FECHA',
+	   PA.DESCRIPCION 'Pais',
+	   cl.DESCRIPCION,
+	   p.DURACION,
+	   F.HORARIO 'HORA'
+
+FROM FUNCIONES  F, PELICULAS  P, SALAS  S, PAISES Pa, CLASIFICACIONES cl
+WHERE F.COD_PELICULA = P.COD_PELICULA
+and F.COD_SALA = S.COD_SALA and p.COD_PELICULA =pa.COD_PAIS and cl.COD_CLASIFICACION = p.COD_CLASIFICACION
+and F.FECHA between @fechaInicio and @fechaFinal
+  AND F.HORARIO >= @hora
+ORDER BY F.FECHA desc, F.HORARIO
+END;
+
+
+
+go
+
+create PROCEDURE SP_CANTIDAD_VENTAS_X_FORMA_PAGO_FECHA
+@FECHAINICIO DATE = '2019/01/01',
+@FECHAFINAL DATE = '2024/2/2',
+@DESCUENTO INT = 0
+as
+begin
+	
+	IF @DESCUENTO < 0
+	begin
+	RAISERROR('No se puede ingresar un descuento menor a 0', 16,1,1)
+	return
+	end
+	SELECT COUNT(DISTINCT BFF.NRO_FACTURA) 'Cantidad Facturas',
+	sum(BFF.PRECIO) 'Suma Total',
+	sum((F.DESCUENTO*BFF.PRECIO)/100) 'Total Descuento',
+	sum(BFF.PRECIO)-sum((F.DESCUENTO*BFF.PRECIO)/100) 'Total Facturado',  
+	COUNT(DISTINCT BFF.COD_FUNCION) 'Cantidad Funciones',
+	 (sum(BFF.PRECIO)-sum((F.DESCUENTO*BFF.PRECIO)/100))/COUNT(distinct BFF.COD_FUNCION) 'Promedio Ganancia por Funcion', 
+	 CASE
+			   WHEN F.COD_FORMA_PAGO = 1 THEN 'Efectivo'
+			   WHEN F.COD_FORMA_PAGO = 2 THEN 'Tarjeta de Crédito'
+			   WHEN F.COD_FORMA_PAGO = 3 THEN 'Tarjeta de Débito'
+			   WHEN F.COD_FORMA_PAGO = 4 THEN 'Transferencia Bancaria'
+			   WHEN F.COD_FORMA_PAGO = 5 THEN 'Cheque'
+			   ELSE 'No existen ventas el día ingresado'
+			   END FormaPago
+	FROM FACTURAS F, BUTACAS_FUNCIONES_FACTURAS BFF
+	WHERE F.NRO_FACTURA = BFF.NRO_FACTURA
+	AND F.DESCUENTO >= @DESCUENTO
+	and f.FECHA between @FECHAINICIO and  @FECHAFINAL
+	GROUP BY F.COD_FORMA_PAGO
+	ORDER BY F.COD_FORMA_PAGO
+end;
+go
+
+
+
+
+
+
+
+
+
+
+
+
+
+create FUNCTION SumarHorarios(@Horario1 TIME, @Horario2 TIME)
+RETURNS DECIMAL(10, 2)
+AS
+BEGIN
+    DECLARE @Horas1 INT = DATEPART(HOUR, @Horario1);
+    DECLARE @Minutos1 INT = DATEPART(MINUTE, @Horario1);
+    DECLARE @Horas2 INT = DATEPART(HOUR, @Horario2);
+    DECLARE @Minutos2 INT = DATEPART(MINUTE, @Horario2);
+
+    DECLARE @TotalHoras INT = @Horas1 + @Horas2;
+    DECLARE @TotalMinutos INT = @Minutos1 + @Minutos2;
+
+    IF @TotalMinutos >= 60
+    BEGIN
+        SET @TotalHoras = @TotalHoras + 1;
+        SET @TotalMinutos = @TotalMinutos - 60;
+    END
+
+    DECLARE @HorarioResultado DECIMAL(10, 2) = CONVERT(DECIMAL(10, 2), @TotalHoras) + (@TotalMinutos / 100.0);
+
+    RETURN @HorarioResultado;
+END;
+go
+
+CREATE FUNCTION ConvertirTimeADecimal(@Horario TIME)
+RETURNS DECIMAL(10, 2)
+AS
+BEGIN
+    -- Extraer horas y minutos del valor TIME
+    DECLARE @Horas INT = DATEPART(HOUR, @Horario);
+    DECLARE @Minutos INT = DATEPART(MINUTE, @Horario);
+
+    -- Construir el valor decimal (horas.enteros + minutos.decimales)
+    DECLARE @HorarioDecimal DECIMAL(10, 2) = CONVERT(DECIMAL(10, 2), @Horas) + (@Minutos / 100.0);
+
+    RETURN @HorarioDecimal;
+END;
+go
+
+
+create trigger funcion_horario
+on funciones
+for insert
+as
+begin
+	declare @cod_sala int
+	declare @fecha date
+	declare @horario time
+	declare @duracion time
+	declare @horarioFinalizacion decimal(10,2)
+	declare @codigo int
+	select @cod_sala = i.cod_sala, @fecha = i.fecha, @horario = i.HORARIO from inserted i
+	select @duracion = duracion from PELICULAS p join inserted i on i.COD_PELICULA = p.COD_PELICULA
+	set @horarioFinalizacion = dbo.SumarHorarios(@horario, @duracion)
+
+	select @codigo = f.COD_FUNCION from FUNCIONES f  WHERE @cod_Sala = f.COD_SALA
+        AND @fecha = f.FECHA
+        AND ((f.HORARIO >= @Horario AND dbo. ConvertirTimeADecimal(f.HORARIO) <= @HorarioFinalizacion) or (select dbo.SumarHorarios( p.Duracion, f.Horario)
+FROM PELICULAS p 
+JOIN FUNCIONES f2 ON f2.COD_PELICULA = p.COD_PELICULA where f2.COD_FUNCION = f.COD_FUNCION ) between dbo.ConvertirTimeADecimal(@horario) and @horarioFinalizacion)
+		and COD_FUNCION != (select COD_FUNCION from inserted)
+
+	if @codigo is not null
+		begin
+			raiserror('no puede insertar una funcion en el mismo horario que otra',16,1)
+			
+			rollback
+		end
+end;
+go
+
+
+CREATE PROCEDURE SP_FUNCIONES_INSERT
+@Cod_Pelicula int,
+@cod_Sala int, 
+@Horario time,
+@fecha date,
+@terceraDimencion bit,
+@subtitulos bit, 
+@Precio decimal(6,2),
+@Cod_idioma int
+AS
+BEGIN
+ 
+	declare @ultimoCodigo int
+    SELECT @ultimoCodigo = ISNULL(MAX(cod_funcion), 0) + 1 FROM FUNCIONES;
+
+INSERT INTO FUNCIONES (cod_funcion,COD_PELICULA, COD_SALA, HORARIO, FECHA, TERCERA_DIMENCION, SUBTITULOS, PRECIO, COD_IDIOMA)
+ VALUES (@ultimoCodigo,@Cod_Pelicula, @cod_Sala, @Horario, @fecha, @terceraDimencion, @subtitulos, @Precio, @Cod_idioma);
+END
+go
+
+create procedure sp_update_funcion
+@cod_funcion int =null,
+@cod_pelicula int =null,
+@cod_sala int =null,
+@horario time =null, 
+@fecha date = null,
+@terceraD bit = null,
+@subtitulos bit =null,
+@precio decimal(7,2) = null,
+@cod_idioma int =null
+as 
+begin
+	if @cod_funcion is null
+		begin
+			raiserror('debe ingresar un codigo de funcion',1,1,1)
+			return
+		end
+    SELECT 
+        @cod_pelicula = IIF(@cod_pelicula IS NULL, COD_PELICULA, @cod_pelicula),
+        @cod_sala = IIF(@cod_sala IS NULL, COD_SALA, @cod_sala),
+        @horario = IIF(@horario IS NULL, HORARIO, @horario),
+        @fecha = IIF(@fecha IS NULL, FECHA, @fecha),
+        @terceraD = IIF(@terceraD IS NULL, TERCERA_DIMENCION, @terceraD),
+        @subtitulos = IIF(@subtitulos IS NULL, SUBTITULOS, @subtitulos),
+        @precio = IIF(@precio IS NULL, PRECIO, @precio),
+        @cod_idioma = IIF(@cod_idioma IS NULL, COD_IDIOMA, @cod_idioma)
+    FROM funciones
+    WHERE COD_FUNCION = @cod_funcion
+
+	UPDATE funciones
+		SET
+			COD_PELICULA = @cod_pelicula,
+			COD_SALA = @cod_sala,
+			HORARIO = @horario,
+			FECHA = @fecha,
+			TERCERA_DIMENCION = @terceraD,
+			SUBTITULOS = @subtitulos,
+			PRECIO = @precio,
+			COD_IDIOMA = @cod_idioma
+		WHERE COD_FUNCION = @cod_funcion;
+END;
+GO
+
+
+
+
+create trigger funcion_horario_update
+on funciones
+for update
+as
+begin
+	declare @cod_sala int
+	declare @fecha date
+	declare @horario time
+	declare @duracion time
+	declare @horarioFinalizacion decimal(10,2)
+	declare @codigo int
+	select @cod_sala = i.cod_sala, @fecha = i.fecha, @horario = i.HORARIO from inserted i
+	select @duracion = duracion from PELICULAS p join inserted i on i.COD_PELICULA = p.COD_PELICULA
+	set @horarioFinalizacion = dbo.SumarHorarios(@horario, @duracion)
+
+	select @codigo = f.COD_FUNCION from FUNCIONES f  WHERE @cod_Sala = f.COD_SALA
+        AND @fecha = f.FECHA
+        AND ((f.HORARIO >= @Horario AND dbo. ConvertirTimeADecimal(f.HORARIO) <= @HorarioFinalizacion) or (select dbo.SumarHorarios( p.Duracion, f.Horario)
+FROM PELICULAS p 
+JOIN FUNCIONES f2 ON f2.COD_PELICULA = p.COD_PELICULA where f2.COD_FUNCION = f.COD_FUNCION ) between dbo.ConvertirTimeADecimal(@horario) and @horarioFinalizacion)
+		and COD_FUNCION != (select COD_FUNCION from inserted)
+
+	if @codigo is not null
+		begin
+			raiserror('no puede insertar una funcion en el mismo horario que otra',16,1)
+			
+			rollback
+		end
+	if getdate()>(select f.fecha from FUNCIONES f join inserted i on f.COD_FUNCION = i.COD_FUNCION )
+	begin
+		raiserror('no puede modificar una funcion que ya finalizo',16,1)
+			rollback
+	end
+end;
+go
+
+
+create procedure sp_delete_funcion
+@cod_funcion int
+as
+begin
+	declare @fecha date
+	select @fecha = fecha from funciones where COD_FUNCION = @cod_funcion
+	if @fecha< getdate()
+		begin
+			raiserror('no puede eliminar funciones que ya fueron emitidas',1,1,1)
+			return
+		end
+	delete from funciones where COD_FUNCION = @cod_funcion
+end
+
+
+
+
+go
+
+
+create procedure sp_crear_pelicula
+@cod_genero int,
+@nombre varchar(300),
+@cod_pais int,
+@cod_clasificacion int,
+@duracion time
+as
+begin
+declare @ultimoCodigo int
+    SELECT @ultimoCodigo = ISNULL(MAX(COD_PELICULA), 0) + 1 FROM PELICULAS;
+
+	INSERT INTO PELICULAS (COD_PELICULA, COD_GENERO, NOMBRE, COD_PAIS, COD_CLASIFICACION, DURACION)
+    VALUES (@ultimoCodigo, @cod_genero, @nombre, @cod_pais, @cod_clasificacion, @duracion);
+END;
+go
+
+
+
+CREATE PROCEDURE sp_update_pelicula
+    @cod_pelicula INT = NULL,
+    @cod_genero INT = NULL,
+    @nombre VARCHAR(300) = NULL,
+    @cod_pais INT = NULL,
+    @cod_clasificacion INT = NULL,
+    @duracion TIME = NULL
+AS
+BEGIN
+    IF @cod_pelicula IS NULL
+    BEGIN
+        raiserror('Debe ingresar un código de película', 1, 1, 1)
+        RETURN;
+    END
+
+    SELECT
+        @cod_genero = IIF(@cod_genero IS NULL, COD_GENERO, @cod_genero),
+        @nombre = IIF(@nombre IS NULL, NOMBRE, @nombre),
+        @cod_pais = IIF(@cod_pais IS NULL, COD_PAIS, @cod_pais),
+        @cod_clasificacion = IIF(@cod_clasificacion IS NULL, COD_CLASIFICACION, @cod_clasificacion),
+        @duracion = IIF(@duracion IS NULL, DURACION, @duracion)
+    FROM PELICULAS
+    WHERE COD_PELICULA = @cod_pelicula
+
+    UPDATE PELICULAS
+    SET
+        COD_GENERO = @cod_genero,
+        NOMBRE = @nombre,
+        COD_PAIS = @cod_pais,
+        COD_CLASIFICACION = @cod_clasificacion,
+        DURACION = @duracion
+    WHERE COD_PELICULA = @cod_pelicula
+END
+GO
+
+CREATE PROCEDURE sp_delete_pelicula
+    @cod_pelicula INT
+AS
+BEGIN
+    -- Verificar si la película está asociada a alguna función
+    IF EXISTS (SELECT 1 FROM funciones WHERE COD_PELICULA = @cod_pelicula)
+    BEGIN
+        raiserror('No puede eliminar películas asociadas a funciones', 1, 1, 1)
+        RETURN
+    END
+
+    -- Eliminar la película
+    DELETE FROM peliculas WHERE COD_PELICULA = @cod_pelicula
+END
+GO
+
+create procedure sp_get_Pelicula_ID
+@cod_pelicula int
+as
+begin
+ select cod_pelicula, cod_genero, nombre, cod_pais, COD_CLASIFICACION, DURACION
+ from peliculas
+ where COD_PELICULA =@cod_pelicula
+end;
+go
+
+
+
+
+CREATE PROCEDURE [dbo].[sp_butacas_disponibles_x_funcion_pelicula]
+    @codigo_funcion INT = 1,
+    @estado NVARCHAR(50) = NULL
+AS
+BEGIN
+    -- Consulta para butacas disponibles y no disponibles para la función seleccionada
+    SELECT B.COD_BUTACA,
+           B.FILA,
+           B.NUMERO,
+           CASE
+               WHEN BFF.COD_BUTACA IS NOT NULL THEN 'No Disponible'
+               ELSE 'Disponible'
+           END AS Estado,
+           P.COD_PELICULA,
+           P.NOMBRE AS NombrePelicula,
+           P.DURACION AS DuracionPelicula
+    FROM BUTACAS B
+    JOIN SALAS S ON B.COD_SALA = S.COD_SALA
+    JOIN FUNCIONES F ON S.COD_SALA = F.COD_SALA
+    LEFT JOIN BUTACAS_FUNCIONES_FACTURAS BFF ON B.COD_BUTACA = BFF.COD_BUTACA 
+        AND BFF.COD_FUNCION = @codigo_funcion
+    JOIN PELICULAS P ON F.COD_PELICULA = P.COD_PELICULA
+    WHERE F.COD_FUNCION = @codigo_funcion
+        AND (@estado IS NULL OR
+            (CASE
+               WHEN BFF.COD_BUTACA IS NOT NULL THEN 'No Disponible'
+               ELSE 'Disponible'
+           END) = @estado);
+END;
+
+
+go
+
+CREATE PROCEDURE [dbo].[sp_funciones_por_sala_con_idioma]
+@codigo_sala INT = 1
+AS
+BEGIN
+    -- Obtener información detallada de funciones con y sin idioma asociado por sala
+    SELECT F.COD_FUNCION, F.FECHA, F.HORARIO, P.NOMBRE AS NombrePelicula,
+           F.TERCERA_DIMENCION, F.SUBTITULOS, F.PRECIO, I.IDIOMA AS NombreIdioma
+    FROM FUNCIONES F
+    JOIN PELICULAS P ON F.COD_PELICULA = P.COD_PELICULA
+    LEFT JOIN IDIOMAS I ON F.COD_IDIOMA = I.COD_IDIOMA
+    WHERE F.COD_SALA = @codigo_sala
+    ORDER BY F.FECHA, F.HORARIO; -- Ordenar por fecha y hora de inicio
+END;
+
+go
+
+create PROCEDURE [dbo].[sp_funciones_por_pelicula_y_sala_con_idioma]
+    @codigo_pelicula INT
+AS
+BEGIN
+    -- Obtener información detallada de funciones por película, sala y con idioma asociado
+    SELECT F.COD_PELICULA, F.COD_FUNCION, F.FECHA, F.HORARIO, F.PRECIO, P.NOMBRE AS NombrePelicula,
+           F.TERCERA_DIMENCION, F.SUBTITULOS, F.PRECIO, I.IDIOMA AS NombreIdioma
+    FROM FUNCIONES F
+    JOIN PELICULAS P ON F.COD_PELICULA = P.COD_PELICULA
+    LEFT JOIN IDIOMAS I ON F.COD_IDIOMA = I.COD_IDIOMA
+    WHERE F.COD_PELICULA = @codigo_pelicula and f.FECHA >= getdate()
+    ORDER BY F.FECHA, F.HORARIO; -- Ordenar por fecha y hora de inicio
+END;
+
+go
+
+CREATE PROCEDURE sp_obtener_datos_cliente
+AS
+BEGIN
+    SELECT COD_CLIENTE, NOMBRE, APELLIDO, DOCUMENTO
+    FROM CLIENTES
+	ORDER BY 2, 1
+END;
+
+go
+

@@ -1,0 +1,702 @@
+CREATE DATABASE COMPLEJO_CINE
+
+GO
+USE COMPLEJO_CINE
+GO
+SET DATEFORMAT ymd
+GO
+CREATE TABLE CIUDADES (
+COD_CIUDAD INT NOT NULL,
+CIUDAD VARCHAR (80),
+CONSTRAINT PK_CIUDADES PRIMARY KEY (COD_CIUDAD));
+
+CREATE TABLE TIPOS_CLIENTES(
+COD_TIPO_CLIENTE INT NOT NULL,
+DESCRIPCION VARCHAR (200),
+CONSTRAINT PK_TIPOS_CLIENTES PRIMARY KEY (COD_TIPO_CLIENTE));
+
+CREATE TABLE TIPOS_DOCUMENTOS(
+COD_TIPO_DOCUMENTO INT NOT NULL,
+DESCRIPCION VARCHAR (200),
+CONSTRAINT PK_TIPOS_DOCUMENTOS PRIMARY KEY (COD_TIPO_DOCUMENTO));
+
+CREATE TABLE BARRIOS (
+COD_BARRIO INT NOT NULL,
+BARRIO VARCHAR (80),
+COD_CIUDAD INT NOT NULL,
+CONSTRAINT PK_BARRIOS PRIMARY KEY (COD_BARRIO),
+CONSTRAINT FK_BARRIOS_CIUDADES FOREIGN KEY (COD_CIUDAD)
+REFERENCES CIUDADES (COD_CIUDAD));
+
+CREATE TABLE FORMAS_PAGOS(
+COD_FORMA_PAGO INT NOT NULL,
+FORMA_PAGO VARCHAR (80),
+CONSTRAINT PK_FORMA_PAGO PRIMARY KEY (COD_FORMA_PAGO));
+
+CREATE TABLE IDIOMAS(
+COD_IDIOMA INT NOT NULL,
+IDIOMA VARCHAR (80),
+CONSTRAINT PK_IDIOMAS PRIMARY KEY (COD_IDIOMA));
+
+CREATE TABLE TIPOS_FACTURAS (
+COD_TIPO_FACTURA INT NOT NULL,
+DESCRIPCION VARCHAR (100),
+CONSTRAINT PK_TIPOS_FACTURAS PRIMARY KEY (COD_TIPO_FACTURA));
+
+CREATE TABLE TIPOS_CONTACTOS(
+COD_TIPO_CONTACTO INT NOT NULL ,
+DESCRIPCION VARCHAR (150),
+CONSTRAINT PK_TIPOS_CONTACTOS PRIMARY KEY (COD_TIPO_CONTACTO));
+
+CREATE TABLE TIPOS_SALAS (
+COD_TIPO_SALA INT NOT NULL,
+DESCRIPCION VARCHAR (150),
+CONSTRAINT PK_TIPOS_SALAS PRIMARY KEY (COD_TIPO_SALA));
+
+CREATE TABLE GENEROS(
+COD_GENERO INT NOT NULL,
+DESCRIPCION VARCHAR (100),
+CONSTRAINT PK_GENEROS PRIMARY KEY (COD_GENERO));
+
+CREATE TABLE CLASIFICACIONES(
+COD_CLASIFICACION INT NOT NULL,
+DESCRIPCION VARCHAR (150),
+CONSTRAINT PK_CLASIFICACION PRIMARY KEY (COD_CLASIFICACION));
+
+CREATE TABLE PAISES(
+COD_PAIS INT NOT NULL,
+DESCRIPCION VARCHAR (100),
+CONSTRAINT PK_PAISES PRIMARY KEY (COD_PAIS));
+
+CREATE TABLE EMPLEADOS(
+COD_EMPLEADO INT NOT NULL,
+NOMBRE VARCHAR (100),
+APELLIDO VARCHAR (100),
+TIPO_DOC INT,
+NRO_DOC INT,
+DIRECCION VARCHAR (150),
+FECHA_INGRESO DATE,
+COD_BARRIO INT,
+CONSTRAINT PK_EMPLEADOS PRIMARY KEY (COD_EMPLEADO),
+CONSTRAINT FK_EMPLEADOS_BARRIOS FOREIGN KEY (COD_BARRIO)
+REFERENCES BARRIOS (COD_BARRIO));
+
+CREATE TABLE PELICULAS(
+COD_PELICULA INT NOT NULL,
+COD_GENERO INT,
+NOMBRE VARCHAR (150),
+COD_PAIS INT,
+COD_CLASIFICACION INT,
+DURACION TIME,
+CONSTRAINT PK_PELICULAS PRIMARY KEY (COD_PELICULA),
+CONSTRAINT FK_PELICULAS_GENEROS FOREIGN KEY (COD_GENERO)
+REFERENCES GENEROS (COD_GENERO),
+CONSTRAINT FK_PELICULAS_PAIS FOREIGN KEY (COD_PAIS)
+REFERENCES PAISES (COD_PAIS),
+CONSTRAINT FK_PELICULAS_CLASIFICACION FOREIGN KEY (COD_CLASIFICACION)
+REFERENCES CLASIFICACIONES (COD_CLASIFICACION));
+
+CREATE TABLE ACTORES(
+COD_ACTOR INT NOT NULL,
+NOMBRE VARCHAR (100),
+APELLIDO VARCHAR (100),
+FECHA_NACIMIENTO DATETIME,
+FECHA_FALLECIMIENTO DATETIME,
+COD_PAIS INT,
+CONSTRAINT PK_ACTORES PRIMARY KEY (COD_ACTOR),
+CONSTRAINT FK_ACTORES_PAISES FOREIGN KEY (COD_PAIS)
+REFERENCES PAISES (COD_PAIS));
+
+CREATE TABLE CLIENTES (
+COD_CLIENTE INT NOT NULL,
+NOMBRE VARCHAR (100),
+APELLIDO VARCHAR (100),
+RAZON_SOCIAL INT,
+COD_TIPO_CLIENTE INT,
+COD_BARRIO INT,
+COD_TIPO_DOCUMENTO INT,
+DOCUMENTO INT,
+DIRECCION VARCHAR (150),
+DEPARTAMENTO VARCHAR(10),
+TORRE INT,
+CONSTRAINT PK_CLIENTES PRIMARY KEY (COD_CLIENTE),
+CONSTRAINT FK_CLIENTES_BARRIOS FOREIGN KEY (COD_BARRIO)
+REFERENCES BARRIOS (COD_BARRIO),
+CONSTRAINT FK_CLIENTES_TIPOS_DOCUMENTOS FOREIGN KEY (COD_TIPO_DOCUMENTO)
+REFERENCES TIPOS_DOCUMENTOS (COD_TIPO_DOCUMENTO),
+CONSTRAINT FK_CLIENTES_TIPOS_CLIENTES FOREIGN KEY (COD_TIPO_CLIENTE)
+REFERENCES TIPOS_CLIENTES (COD_TIPO_CLIENTE));
+
+
+CREATE TABLE FACTURAS(
+NRO_FACTURA INT NOT NULL,
+COD_EMPLEADO INT,
+FECHA DATE,
+DESCUENTO INT,
+COD_FORMA_PAGO INT,
+COD_CLIENTE INT,
+COD_TIPO_FACTURA INT ,
+CONSTRAINT PK_FACTURAS PRIMARY KEY (NRO_FACTURA),
+CONSTRAINT FK_FACTURAS_EMPLEADOS FOREIGN KEY (COD_EMPLEADO)
+REFERENCES EMPLEADOS (COD_EMPLEADO),
+CONSTRAINT FK_FACTURAS_FORMA_PAGO FOREIGN KEY (COD_FORMA_PAGO)
+REFERENCES FORMAS_PAGOS (COD_FORMA_PAGO),
+CONSTRAINT FK_FACTURAS_CLIENTES FOREIGN KEY (COD_CLIENTE)
+REFERENCES CLIENTES (COD_CLIENTE),
+CONSTRAINT FK_FACTURAS_TIPOS_FACTURAS FOREIGN KEY (COD_TIPO_FACTURA)
+REFERENCES TIPOS_FACTURAS (COD_TIPO_FACTURA));
+
+CREATE TABLE CINES(
+COD_CINE INT NOT NULL,
+NOMBRE VARCHAR (150),
+CALLE VARCHAR (150),
+NUMERO INT,
+CONSTRAINT PK_CINES PRIMARY KEY (COD_CINE));
+
+CREATE TABLE CONTACTOS(
+COD_CONTACTO INT NOT NULL,
+DESCRIPCION VARCHAR (150),
+COD_TIPO_CONTACTO INT,
+COD_EMPLEADO INT,
+COD_CINE INT,
+COD_CLIENTE INT,
+CONSTRAINT PK_CONTACTOS PRIMARY KEY (COD_CONTACTO),
+CONSTRAINT FK_CONTACTOS_EMPLEADOS FOREIGN KEY (COD_EMPLEADO)
+REFERENCES EMPLEADOS (COD_EMPLEADO),
+CONSTRAINT FK_CONTACTOS_CINES FOREIGN KEY (COD_CINE)
+REFERENCES CINES (COD_CINE),
+CONSTRAINT FK_CONTACTOS_CLIENTES FOREIGN KEY (COD_CLIENTE)
+REFERENCES CLIENTES (COD_CLIENTE),
+CONSTRAINT FK_CONTACTOS_TIPOS_CONTACTOS FOREIGN KEY (COD_TIPO_CONTACTO)
+REFERENCES TIPOS_CONTACTOS (COD_TIPO_CONTACTO));
+
+CREATE TABLE ACTORES_PELICULAS(
+COD_ACTOR_PELICULA INT NOT NULL,
+COD_ACTOR INT,
+COD_PELICULA INT,
+CONSTRAINT PK_ACTORES_PELICULAS PRIMARY KEY (COD_ACTOR_PELICULA),
+CONSTRAINT FK_ACTORES_PELICULAS_ACTORES FOREIGN KEY (COD_ACTOR)
+REFERENCES ACTORES (COD_ACTOR),
+CONSTRAINT FK_ACTORES_PELICULAS_PELICULAS FOREIGN KEY (COD_PELICULA)
+REFERENCES PELICULAS (COD_PELICULA));
+
+CREATE TABLE SALAS(
+COD_SALA INT NOT NULL,
+CAPACIDAD INT,
+NUMERO INT,
+COD_TIPO_SALA INT,
+COD_CINE INT ,
+CONSTRAINT PK_SALAS PRIMARY KEY (COD_SALA),
+CONSTRAINT FK_SALAS_TIPOS_SALAS FOREIGN KEY (COD_TIPO_SALA)
+REFERENCES TIPOS_SALAS (COD_TIPO_SALA),
+CONSTRAINT FK_SALAS_CINES FOREIGN KEY (COD_CINE)
+REFERENCES CINES (COD_CINE));
+
+CREATE TABLE BUTACAS(
+COD_BUTACA INT NOT NULL,
+COD_SALA INT ,
+FILA VARCHAR (10),
+NUMERO INT,
+CONSTRAINT PK_BUTACAS PRIMARY KEY (COD_BUTACA),
+CONSTRAINT FK_BUTACAS_SALAS FOREIGN KEY (COD_SALA)
+REFERENCES SALAS (COD_SALA));
+
+CREATE TABLE FUNCIONES (
+COD_FUNCION INT NOT NULL,
+COD_PELICULA INT ,
+COD_SALA INT,
+HORARIO TIME,
+FECHA DATE,
+TERCERA_DIMENCION BIT,
+SUBTITULOS BIT,
+PRECIO MONEY,
+COD_IDIOMA INT,
+CONSTRAINT PK_FUNCIONES PRIMARY KEY (COD_FUNCION),
+CONSTRAINT FK_FUNCIONES_PELICULAS FOREIGN KEY (COD_PELICULA)
+REFERENCES PELICULAS (COD_PELICULA),
+CONSTRAINT FK_FUNCIONES_SALAS FOREIGN KEY (COD_SALA)
+REFERENCES SALAS (COD_SALA),
+CONSTRAINT FK_FUNCIONES_IDIOMAS FOREIGN KEY (COD_IDIOMA)
+REFERENCES IDIOMAS (COD_IDIOMA));
+
+CREATE TABLE BUTACAS_FUNCIONES_FACTURAS (
+COD_FUNCION INT,
+COD_BUTACA INT,
+NRO_FACTURA INT,
+VENDIDA BIT,
+RESERVADA BIT,
+PRECIO MONEY ,
+CONSTRAINT PK_BUTACAS_FUNCIONES_FACTURAS PRIMARY KEY (COD_FUNCION, COD_BUTACA),
+CONSTRAINT FK_BUTACAS_FUNCIONES_FACTURAS_FUNCIONES FOREIGN KEY (COD_FUNCION)
+REFERENCES FUNCIONES (COD_FUNCION),
+CONSTRAINT FK_BUTACAS_FUNCIONES_FACTURAS_BUTACAS FOREIGN KEY (COD_BUTACA)
+REFERENCES BUTACAS (COD_BUTACA),
+CONSTRAINT FK_BUTACAS_FUNCIONES_FACTURAS_FACTURAS FOREIGN KEY (NRO_FACTURA)
+REFERENCES FACTURAS (NRO_FACTURA));
+
+/* Insert */
+
+insert into ciudades(COD_CIUDAD, CIUDAD)
+			values (1, 'Cordoba Capital'),
+(2, 'Villa Carlos Paz'),
+(3, 'Río Cuarto'),
+(4, 'Alta Gracia'),
+(5, 'Villa María'),
+(6, 'San Francisco'),
+(7, 'Jesús María'),
+(8, 'Bell Ville'),
+(9, 'Río Tercero'),
+(10, 'Villa Allende'),
+(11, 'La Falda'),
+(12, 'Cosquín'),
+(13, 'Villa María Grande'),
+(14, 'Río Segundo'),
+(15, 'Villa Dolores');
+go
+
+insert into TIPOS_CLIENTES(COD_TIPO_CLIENTE, DESCRIPCION )
+		values(1, 'Socio' ), (2, 'Responsable inscripto'), (3, 'jubilado'), (4, 'Institucion educativa');
+go
+
+insert into TIPOS_DOCUMENTOS(COD_TIPO_DOCUMENTO, DESCRIPCION)
+						values(1,'DNI'),  (2,'CUIL'),  (3,'CUIT'), (4,'LE'),  (5,'LC');
+go
+
+insert into Barrios(COD_BARRIO, BARRIO, COD_CIUDAD)
+			values( 1, 'Centro', 1), (2, 'Nueva Córdoba', 1), (3, 'Güemes', 1), (4, 'Alberdi', 1), (5, 'General Paz', 1), (6, 'Observatorio', 1), (7, 'San Vicente', 1), (8, 'Bajo Palermo', 1), (9, 'Villa Belgrano', 1),	(10, 'Cerro de las Rosas', 1), (11, 'Jardín', 1), (12, 'Centro', 2), (13, 'Villa del Lago', 2), (14, 'Sol y Río', 2), (15, 'Villa Independencia', 2),  (16, 'Altos del Valle', 2), (17, 'Santa Rita', 2), (18, 'Las Malvinas', 2), (19, 'Villa del Parque', 2), (20, 'La Cuesta', 2), (21, 'Villa San Nicolás', 2), (22, 'Centro', 3), (23, 'San Martin', 3), (24, 'Rosedal', 3), (25, 'Centro', 4), (26, 'Sarmiento', 4), (27, 'Dominador', 4), (28, 'Las Palmas', 4), (29, 'Centro', 5), (30, 'Guemes', 5), (31, 'Isabel Catolica', 5), (32, 'Juan B Justo', 5), (33, 'Centro', 6), (34, 'San Martin', 6), (35, 'El Dominador', 6), (36, '9 de Julio', 6), (37, 'Las Margaritas', 6), (39,'Centro',7), (40,'Centro',8), (41,'Centro',9), (42,'Centro',10), (43,'Centro',11), (44,'Centro',12), (45,'Centro',13), (46,'Centro',14), (47, 'Centro', 15);
+go
+INSERT INTO FORMAS_PAGOS (COD_FORMA_PAGO, FORMA_PAGO)
+		VALUES (1, 'Efectivo'), (2, 'Tarjeta de Crédito'), (3, 'Tarjeta de Débito'), (4, 'Transferencia Bancaria'),(5, 'Cheque');
+go
+
+
+insert into IDIOMAS(COD_IDIOMA, IDIOMA)
+			values(1, 'Español'),(2,'Ingles'),(3, 'Japones'),(4, 'Portugues');
+go
+
+insert into TIPOS_FACTURAS(COD_TIPO_FACTURA, DESCRIPCION)
+			values(1, 'A'),(2,'B'), (3, 'C');
+			go
+
+insert into TIPOS_CONTACTOS(COD_TIPO_CONTACTO, DESCRIPCION)
+			values(1, 'Email'), (2, 'Telefono Celular'), (3, 'Telefono Fijo');
+go
+
+insert into TIPOS_SALAS(COD_TIPO_SALA, DESCRIPCION)
+		values(1, 'Estandar'),(2,'3D'), (3,'4DX'),(4, 'IMAX');
+go
+
+
+	insert into Generos (cod_genero, descripcion)
+values(1, 'Terror'),    (2, 'Acción'),    (3, 'Comedia'),    (4, 'Drama'),    (5, 'Ciencia Ficción'),    (6, 'Romance'),    (7, 'Aventura'),    (8, 'Fantasía'),    (9, 'Documental'),    (10, 'Animación'),    (11, 'Suspenso'),    (12, 'Musical'),    (13, 'Western'),    (14, 'Misterio');
+go
+
+
+
+INSERT INTO CLASIFICACIONES (COD_CLASIFICACION, DESCRIPCION)
+VALUES    (1, 'ATP'),    (2, '+13'),    (3, '+16'),    (4, '+18'),    (5, 'C');
+go
+
+INSERT INTO PAISES (COD_PAIS, DESCRIPCION)
+VALUES    (1, 'Estados Unidos'),    (2, 'Canadá'),    (3, 'México'),    (4, 'Brasil'),    (5, 'Argentina'),    (6, 'España'),    (7, 'Francia'),    (8, 'Alemania'),    (9, 'Reino Unido'),    (10, 'Italia'),	(11, 'China')
+go
+
+INSERT INTO EMPLEADOS (COD_EMPLEADO, NOMBRE, APELLIDO, TIPO_DOC, NRO_DOC, DIRECCION, FECHA_INGRESO, COD_BARRIO)
+VALUES
+(1, 'Juan', 'Pérez', 1, 25698741, 'Calle Principal 123', '2020-1-09', 1),
+    (2, 'María', 'Gómez', 2, 37569841, 'Avenida Secundaria 456', '2021-2-10', 1),
+    (3, 'Pedro', 'López', 1, 20658974, 'Calle Terciaria 789', '2022-3-11', 1),
+    (4, 'Ana', 'Rodríguez', 3, 333333333, 'Plaza Principal 101', '2023-4-12', 2),
+    (5, 'Luis', 'Martínez', 2, 40269873, 'Nicolas Avellaneda 222', '2020-5-13', 2),
+    (6, 'Laura', 'Fernández', 1, 35698746, 'Panama Principal 333', '2020-6-14', 2),
+    (7, 'Carlos', 'García', 3, 36985741, 'Sarmiento 444', '2021-7-15', 3),
+    (8, 'Silvia', 'Chavez', 1, 31547986, 'Av Colon  555', '2022-8-16', 4),
+    (9, 'José', 'Hernández', 2, 36547951, 'Paseo Central 666', '2023-9-17', 5),
+    (10, 'Diana', 'Peralta', 1, 34567128, 'Avenida Principal 777', '2022-11-18', 9),
+    (11, 'Alejandro', 'Ramírez', 2, 34569741, 'Calle del Mercado 888', '2021-10-19', 11),
+    (12, 'Isabel', 'Torres', 1, 29654781, 'Calle Mayor 999', '2020-12-20', 10),
+    (13, 'Raúl', 'González', 3, 30214569, 'Calle Comercial 1010', '2023-1-21', 12),
+    (14, 'Patricia', 'Vargas', 1, 36985714, 'Paseo del Centro 1111', '2021-2-22', 13),
+    (15, 'Roberto', 'Mendoza', 2, 36895741, 'Avenida Central 1212', '2022-3-23', 1),
+    (16, 'Sara', 'Lara', 1, 37895412, 'Calle Principal 1313', '2021-10-24', 3),
+    (17, 'Javier', 'Castro', 2, 36985741, 'Boulevard del Parque 1414', '2019-1-25', 5),
+    (18, 'Elena', 'Ortega', 1, 444444444, 'Calle de la Plaza 1515', '2019-9-26', 42),
+    (19, 'Hugo', 'Guerra', 3, 38957412, 'Avenida Central 1616', '2019-3-27', 8),
+    (20, 'Natalia', 'Díaz', 1, 42654781, 'Calle Principal 1717', '2020-9-28', 42);
+go
+
+	INSERT INTO PELICULAS (COD_PELICULA, COD_GENERO, NOMBRE, COD_PAIS, COD_CLASIFICACION, DURACION)
+VALUES
+    (1, 6, 'Titanic', 1, 2, '03:15:00'),
+    (2, 4, 'El Padrino', 10, 1, '02:45:00'),
+    (3, 3, 'Forrest Gump', 1, 3, '02:22:00'),
+    (4, 2, 'Gladiador', 1, 4, '02:35:00'),
+    (5, 12, 'La La Land', 3, 4, '02:08:00'),
+    (6, 4, 'El Silencio de los Corderos', 4, 2, '01:58:00'),
+    (7, 5, 'Parásitos', 5, 5, '02:12:00'),
+    (8, 7, 'La Forma del Agua', 6, 3, '02:03:00'),
+    (9, 2, 'Moonlight', 8, 2, '01:50:00'),
+    (10, 9, 'El Discurso del Rey', 10, 4, '02:04:00');
+go
+
+INSERT INTO ACTORES (COD_ACTOR, NOMBRE, APELLIDO, FECHA_NACIMIENTO, FECHA_FALLECIMIENTO, COD_PAIS)
+VALUES
+    (1, 'John', 'Smith', '1970-05-15 00:00:00', NULL, 1),
+    (2, 'Arnold', 'Schwarzenegger', '1947-07-30 00:00:00', NULL, 1),
+    (3, 'Cate', 'Blanchett', '1969-05-14 00:00:00', NULL, 2),
+    (4, 'Gael', 'García Bernal', '1978-11-30 00:00:00', NULL, 3),
+    (5, 'Emma', 'Watson', '1990-04-15 00:00:00', NULL, 2),
+    (6, 'Jackie', 'Chan', '1954-04-07 00:00:00', NULL, 11),
+    (7, 'Johnny', 'Depp', '1963-06-09 00:00:00', NULL, 1),
+    (8, 'Meryl', 'Streep', '1949-06-22 00:00:00', NULL, 1),
+    (9, 'Hugh', 'Jackman', '1968-10-12 00:00:00', NULL, 2),
+    (10, 'Salma', 'Hayek', '1966-09-02 00:00:00', NULL, 3),
+    (11, 'Daniel', 'Radcliffe', '1989-07-23 00:00:00', NULL, 2),
+    (12, 'Jet', 'Li', '1963-04-26 00:00:00', NULL, 11);
+go
+
+
+INSERT INTO CLIENTES (COD_CLIENTE, NOMBRE, APELLIDO, RAZON_SOCIAL, COD_TIPO_CLIENTE, COD_BARRIO, COD_TIPO_DOCUMENTO, DOCUMENTO, DIRECCION, DEPARTAMENTO, TORRE)
+VALUES
+    (1, 'Juan', 'Pérez', NULL, 1, 1, 1, 12345678, 'Ituzaingó 123', 'A', 2),
+    (2, 'María', 'López', NULL, 2, 2, 2, 98765432, 'Sucre 456', 'B', 1),
+    (3, 'Carlos', 'González', NULL, 3, 1, 1, 56789012, 'Ituzaingó 789', 'C', 3),
+    (4, 'Ana', 'Martínez', NULL, 2, 4, 2, 34567890, 'Av. Colon 1011', 'C', 4),
+    (5, 'Luis', 'Rodríguez', NULL, 1, 5, 1, 23456789, 'Ituzaingó 1213', 'D', 2),
+    (6, 'Laura', 'Díaz', NULL, 2, 6, 2, 45678901, 'Av. Colon 1415', 'E', 1),
+    (7, 'Pedro', 'Sánchez', NULL, 1, 1, 1, 67890123, 'Ituzaingó 1617', 'A', 4),
+    (8, 'Isabel', 'Ramírez', NULL, 2, 2, 2, 78901234, 'Av. Colon 1819', 'B', 1),
+    (9, 'Miguel', 'Peralta', NULL, 1, 3, 1, 89012345, 'Ituzaingó 2021', 'C', 3),
+    (10, 'Sofía', 'Gómez', NULL, 2, 19, 2, 90123456, 'Av. Colon 2223', 'D', 2),
+    (11, 'David', 'Vargas', NULL, 1, 18, 1, 34567891, 'Ituzaingó 2425', 'E', 5),
+    (12, 'Elena', 'Luna', NULL, 2, 11, 2, 45678902, 'Av. Colon 2627', 'F', 4),
+    (13, 'Javier', 'Mendoza', NULL, 1, 3, 1, 56789013, 'Ituzaingó 2829', 'A', 1),
+    (14, 'Paula', 'Chávez', NULL, 2, 14, 2, 67890124, 'Av. Colon 3031', 'B', 2),
+    (15, 'Roberto', 'Ortega', NULL, 1, 13, 1, 78901235, 'Ituzaingó 3233', 'C', 3),
+    (16, 'Carmen', 'Hernández', NULL, 2, 16, 2, 89012346, 'Av. Colon 3435', 'D', 2),
+    (17, 'Alejandro', 'Flores', NULL, 1, 17, 1, 90123457, 'Ituzaingó 3637', 'E', 4),
+    (18, 'Silvia', 'Torres', NULL, 2, 18, 2, 34567892, 'Av. Colon 3839', 'F', 1),
+    (19, 'Gabriel', 'Villa', NULL, 1, 19, 1, 45678903, 'Ituzaingó 4041', 'A', 2),
+    (20, 'Daniela', 'Ruiz', NULL, 2, 20, 2, 56789014, 'Av. Colon 4243', 'B', 1);
+go
+
+
+	INSERT INTO CINES (COD_CINE, NOMBRE, CALLE, NUMERO)
+VALUES
+    (1, 'CineArg', 'Av. Colon', 300),
+    (2, 'CineCba', 'Av. Rafael Nuñez', 450),
+    (3, 'CineGrandArg', 'Av. Recta Martinolli', 1240);
+go
+
+INSERT INTO FACTURAS (NRO_FACTURA, COD_EMPLEADO, FECHA, DESCUENTO, COD_FORMA_PAGO, COD_CLIENTE, COD_TIPO_FACTURA)
+VALUES
+ (1, 2, '2023-11-15', 5, 2, 2, 2),    (2, 2, '2023-11-15', 5, 2, 2, 2),    (3, 3, '2023-11-15', 15, 3, 3, 1),    (4, 4,'2023-11-14', 0, 1, 4, 2),    (5, 5,'2023-11-13', 8, 2, 5, 1),    (6, 6, '2023-11-13', 12, 3, 6, 2),    (7, 7, ' 2023-11-05', 20, 1, 7, 1),    (8, 8,  '2023-11-05', 10, 2, 8, 2),    (9, 9, '2023-10-17', 5, 3, 9, 1),    (10, 10, '2023-10-18', 0, 1, 10, 2),    (11, 1, '2023-11-02', 15, 2, 11, 1),    (12, 2, '2023-11-05', 8, 3, 12, 2),    (13, 3,  '2023-11-05', 12, 1, 13, 1),    (14, 4,  '2023-11-01', 5, 2, 14, 2),    (15, 5,  '2023-12-03', 0, 3, 15, 1),    (16, 6, '2023-10-18', 10, 1, 16, 2),    (17, 7, '2023-11-18', 15, 2, 17, 1),    (18, 8, '2023-11-18', 8, 3, 18, 2),    (19, 9, '2023-11-18', 20, 1, 19, 1),    (20, 10,'2023-11-18', 5, 2, 20, 2),  (21, 1, '2023-11-15', 10, 1, 1, 1),   (22, 2, '2023-11-20', 5, 2, 2, 2),    (23, 3, '2023-11-10', 15, 3, 3, 1),    (24, 4, '2023-11-05', 0, 1, 4, 2),    (25, 5, '2023-11-18', 8, 2, 5, 1),    (26, 6, '2023-11-12', 12, 3, 6, 2),    (27, 7, '2023-11-24', 20, 1, 7, 1),    (28, 8, '2023-11-30', 10, 2, 8, 2),    (29, 9, '2023-11-03', 5, 3, 9, 1),    (30, 10, '2023-11-08', 0, 1, 10, 2),    (31, 1, '2023-11-21', 15, 2, 11, 1),    (32, 2, '2023-10-17', 8, 3, 12, 2),    (33, 3, '2023-11-05', 12, 1, 13, 1),    (34, 4, '2023-11-09', 5, 2, 14, 2),    (35, 5, '2023-11-14', 0, 3, 15, 1),    (36, 6, '2023-11-27', 10, 1, 16, 2),    (37, 7, '2023-11-30', 15, 2, 17, 1),    (38, 8, '2023-11-03', 8, 3, 18, 2),    (39, 9, '2023-11-18', 20, 1, 19, 1),    (40, 10, '2023-11-22', 5, 2, 20, 2),	    (41, 1, '2023-11-10', 10, 1, 1, 1),    (42, 2, '2023-11-15', 5, 2, 2, 2),    (43, 3, '2023-11-20', 15, 3, 3, 1),    (44, 4, '2023-11-25', 0, 1, 4, 2),    (45, 5, '2023-11-05', 8, 2, 5, 1),    (46, 6, '2023-11-10', 12, 3, 6, 2),    (47, 7, '2023-11-15', 20, 1, 7, 1),    (48, 8, '2023-11-20', 10, 2, 8, 2),    (49, 9, '2023-11-25', 5, 3, 9, 1),    (50, 10, '2023-11-30', 0, 1, 10, 2),    (51, 1, '2023-11-05', 15, 2, 11, 1),    (52, 2, '2023-11-10', 8, 3, 12, 2),    (53, 3, '2023-10-15', 12, 1, 13, 1),    (54, 4, '2023-10-20', 5, 2, 14, 2),    (55, 5, '2023-10-25', 0, 3, 15, 1),    (56, 6, '2023-10-30', 10, 1, 16, 2),    (57, 7, '2023-10-05', 15, 2, 17, 1),    (58, 8, '2023-10-10', 8, 3, 18, 2),    (59, 9, '2023-11-15', 20, 1, 19, 1),    (60, 10, '2023-11-20', 5, 2, 20, 2),	 (61, 1, '2023-11-10', 10, 1, 1, 1),    (62, 2, '2023-11-15', 5, 2, 2, 2),    (63, 3, '2023-11-20', 15, 3, 3, 1),    (64, 4, '2023-11-25', 0, 1, 4, 2),    (65, 5, '2023-11-05', 8, 2, 5, 1),    (66, 6, '2023-11-10', 12, 3, 6, 2),    (67, 7, '2023-07-15', 20, 1, 7, 1),    (68, 8, '2023-11-20', 10, 2, 8, 2),    (69, 9, '2023-11-25', 5, 3, 9, 1),    (70, 10, '2023-10-30', 0, 1, 10, 2),    (71, 1, '2023-11-05', 15, 2, 11, 1),    (72, 2, '2023-11-10', 8, 3, 12, 2),    (73, 3, '2023-01-15', 12, 1, 13, 1),    (74, 4, '2023-11-20', 5, 2, 14, 2),    (75, 5, '2023-11-25', 0, 3, 15, 1),    (76, 6, '2023-11-30', 10, 1, 16, 2),    (77, 7, '2023-11-05', 15, 2, 17, 1),    (78, 8, '2023-11-10', 8, 3, 18, 2),    (79, 9, '2023-11-15', 20, 1, 19, 1),    (80, 10, '2023-11-20', 5, 2, 20, 2),    (81, 1, '2023-11-10', 10, 1, 1, 1),    (82, 2, '2023-10-15', 5, 2, 2, 2),    (83, 3, '2023-11-20', 15, 3, 3, 1),    (84, 4, '2023-11-25', 0, 1, 4, 2),    (85, 5, '2023-11-05', 8, 2, 5, 1),    (86, 6, '2023-11-10', 12, 3, 6, 2),    (87, 7, '2023-11-15', 20, 1, 7, 1),    (88, 8, '2023-11-20', 10, 2, 8, 2),    (89, 9, '2023-11-25', 5, 3, 9, 1),    (90, 10, '2023-11-30', 0, 1, 10, 2),    (91, 1, '2023-11-05', 15, 2, 11, 1),    (92, 2, '2023-11-10', 8, 3, 12, 2),    (93, 3, '2023-11-15', 12, 1, 13, 1),    (94, 4, '2023-11-20', 5, 2, 14, 2),    (95, 5, '2023-11-25', 0, 3, 15, 1),    (96, 6, '2023-11-05', 10, 1, 16, 2),    (97, 7, '2023-11-10', 15, 2, 17, 1),    (98, 8, '2023-11-15', 8, 3, 18, 2),    (99, 9, '2023-11-20', 20, 1, 19, 1),    (100, 10, '2023-11-25', 5, 2, 20, 2);
+	go
+
+INSERT INTO CONTACTOS (COD_CONTACTO, DESCRIPCION, COD_TIPO_CONTACTO, COD_EMPLEADO, COD_CINE, COD_CLIENTE)
+VALUES   (1, 'sarazara123@gmail.com', 1, 1, null, null),
+  (2, 'otroMail2@hotmail.com', 1, 2, null, null),
+  (3, 'TerribleMail@gmail.com', 1, 3, null, null),
+  (4, 'Ema_Gorriado@hotmail.com', 1, 4, null, null),
+  (5, 'NoSePaQueVine@gmail.com', 1, 5, null, null),
+  (6, 'papafrita@hotmail.com', 1, 6, null, null),
+  (7, 'ArmandoParedes@gmail.com', 1, 7, null, null),
+  (8, 'HelenaNo@hotmail.com', 1, 8, null, null),
+  (9, 'PitufoVerde@gmail.com', 1, 9, null, null),
+  (10, 'asdasd@hotmail.com', 1, 10, null, null),
+  (11, 'asd11@gmail.com', 1, 11, null, null),
+  (12, 'ElGranTorino@hotmail.com', 1, 12, null, null),
+  (13, 'pantriste@gmail.com', 1, 13, null, null),
+  (14, '3548697514', 2, 1, null, null),
+  (15, '3678941250', 2, 2, null, null),
+  (16, '3257148963', 2, 3, null, null),
+  (17, '3314569872', 2, 4, null, null),
+  (18, '3632145879', 2, 5, null, null),
+  (19, '3214785694', 2, 6, null, null),
+  (20, '3748691257', 2, 7, null, null),
+    (21, '3857214698', 2, 8, null, null),
+  (22, '3912458762', 2, 9, null, null),
+  (23, '3765981245', 2, 10, null, null),
+  (24, '3845126970', 2, 11, null, null),
+  (25, '3947628150', 2, 12, null, null),
+  (26, '3698745123', 2, 13, null, null),
+  (27, '3987452160', 2, 14, null, null),
+  (28, '3621984750', 2, 15, null, null),
+  (29, '3974512860', 2, 16, null, null),
+  (30, '3845619270', 2, 17, null, null),
+    (31, '3609851247', 2, null, 1, null),
+  (32, '3748596120', 2, null, 2, null),
+  (33, '3987451260', 2, null, 3, null),
+    (34, 'correo1@gmail.com', 1, null, null, 1),
+  (35, 'correo2@hotmail.com', 1, null, null, 2),
+  (36, 'correo3@gmail.com', 1, null, null, 3),
+  (37, 'correo4@hotmail.com', 1, null, null, 4),
+  (38, 'correo5@gmail.com', 1, null, null, 5),
+  (39, 'correo6@hotmail.com', 1, null, null, 6),
+  (40, 'correo7@gmail.com', 1, null, null, 7),
+  (41, 'correo8@hotmail.com', 1, null, null, 8),
+  (42, 'correo9@gmail.com', 1, null, null, 9),
+  (43, 'correo10@hotmail.com', 1, null, null, 10),
+  (44, '3548697514', 2, null, null, 11),
+  (45, '3678941250', 2, null, null, 12),
+  (46, '3257148963', 2, null, null, 13),
+  (47, '3314569872', 2, null, null, 14),
+  (48, '3632145879', 2, null, null, 15),
+  (49, '3214785694', 2, null, null, 16),
+  (50, '3748691257', 2, null, null, 17),
+  (51, '3609851247', 2, null, null, 18),
+  (52, '3912458762', 2, null, null, 19),
+  (53, '3765981245', 2, null, null, 20),
+   (54, '065-555-1234', 3, null, null, 10),
+  (55, '068-444-5678', 3, null, null, 20),
+  (56, '067-333-9876', 3, null, null, 3),
+  (57, '066-222-7654', 3, null, null, 3),
+    (58, '021-555-1234', 3, 1, null, null),
+  (59, '051-444-5678', 3, 2, null, null),
+  (60, '071-333-9876', 3, 3, null, null),
+  (61, '031-222-7654', 3, 4, null, null),
+  (62, '081-111-5432', 3, 5, null, null),
+  (63, '091-999-8888', 3, null, null, 19),
+  (64, '041-777-6666', 3, null, null, 10),
+  (65, '031-222-7654', 3, null, null, 11),
+  (66, '071-333-9876', 3, null, null, 12),
+  (67, '051-444-5678', 3, null, null, 13),
+  (68, '021-555-1234', 3, null, null, 14),
+  (69, '091-999-8888', 3, null, null, 15);
+  go
+
+insert into ACTORES_PELICULAS(COD_ACTOR_PELICULA, COD_ACTOR, COD_PELICULA)
+values	( 1, 1, 3),	( 2, 2, 2),	( 3,3, 3),
+	(4, 3, 1),	(5, 4, 4),	(6, 4, 1),	(7, 4, 2),	(8, 5, 1),	(9, 12, 2),
+	(10, 5, 3),	(11, 5, 4),	(12, 5, 5),	(13, 7, 1),	(14, 6, 2),	(15, 6, 4),
+	(16, 6, 5),	(17, 7, 7),	(18, 8, 3),	(19, 8, 5),	(20, 9, 4),	(21, 9, 1),
+	(22, 10, 5),	(23, 10, 6),	(24, 11, 2),	(25, 11, 3),	(26, 12, 5),	(27, 12, 7);
+	go
+
+
+INSERT INTO SALAS (COD_SALA, CAPACIDAD, NUMERO, COD_TIPO_SALA, COD_CINE)
+VALUES
+  (1, 150, 2, 2, 1),
+  (2, 75, 3, 1, 1),
+  (3, 200, 4, 3, 1),
+  (4, 120, 5, 2, 1),
+  (5, 90, 6, 1, 1),
+   (6, 110, 7, 2, 2),
+  (7, 130, 8, 3, 2),
+    (8, 90, 9, 1, 3),
+  (9, 140, 10, 2, 3);
+  go
+
+  INSERT INTO BUTACAS (COD_BUTACA, COD_SALA, FILA, NUMERO)
+VALUES
+  (1, 1, 'A', 1),  (2, 1, 'A', 2),  (3, 1, 'B', 1),
+  (4, 1, 'B', 2), (5, 1, 'C', 1),  (6, 1, 'C', 2),
+  (7, 1, 'D', 1),  (8, 1, 'D', 2),  (9, 1, 'E', 1),  (10, 1, 'E', 2),
+  (11, 1, 'F', 1),  (12, 1, 'F', 2),  (13, 1, 'G', 1),  (14, 1, 'G', 2),
+  (15, 1, 'H', 1),  (16, 1, 'H', 2),  (17, 1, 'I', 1),  (18, 1, 'I', 2),
+  (19, 1, 'J', 1),  (20, 1, 'J', 2),  (21, 1, 'A', 3),  (22, 1, 'A', 4),
+  (23, 1, 'B', 3),  (24, 1, 'B', 4),  (25, 1, 'C', 3),  (26, 1, 'C', 4),
+  (27, 1, 'D', 3),  (28, 1, 'D', 4),  (29, 1, 'E', 3),  (30, 1, 'E', 4),
+  (31, 1, 'F', 3),  (32, 1, 'F', 4),  (33, 1, 'G', 3),  (34, 1, 'G', 4),
+  (35, 1, 'H', 3),  (36, 1, 'H', 4),  (37, 1, 'I', 3),  (38, 1, 'I', 4),
+  (39, 1, 'J', 3),  (40, 1, 'J', 4),    (41, 2, 'A', 1),  (42, 2, 'A', 2),
+  (43, 2, 'B', 1),  (44, 2, 'B', 2),  (45, 2, 'C', 1),  (46, 2, 'C', 2),
+  (47, 2, 'D', 1),  (48, 2, 'D', 2),  (49, 2, 'E', 1),  (50, 2, 'E', 2),
+  (51, 2, 'F', 1),  (52, 2, 'F', 2),  (53, 2, 'G', 1),  (54, 2, 'G', 2),
+  (55, 2, 'H', 1),  (56, 2, 'H', 2),  (57, 2, 'I', 1),  (58, 2, 'I', 2),
+  (59, 2, 'J', 1),  (60, 2, 'J', 2),  (61, 3, 'A', 1),
+  (62, 3, 'A', 2),  (63, 3, 'B', 1),  (64, 3, 'B', 2),  (65, 3, 'C', 1),  (66, 3, 'C', 2),
+  (67, 3, 'D', 1),  (68, 3, 'D', 2),  (69, 3, 'E', 1),  (70, 3, 'E', 2),  (71, 3, 'F', 1),  
+(72, 3, 'F', 2),  (73, 3, 'G', 1),  (74, 3, 'G', 2),  (75, 3, 'H', 1),
+  (76, 3, 'H', 2),  (77, 3, 'I', 1),  (78, 3, 'I', 2),  (79, 3, 'J', 1),
+  (80, 3, 'J', 2),    (81, 4, 'A', 1),  (82, 4, 'A', 2),  (83, 4, 'B', 1),  (84, 4, 'B', 2),
+  (85, 4, 'C', 1),  (86, 4, 'C', 2),  (87, 4, 'D', 1),  (88, 4, 'D', 2),
+  (89, 4, 'E', 1),  (90, 4, 'E', 2),  (91, 4, 'F', 1),  (92, 4, 'F', 2),
+  (93, 4, 'G', 1),  (94, 4, 'G', 2),  (95, 4, 'H', 1),  (96, 4, 'H', 2),
+  (97, 4, 'I', 1),  (98, 4, 'I', 2),  (99, 4, 'J', 1),  (100, 4, 'J', 2),
+    (101, 5, 'A', 1),  (102, 5, 'A', 2),  (103, 5, 'B', 1),  (104, 5, 'B', 2),
+  (105, 5, 'C', 1),  (106, 5, 'C', 2),  (107, 5, 'D', 1),  (108, 5, 'D', 2),
+  (109, 5, 'E', 1),  (110, 5, 'E', 2),  (111, 5, 'F', 1),  (112, 5, 'F', 2),
+  (113, 5, 'G', 1),  (114, 5, 'G', 2),  (115, 5, 'H', 1),  (116, 5, 'H', 2),
+  (117, 5, 'I', 1),  (118, 5, 'I', 2),  (119, 5, 'J', 1),  (120, 5, 'J', 2),
+   (121, 6, 'A', 1),  (122, 6, 'A', 2),  (123, 6, 'B', 1),  (124, 6, 'B', 2),
+  (125, 6, 'C', 1),  (126, 6, 'C', 2),  (127, 6, 'D', 1),  (128, 6, 'D', 2),
+  (129, 6, 'E', 1),  (130, 6, 'E', 2),  (131, 6, 'F', 1),  (132, 6, 'F', 2),
+  (133, 6, 'G', 1),  (134, 6, 'G', 2),  (135, 6, 'H', 1),  (136, 6, 'H', 2),
+  (137, 6, 'I', 1),  (138, 6, 'I', 2),  (139, 6, 'J', 1),  (140, 6, 'J', 2),
+    (141, 7, 'A', 1),  (142, 7, 'A', 2),  (143, 7, 'B', 1),  (144, 7, 'B', 2),
+  (145, 7, 'C', 1),  (146, 7, 'C', 2),  (147, 7, 'D', 1),  (148, 7, 'D', 2),
+  (149, 7, 'E', 1),  (150, 7, 'E', 2),  (151, 7, 'F', 1),  (152, 7, 'F', 2),
+  (153, 7, 'G', 1),  (154, 7, 'G', 2),  (155, 7, 'H', 1),  (156, 7, 'H', 2),
+  (157, 7, 'I', 1),  (158, 7, 'I', 2),  (159, 7, 'J', 1),  (160, 7, 'J', 2),
+    (161, 8, 'A', 1),  (162, 8, 'A', 2),  (163, 8, 'B', 1),  (164, 8, 'B', 2),
+  (165, 8, 'C', 1),  (166, 8, 'C', 2),  (167, 8, 'D', 1),  (168, 8, 'D', 2),
+  (169, 8, 'E', 1),  (170, 8, 'E', 2),  (171, 8, 'F', 1),  (172, 8, 'F', 2),
+  (173, 8, 'G', 1),  (174, 8, 'G', 2),  (175, 8, 'H', 1),  (176, 8, 'H', 2),
+  (177, 8, 'I', 1),  (178, 8, 'I', 2),  (179, 8, 'J', 1),  (180, 8, 'J', 2),
+    (181, 9, 'A', 1),  (182, 9, 'A', 2),  (183, 9, 'B', 1),  (184, 9, 'B', 2),
+  (185, 9, 'C', 1),  (186, 9, 'C', 2),  (187, 9, 'D', 1),  (188, 9, 'D', 2),
+  (189, 9, 'E', 1),  (190, 9, 'E', 2),  (191, 9, 'F', 1),  (192, 9, 'F', 2),
+  (193, 9, 'G', 1),  (194, 9, 'G', 2),  (195, 9, 'H', 1),  (196, 9, 'H', 2),
+  (197, 9, 'I', 1),  (198, 9, 'I', 2),  (199, 9, 'J', 1),  (200, 9, 'J', 2);
+ go
+
+  INSERT INTO FUNCIONES (COD_FUNCION, COD_PELICULA, COD_SALA, HORARIO, FECHA, TERCERA_DIMENCION, SUBTITULOS, PRECIO, COD_IDIOMA)
+VALUES
+(1, 3, 1, '15:30:00', '2023-11-20', 1, 0, 495.75, 2),
+(2, 1, 2, '18:45:00', '2023-11-15', 0, 1, 550.00, 3),
+(3, 5, 3, '14:15:00', '2023-11-05', 1, 0, 610.00, 1),
+(4, 2, 4, '20:00:00', '2023-11-18', 1, 1, 525.50, 4),
+(5, 4, 5, '16:20:00', '2023-11-22', 0, 1, 460.25, 2),
+(6, 3, 6, '19:40:00', '2023-11-10', 1, 0, 420.00, 3),
+(7, 5, 7, '17:10:00', '2023-11-08', 0, 1, 490.00, 1),
+(8, 1, 8, '21:15:00', '2023-10-29', 1, 0, 580.50, 4),
+(9, 2, 9, '13:45:00', '2023-10-15', 0, 0, 515.75, 3),
+(10, 4, 1, '20:30:00', '2023-10-28', 1, 0, 560.00, 2),
+(11, 3, 2, '16:30:00', '2023-10-10', 1, 0, 450.00, 2),
+(12, 2, 3, '19:15:00', '2023-12-04', 0, 1, 520.50, 3),
+(13, 4, 4, '14:45:00', '2023-10-01', 1, 0, 395.75, 1),
+(14, 1, 5, '21:00:00', '2013-10-12', 1, 1, 580.00, 4),
+(15, 5, 6, '17:20:00', '2023-11-17', 0, 1, 495.25, 2),
+(16, 2, 7, '20:40:00', '2023-11-23', 1, 0, 540.90, 3),
+(17, 3, 8, '18:10:00', '2023-11-24', 0, 1, 420.00, 1),
+(18, 4, 9, '22:15:00', '2023-11-24', 1, 0, 610.50, 4),
+(19, 1, 1, '15:45:00', '2023-11-30', 0, 0, 460.00, 3),
+(20, 5, 2, '21:30:00', '2023-11-18', 1, 0, 525.00, 2),
+(21, 3, 1, '15:30:00', '2023-10-20', 1, 0, 495.75, 2),
+(22, 1, 2, '18:45:00', '2023-11-15', 0, 1, 550.00, 3),
+(23, 5, 3, '14:15:00', '2023-11-05', 1, 0, 610.00, 1),
+(24, 2, 4, '20:00:00', '2023-11-18', 1, 1, 525.50, 4),
+(25, 4, 5, '16:20:00', '2023-11-22', 0, 1, 460.25, 2),
+(26, 3, 6, '19:40:00', '2023-11-10', 1, 0, 420.00, 3),
+(27, 5, 7, '17:10:00', '2023-11-08', 0, 1, 490.00, 1),
+(28, 1, 8, '21:15:00', '2023-11-29', 1, 0, 580.50, 4),
+(29, 2, 9, '13:45:00', '2023-11-15', 0, 0, 515.75, 3),
+(30, 4, 1, '20:30:00', '2023-11-28', 1, 0, 560.00, 2);
+ go
+
+
+
+
+  INSERT INTO BUTACAS_FUNCIONES_FACTURAS (COD_FUNCION, COD_BUTACA, NRO_FACTURA, VENDIDA, PRECIO)
+VALUES
+  ( 1, 1, 1, 1, 495.75),
+  ( 1, 2, 1, 1, 495.75),
+  ( 1, 3, 1, 1, 495.75),
+  ( 1, 4, 1, 1, 495.75),
+  ( 1, 5, 1, 1, 495.75),
+  ( 1, 6, 5, 1, 495.75),
+  ( 1, 7, 5, 1, 495.75),
+  ( 1, 8, 1, 1, 495.75),
+  ( 1, 9, 1, 1, 495.75),
+  ( 1, 10, 1, 1, 495.75),
+  ( 1, 11, 2, 1, 495.75),
+  ( 1, 12, 2, 1, 495.75),
+  ( 1, 13, 2, 1, 495.75),
+  ( 1, 14, 2, 1, 495.75),
+  ( 1, 15, 3, 1, 495.75),
+  ( 1, 16, 4, 1, 495.75),
+  ( 1, 17, 5, 1, 495.75),
+  ( 1, 18, 6, 1, 495.75),
+  ( 1, 19, 4, 1, 495.75),
+  ( 1, 20, 6, 1, 495.75),
+  ( 2, 21, 21, 1, 525.50), 
+  ( 2, 22, 22, 1, 525.50),
+  ( 2, 23, 23, 1, 525.50), 
+  ( 2, 24, 24, 1, 525.50), 
+  ( 2, 25, 25, 1, 525.50), 
+  ( 2, 26, 26, 1, 525.50), 
+  ( 2, 27, 27, 1, 525.50),
+  ( 2, 28, 28, 1, 525.50), 
+  ( 2, 29, 29, 1, 525.50), 
+  ( 2, 30, 30, 1, 525.50), 
+  ( 2, 31, 31, 1, 525.50), 
+  ( 2, 32, 32, 1, 525.50), 
+  ( 2, 33, 33, 1, 525.50), 
+  ( 2, 34, 34, 1, 525.50), 
+  ( 2, 35, 35, 1, 525.50), 
+  ( 2, 36, 36, 1, 525.50), 
+  ( 2, 37, 37, 1, 525.50), 
+  ( 2, 38, 38, 1, 525.50), 
+  ( 2, 39, 39, 1, 525.50), 
+  ( 2, 40, 40, 1, 525.50),
+  ( 3, 61, 11, 1, 610.00),
+  ( 3, 62, 12, 1, 610.00),
+  ( 3, 63, 13, 1, 610.00),
+  ( 3, 64, 14, 1, 610.00),
+  ( 3, 65, 15, 1, 610.00),
+  ( 3, 66, 11, 1, 610.00),
+  ( 3, 67, 12, 1, 610.00),
+  ( 3, 68, 13, 1, 610.00),
+  ( 3, 69, 14, 1, 610.00),
+  ( 3, 70, 15, 1, 610.00),
+   ( 3, 71, 11, 1, 610.00),
+  ( 3, 72, 12, 1, 610.00),
+  ( 3, 73, 13, 1, 610.00),
+  ( 3, 74, 14, 1, 610.00),
+  ( 3, 75, 15, 1, 610.00),
+  ( 3, 76, 11, 1, 610.00),
+  ( 3, 77, 12, 1, 610.00),
+  ( 3, 78, 13, 1, 610.00),
+  ( 3, 79, 14, 1, 610.00),
+  ( 3, 80, 15, 1, 610.00),
+  ( 4, 81, 16, 1, 525.50),
+  ( 4, 82, 17, 1, 525.50),
+  ( 4, 83, 18, 1, 525.50),
+  ( 4, 84, 19, 1, 525.50),
+  ( 4, 85, 20, 1, 525.50),
+  ( 4, 86, 16, 1, 525.50),
+  ( 4, 87, 17, 1, 525.50),
+  ( 4, 88, 18, 1, 525.50),
+  ( 4, 89, 19, 1, 525.50),
+  ( 4, 90, 20, 1, 525.50),
+  ( 4, 91, 16, 1, 525.50),
+  ( 4, 92, 17, 1, 525.50),
+  ( 4, 93, 18, 1, 525.50),
+  ( 4, 94, 19, 1, 525.50),
+  ( 4, 95, 20, 1, 525.50),
+  ( 4, 96, 16, 1, 525.50),
+  ( 4, 97, 17, 1, 525.50),
+  ( 4, 98, 18, 1, 525.50),
+  ( 4, 99, 19, 1, 525.50),
+  ( 4, 100, 20, 1, 525.50),
+  ( 13, 81, 16, 1, 525.50),
+  ( 13, 82, 17, 1, 525.50),
+  ( 13, 83, 18, 1, 525.50),
+  ( 13, 84, 19, 1, 525.50),
+  ( 13, 85, 20, 1, 525.50),
+  ( 13, 86, 16, 1, 525.50),
+  ( 13, 87, 17, 1, 525.50),
+  ( 13, 88, 18, 1, 525.50),
+  ( 13, 89, 19, 1, 525.50),
+  ( 13, 90, 20, 1, 525.50),
+  ( 13, 91, 16, 1, 525.50),
+  ( 13, 92, 17, 1, 525.50),
+  ( 13, 93, 18, 1, 525.50),
+  ( 13, 94, 19, 1, 525.50),
+  (13, 95, 20, 1, 525.50),
+  ( 13, 96, 16, 1, 525.50),
+  ( 13, 97, 17, 1, 525.50),
+  ( 13, 98, 18, 1, 525.50),
+  ( 13, 99, 19, 1, 525.50),
+  ( 13, 100, 20, 1, 525.50),
+  ( 10, 21, 27, 1, 550.00),
+  ( 10, 22, 28, 1, 550.00),
+  ( 10, 23, 29, 1, 550.00), 
+  ( 10, 24, 30, 1, 550.00), 
+  ( 10, 25, 30, 1, 550.00), 
+  ( 10, 26, 30, 1, 550.00), 
+  ( 10, 27, 29, 1, 550.00),
+  ( 10, 28, 28, 1, 550.00),
+  ( 10, 29, 27, 1, 550.00), 
+  ( 10, 30, 27, 1, 550.00), 
+  ( 10, 31, 29, 1, 550.00),
+  ( 10, 32, 30, 1, 550.00), 
+  ( 10, 33, 26, 1, 550.00), 
+  ( 10, 34, 26, 1, 550.00), 
+  ( 10, 35, 26, 1, 550.00), 
+  ( 10, 36, 27, 1, 550.00), 
+  ( 10, 37, 27, 1, 550.00),
+  ( 10, 38, 28, 1, 550.00), 
+  ( 10, 39, 28, 1, 550.00),
+  ( 10, 40, 30, 1, 550.00);
