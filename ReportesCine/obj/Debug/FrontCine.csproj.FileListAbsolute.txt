@@ -335,3 +335,5 @@ C:\Users\ramir\Desktop\Proyecto Progra\TP_Cine_2\ReportesCine\obj\Debug\FrontCin
 C:\Users\ramir\Desktop\Proyecto Progra\TP_Cine_2\ReportesCine\obj\Debug\FrontCine.csproj.CopyComplete
 C:\Users\ramir\Desktop\Proyecto Progra\TP_Cine_2\ReportesCine\obj\Debug\ReportesCine.exe
 C:\Users\ramir\Desktop\Proyecto Progra\TP_Cine_2\ReportesCine\obj\Debug\ReportesCine.pdb
+C:\Users\ramir\Desktop\Proyecto Progra\TP_Cine_2\ReportesCine\obj\Debug\ReportesCine.FormInformacionDesarrolladores.resources
+C:\Users\ramir\Desktop\Proyecto Progra\TP_Cine_2\ReportesCine\obj\Debug\ReportesCine.LoginIniciarSesion.resources

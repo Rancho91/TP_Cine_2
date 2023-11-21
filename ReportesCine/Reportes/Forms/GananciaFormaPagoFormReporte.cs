@@ -82,7 +82,6 @@ namespace ReportesCine.Reportes.forms
             catch (Exception ex)
             {
                 // Manejar la excepción, por ejemplo, mostrar un mensaje de error o registrarla.
-                MessageBox.Show($"Error al obtener datos: {ex.Message}");
             }
         }
        

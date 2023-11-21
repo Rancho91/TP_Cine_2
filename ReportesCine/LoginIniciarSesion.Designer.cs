@@ -94,6 +94,7 @@
             this.txtpass.ForeColor = System.Drawing.SystemColors.WindowFrame;
             this.txtpass.Location = new System.Drawing.Point(485, 137);
             this.txtpass.Name = "txtpass";
+            this.txtpass.PasswordChar = '*';
             this.txtpass.Size = new System.Drawing.Size(375, 27);
             this.txtpass.TabIndex = 4;
             this.txtpass.Text = "CONTRASEÑA";

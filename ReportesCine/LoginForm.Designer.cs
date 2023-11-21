@@ -40,9 +40,9 @@
             this.funcionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.facturasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.nuevaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.aboutUsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.informacionDesarrolladoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -82,7 +82,7 @@
             // generarFacturaToolStripMenuItem
             // 
             this.generarFacturaToolStripMenuItem.Name = "generarFacturaToolStripMenuItem";
-            this.generarFacturaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.generarFacturaToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
             this.generarFacturaToolStripMenuItem.Text = "Generar factura";
             this.generarFacturaToolStripMenuItem.Click += new System.EventHandler(this.generarFacturaToolStripMenuItem_Click);
             // 
@@ -117,14 +117,14 @@
             // peliculasToolStripMenuItem
             // 
             this.peliculasToolStripMenuItem.Name = "peliculasToolStripMenuItem";
-            this.peliculasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.peliculasToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
             this.peliculasToolStripMenuItem.Text = "Peliculas";
             this.peliculasToolStripMenuItem.Click += new System.EventHandler(this.peliculasToolStripMenuItem_Click);
             // 
             // funcionesToolStripMenuItem
             // 
             this.funcionesToolStripMenuItem.Name = "funcionesToolStripMenuItem";
-            this.funcionesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.funcionesToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
             this.funcionesToolStripMenuItem.Text = "Funciones";
             this.funcionesToolStripMenuItem.Click += new System.EventHandler(this.funcionesToolStripMenuItem_Click);
             // 
@@ -144,16 +144,6 @@
             this.nuevaToolStripMenuItem.Text = "Nueva";
             this.nuevaToolStripMenuItem.Click += new System.EventHandler(this.nuevaToolStripMenuItem_Click);
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::ReportesCine.Properties.Resources.Cine_12_svg;
-            this.pictureBox1.Location = new System.Drawing.Point(221, 118);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(358, 227);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 1;
-            this.pictureBox1.TabStop = false;
-            // 
             // aboutUsToolStripMenuItem
             // 
             this.aboutUsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -171,6 +161,16 @@
             this.informacionDesarrolladoresToolStripMenuItem.Text = "Informacion Desarrolladores";
             this.informacionDesarrolladoresToolStripMenuItem.Click += new System.EventHandler(this.informacionDesarrolladoresToolStripMenuItem_Click);
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::ReportesCine.Properties.Resources.Cine_12_svg;
+            this.pictureBox1.Location = new System.Drawing.Point(221, 118);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(358, 227);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 1;
+            this.pictureBox1.TabStop = false;
+            // 
             // LoginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -182,6 +182,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "LoginForm";
             this.Text = "LoginForm";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.LoginForm_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();

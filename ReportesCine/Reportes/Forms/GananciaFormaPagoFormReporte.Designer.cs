@@ -126,7 +126,7 @@
             this.reportViewer1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.reportViewer1.Name = "reportViewer1";
             this.reportViewer1.ServerReport.BearerToken = null;
-            this.reportViewer1.Size = new System.Drawing.Size(844, 313);
+            this.reportViewer1.Size = new System.Drawing.Size(850, 313);
             this.reportViewer1.TabIndex = 6;
             this.reportViewer1.Load += new System.EventHandler(this.reportViewer1_Load);
             // 
@@ -166,7 +166,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.ClientSize = new System.Drawing.Size(860, 377);
+            this.ClientSize = new System.Drawing.Size(871, 377);
             this.Controls.Add(this.nudDesc);
             this.Controls.Add(this.btnBuscar);
             this.Controls.Add(this.reportViewer1);
@@ -175,6 +175,8 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.MaximumSize = new System.Drawing.Size(887, 416);
+            this.MinimumSize = new System.Drawing.Size(887, 416);
             this.Name = "GananciaFormaPagoFormReporte";
             this.Text = "GananciaFormaPagoForm";
             this.Load += new System.EventHandler(this.GananciaFormaPagoForm_Load);
