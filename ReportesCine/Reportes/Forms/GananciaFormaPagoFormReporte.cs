@@ -48,7 +48,7 @@ namespace ReportesCine.Reportes.forms
 
                 reportViewer1.LocalReport.DataSources.Clear();
 
-                ReporteFacturasFormaPagoService reporteDBService = new ReporteFacturasFormaPagoService(DateTime.Parse(dtpFechaInicio.Value.ToString()), DateTime.Parse(dtpFechaFinal.Value.ToString()), (int)nudDescuento.Value);
+                ReporteFacturasFormaPagoService reporteDBService = new ReporteFacturasFormaPagoService(DateTime.Parse(dtpFechaInicio.Value.ToString("yyyy-MM-dd")), DateTime.Parse(dtpFechaFinal.Value.ToString("yyyy-MM-dd")), (int)nudDesc.Value);
                 List<ReporteFacturasFormaPago> lst = await reporteDBService.GetReporte();
 
                 if (lst.Count == 0)

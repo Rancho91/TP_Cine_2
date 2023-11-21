@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
             this.dataSetGananciaFormaPagoBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.dataSetGananciaFormaPago = new ReportesCine.Reportes.Data.DataSetGananciaFormaPago();
             this.label1 = new System.Windows.Forms.Label();
@@ -41,10 +41,12 @@
             this.btnBuscar = new System.Windows.Forms.Button();
             this.dataSetGananciaFormaPagoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.DataTable2BindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.nudDesc = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.dataSetGananciaFormaPagoBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSetGananciaFormaPago)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSetGananciaFormaPagoBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DataTable2BindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudDesc)).BeginInit();
             this.SuspendLayout();
             // 
             // dataSetGananciaFormaPagoBindingSource1
@@ -65,7 +67,7 @@
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.label1.Size = new System.Drawing.Size(72, 13);
+            this.label1.Size = new System.Drawing.Size(62, 13);
             this.label1.TabIndex = 1;
             this.label1.Text = "Descuento:";
             // 
@@ -77,7 +79,7 @@
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.label2.Size = new System.Drawing.Size(40, 13);
+            this.label2.Size = new System.Drawing.Size(35, 13);
             this.label2.TabIndex = 2;
             this.label2.Text = "Hasta";
             // 
@@ -89,12 +91,13 @@
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.label3.Size = new System.Drawing.Size(43, 13);
+            this.label3.Size = new System.Drawing.Size(38, 13);
             this.label3.TabIndex = 3;
             this.label3.Text = "Desde";
             // 
             // dtpFechaInicio
             // 
+            this.dtpFechaInicio.CustomFormat = "yyyy-MM-dd";
             this.dtpFechaInicio.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpFechaInicio.Location = new System.Drawing.Point(267, 28);
             this.dtpFechaInicio.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
@@ -105,6 +108,7 @@
             // 
             // dtpFechaFinal
             // 
+            this.dtpFechaFinal.CustomFormat = "yyyy-MM-dd";
             this.dtpFechaFinal.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpFechaFinal.Location = new System.Drawing.Point(420, 28);
             this.dtpFechaFinal.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
@@ -114,9 +118,9 @@
             // 
             // reportViewer1
             // 
-            reportDataSource1.Name = "DataSetGananciaFormaPago";
-            reportDataSource1.Value = this.dataSetGananciaFormaPagoBindingSource1;
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
+            reportDataSource2.Name = "DataSetGananciaFormaPago";
+            reportDataSource2.Value = this.dataSetGananciaFormaPagoBindingSource1;
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource2);
             this.reportViewer1.LocalReport.ReportEmbeddedResource = "ReportesCine.Reportes.InformeGananciaFoirmaPago.rdlc";
             this.reportViewer1.Location = new System.Drawing.Point(13, 59);
             this.reportViewer1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
@@ -150,13 +154,20 @@
             this.DataTable2BindingSource.DataMember = "DataTable2";
             this.DataTable2BindingSource.DataSource = this.dataSetGananciaFormaPago;
             // 
+            // nudDesc
+            // 
+            this.nudDesc.Location = new System.Drawing.Point(102, 28);
+            this.nudDesc.Name = "nudDesc";
+            this.nudDesc.Size = new System.Drawing.Size(62, 20);
+            this.nudDesc.TabIndex = 8;
+            // 
             // GananciaFormaPagoFormReporte
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.ClientSize = new System.Drawing.Size(860, 377);
-            this.Controls.Add(this.nudDescuento);
+            this.Controls.Add(this.nudDesc);
             this.Controls.Add(this.btnBuscar);
             this.Controls.Add(this.reportViewer1);
             this.Controls.Add(this.dtpFechaFinal);
@@ -171,6 +182,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataSetGananciaFormaPago)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSetGananciaFormaPagoBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DataTable2BindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudDesc)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -189,5 +201,6 @@
         private System.Windows.Forms.BindingSource DataTable2BindingSource;
         private System.Windows.Forms.BindingSource dataSetGananciaFormaPagoBindingSource1;
         private System.Windows.Forms.NumericUpDown nudDescuento;
+        private System.Windows.Forms.NumericUpDown nudDesc;
     }
 }

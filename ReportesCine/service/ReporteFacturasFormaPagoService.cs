@@ -15,7 +15,12 @@ namespace ReportesCine.service
 
         public ReporteFacturasFormaPagoService(DateTime fechaInicio, DateTime fechaFinal, int descuento)
         {
-            http = new DataHttp($"Reporte/facturaFormaPago/{"2020-1-1"}/{"2023-1-1"}/{descuento}");
+            // Construye manualmente la cadena de fecha con el formato "año-mes-día"
+            string fechaInicioStr = $"{fechaInicio.Year}-{fechaInicio.Month:D2}-{fechaInicio.Day:D2}";
+            string fechaFinalStr = $"{fechaFinal.Year}-{fechaFinal.Month:D2}-{fechaFinal.Day:D2}";
+
+            // Construye la URL con las fechas formateadas y el descuento
+            http = new DataHttp($"Reporte/facturaFormaPago/{fechaInicioStr}/{fechaFinalStr}/{descuento}");
         }
 
         public async Task<List<ReporteFacturasFormaPago>> GetReporte()
