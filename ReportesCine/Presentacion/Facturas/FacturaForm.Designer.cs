@@ -30,7 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FacturaForm));
             this.listboxFunciones = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.cboFunciones = new System.Windows.Forms.ComboBox();
             this.Funcion = new System.Windows.Forms.Label();
@@ -65,9 +64,14 @@
             this.lblFormaDePago = new System.Windows.Forms.Label();
             this.cboClientes = new System.Windows.Forms.ComboBox();
             this.cboFormaDePago = new System.Windows.Forms.ComboBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.lblDescuento = new System.Windows.Forms.Label();
+            this.cboDescuento = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.listboxFunciones)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // listboxFunciones
@@ -79,16 +83,6 @@
             this.listboxFunciones.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.listboxFunciones.TabIndex = 23;
             this.listboxFunciones.TabStop = false;
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(681, -1);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(200, 511);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 24;
-            this.pictureBox2.TabStop = false;
             // 
             // pictureBox3
             // 
@@ -103,6 +97,7 @@
             // cboFunciones
             // 
             this.cboFunciones.BackColor = System.Drawing.Color.White;
+            this.cboFunciones.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboFunciones.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.cboFunciones.Font = new System.Drawing.Font("Ebrima", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboFunciones.ForeColor = System.Drawing.Color.Brown;
@@ -463,9 +458,9 @@
             this.lblClientes.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.lblClientes.Location = new System.Drawing.Point(696, 9);
             this.lblClientes.Name = "lblClientes";
-            this.lblClientes.Size = new System.Drawing.Size(64, 20);
+            this.lblClientes.Size = new System.Drawing.Size(57, 20);
             this.lblClientes.TabIndex = 86;
-            this.lblClientes.Text = "Clientes";
+            this.lblClientes.Text = "Cliente";
             // 
             // lblFormaDePago
             // 
@@ -473,7 +468,7 @@
             this.lblFormaDePago.BackColor = System.Drawing.Color.Firebrick;
             this.lblFormaDePago.Font = new System.Drawing.Font("Ebrima", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblFormaDePago.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.lblFormaDePago.Location = new System.Drawing.Point(696, 85);
+            this.lblFormaDePago.Location = new System.Drawing.Point(696, 49);
             this.lblFormaDePago.Name = "lblFormaDePago";
             this.lblFormaDePago.Size = new System.Drawing.Size(114, 20);
             this.lblFormaDePago.TabIndex = 87;
@@ -483,19 +478,67 @@
             // 
             this.cboClientes.Font = new System.Drawing.Font("Ebrima", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboClientes.FormattingEnabled = true;
-            this.cboClientes.Location = new System.Drawing.Point(700, 41);
+            this.cboClientes.Location = new System.Drawing.Point(759, 9);
             this.cboClientes.Name = "cboClientes";
-            this.cboClientes.Size = new System.Drawing.Size(156, 23);
+            this.cboClientes.Size = new System.Drawing.Size(83, 23);
             this.cboClientes.TabIndex = 88;
             // 
             // cboFormaDePago
             // 
             this.cboFormaDePago.Font = new System.Drawing.Font("Ebrima", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboFormaDePago.FormattingEnabled = true;
-            this.cboFormaDePago.Location = new System.Drawing.Point(700, 117);
+            this.cboFormaDePago.Location = new System.Drawing.Point(700, 84);
             this.cboFormaDePago.Name = "cboFormaDePago";
             this.cboFormaDePago.Size = new System.Drawing.Size(140, 23);
             this.cboFormaDePago.TabIndex = 89;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.Location = new System.Drawing.Point(681, -1);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(200, 511);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 24;
+            this.pictureBox2.TabStop = false;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox1.Image = global::ReportesCine.Properties.Resources.Cine_12_svg;
+            this.pictureBox1.Location = new System.Drawing.Point(10, 417);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(123, 80);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 90;
+            this.pictureBox1.TabStop = false;
+            // 
+            // lblDescuento
+            // 
+            this.lblDescuento.AutoSize = true;
+            this.lblDescuento.BackColor = System.Drawing.Color.Firebrick;
+            this.lblDescuento.Font = new System.Drawing.Font("Ebrima", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDescuento.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.lblDescuento.Location = new System.Drawing.Point(696, 127);
+            this.lblDescuento.Name = "lblDescuento";
+            this.lblDescuento.Size = new System.Drawing.Size(83, 20);
+            this.lblDescuento.TabIndex = 91;
+            this.lblDescuento.Text = "Descuento";
+            // 
+            // cboDescuento
+            // 
+            this.cboDescuento.Font = new System.Drawing.Font("Ebrima", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboDescuento.FormattingEnabled = true;
+            this.cboDescuento.Items.AddRange(new object[] {
+            "0%",
+            "5%",
+            "15%",
+            "25%",
+            "50%"});
+            this.cboDescuento.Location = new System.Drawing.Point(699, 162);
+            this.cboDescuento.Name = "cboDescuento";
+            this.cboDescuento.Size = new System.Drawing.Size(54, 23);
+            this.cboDescuento.TabIndex = 92;
             // 
             // FacturaForm
             // 
@@ -503,6 +546,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.ClientSize = new System.Drawing.Size(881, 509);
+            this.Controls.Add(this.cboDescuento);
+            this.Controls.Add(this.lblDescuento);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.cboFormaDePago);
             this.Controls.Add(this.cboClientes);
             this.Controls.Add(this.lblFormaDePago);
@@ -543,8 +589,9 @@
             this.Text = "FacturaForm";
             this.Load += new System.EventHandler(this.FacturaForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.listboxFunciones)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -552,7 +599,6 @@
 
         #endregion
         private System.Windows.Forms.PictureBox listboxFunciones;
-        private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.ComboBox cboFunciones;
         private System.Windows.Forms.Label Funcion;
@@ -587,5 +633,9 @@
         private System.Windows.Forms.Label lblFormaDePago;
         private System.Windows.Forms.ComboBox cboClientes;
         private System.Windows.Forms.ComboBox cboFormaDePago;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label lblDescuento;
+        private System.Windows.Forms.ComboBox cboDescuento;
     }
 }

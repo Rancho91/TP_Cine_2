@@ -26,6 +26,7 @@ namespace ReportesCine.Presentacion.Facturas
         private PeliculasXFuncionService pxfService;
         private FormaPagoService fpService;
         private ClientesService clientesService;
+        private FacturaService facturaService;
 
         private Dictionary<Button, bool> botonesEstado = new Dictionary<Button, bool>();
 
@@ -50,12 +51,18 @@ namespace ReportesCine.Presentacion.Facturas
 
         private void FacturaForm_Load(object sender, EventArgs e)
         {
+            cboDescuento.SelectedIndex = 0;
+            cboDescuento.DropDownStyle = ComboBoxStyle.DropDownList;
+
             funcionService = new FuncionService();
             peliculasService = new PeliculasEService();
             fpService = new FormaPagoService();
             clientesService = new ClientesService();
+            facturaService = new FacturaService();
+
             butacas = new List<ReporteButacasDisponibles>();
             factura = new FacturasE();
+
             llenarClientes();
             llenarPeliculas();
             llenarFormasDePago();
@@ -67,7 +74,7 @@ namespace ReportesCine.Presentacion.Facturas
 
             cboClientes.DataSource = lst;
 
-            cboClientes.DisplayMember = "ToString";
+            cboClientes.DisplayMember = "Documento";
 
             cboClientes.ValueMember = "codigo";
 
@@ -203,6 +210,47 @@ namespace ReportesCine.Presentacion.Facturas
                     cboFunciones.SelectedIndex = -1;
                     MessageBox.Show("Cancelación de butacas realizada correctamente.", "Cancelación", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
+                else if(boton.Name == "btnGuardar")
+                {
+                    factura.FormaPago.Codigo = (int)cboFormaDePago.SelectedValue;
+                    factura.Cliente.Codigo = (int)cboClientes.SelectedValue;
+                    factura.TipoFactura.Codigo = 2;
+                    factura.Fecha = DateTime.Now;
+                    funcion.Precio = ((Funciones)cboFunciones.SelectedItem).ObtenerPrecio();
+
+
+                    if (cboDescuento.SelectedItem == "0%")
+                    {
+                        factura.Descuento = 0;
+                        factura.AgregarFuncion(funcion);
+                    }
+                    else if (cboDescuento.SelectedItem == "5%")
+                    {
+                        factura.Descuento = 5;
+                        funcion.Precio *= (decimal)0.95;
+                        factura.AgregarFuncion(funcion);
+                    }
+                    else if (cboDescuento.SelectedItem == "15%")
+                    {
+                        factura.Descuento = 15;
+                        funcion.Precio *= (decimal)0.85;
+                        factura.AgregarFuncion(funcion);
+                    }
+                    else if(cboDescuento.SelectedItem == "25%")
+                    {
+                        factura.Descuento = 25;
+                        funcion.Precio *= (decimal)0.75;
+                        factura.AgregarFuncion(funcion);
+                    }
+                    else
+                    {
+                        factura.Descuento = 50;
+                        funcion.Precio *= (decimal)0.50;
+                        factura.AgregarFuncion(funcion);
+                    }
+
+                    facturaService.Post(factura);
+                }
             }
             catch(Exception ex)
             {
@@ -256,21 +304,7 @@ namespace ReportesCine.Presentacion.Facturas
             }
         }
 
-        private int ObtenerIndiceBoton(Button boton)
-        {
-            // Este método obtiene el índice del botón en la lista de botones
-            // Itera sobre la lista de botones y retorna el índice del botón correspondiente
 
-            for (int i = 0; i < botonesEstado.Count; i++)
-            {
-                if (botonesEstado.ElementAt(i).Key == boton)
-                {
-                    return i;
-                }
-            }
-
-            return -1; // Retorna -1 si no se encuentra el botón (esto debería ser manejado según tus necesidades)
-        }
 
         private void btnSalir_Click(object sender, EventArgs e)
         {
