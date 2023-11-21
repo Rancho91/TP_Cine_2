@@ -41,7 +41,8 @@
             this.facturasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.nuevaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.acercaDeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aboutUsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.informacionDesarrolladoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -61,7 +62,7 @@
             this.reportesToolStripMenuItem,
             this.administrarToolStripMenuItem,
             this.facturasToolStripMenuItem,
-            this.acercaDeToolStripMenuItem});
+            this.aboutUsToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(800, 24);
@@ -82,7 +83,7 @@
             // 
             this.generarFacturaToolStripMenuItem.Name = "generarFacturaToolStripMenuItem";
             this.generarFacturaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.generarFacturaToolStripMenuItem.Text = "Salir";
+            this.generarFacturaToolStripMenuItem.Text = "Generar factura";
             this.generarFacturaToolStripMenuItem.Click += new System.EventHandler(this.generarFacturaToolStripMenuItem_Click);
             // 
             // reportesToolStripMenuItem
@@ -146,19 +147,29 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::ReportesCine.Properties.Resources.Cine_12_svg;
-            this.pictureBox1.Location = new System.Drawing.Point(485, -58);
+            this.pictureBox1.Location = new System.Drawing.Point(221, 118);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(358, 227);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
             // 
-            // acercaDeToolStripMenuItem
+            // aboutUsToolStripMenuItem
             // 
-            this.acercaDeToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
-            this.acercaDeToolStripMenuItem.Name = "acercaDeToolStripMenuItem";
-            this.acercaDeToolStripMenuItem.Size = new System.Drawing.Size(71, 20);
-            this.acercaDeToolStripMenuItem.Text = "Acerca de";
+            this.aboutUsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.informacionDesarrolladoresToolStripMenuItem});
+            this.aboutUsToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.aboutUsToolStripMenuItem.Name = "aboutUsToolStripMenuItem";
+            this.aboutUsToolStripMenuItem.Size = new System.Drawing.Size(75, 20);
+            this.aboutUsToolStripMenuItem.Text = "Acerca De ";
+            this.aboutUsToolStripMenuItem.Click += new System.EventHandler(this.aboutUsToolStripMenuItem_Click);
+            // 
+            // informacionDesarrolladoresToolStripMenuItem
+            // 
+            this.informacionDesarrolladoresToolStripMenuItem.Name = "informacionDesarrolladoresToolStripMenuItem";
+            this.informacionDesarrolladoresToolStripMenuItem.Size = new System.Drawing.Size(223, 22);
+            this.informacionDesarrolladoresToolStripMenuItem.Text = "Informacion Desarrolladores";
+            this.informacionDesarrolladoresToolStripMenuItem.Click += new System.EventHandler(this.informacionDesarrolladoresToolStripMenuItem_Click);
             // 
             // LoginForm
             // 
@@ -194,6 +205,7 @@
         private System.Windows.Forms.ToolStripMenuItem generarFacturaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem facturasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem nuevaToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem acercaDeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem aboutUsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem informacionDesarrolladoresToolStripMenuItem;
     }
 }
