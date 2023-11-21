@@ -305,14 +305,14 @@
               <TablixCells>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="SumaTotal1">
+                    <Textbox Name="FormaPago">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!SumaTotal.Value</Value>
+                              <Value>=Fields!FormaPago.Value</Value>
                               <Style />
                             </TextRun>
                           </TextRuns>
@@ -321,7 +321,7 @@
                           </Style>
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>SumaTotal1</rd:DefaultName>
+                      <rd:DefaultName>FormaPago</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -335,6 +335,7 @@
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                     </Textbox>
+                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
                 <TablixCell>
@@ -570,7 +571,7 @@
         <Top>3.46286cm</Top>
         <Left>0.47308cm</Left>
         <Height>2.1525cm</Height>
-        <Width>20.79373cm</Width>
+        <Width>20.79374cm</Width>
         <Style>
           <Border>
             <Style>None</Style>

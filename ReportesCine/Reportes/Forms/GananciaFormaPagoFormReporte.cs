@@ -56,7 +56,7 @@ namespace ReportesCine.Reportes.forms
                     MessageBox.Show($"reporte sin informacion");
                 }
 
-                reportViewer1.LocalReport.ReportPath = @"C:\Users\ramir\Desktop\Proyecto Progra\TP_Cine_2\ReportesCine\Reportes\InformeGananciaFoirmaPago.rdlc";
+                reportViewer1.LocalReport.ReportPath = @"C:\Users\Fabri\Desktop\tpProgra\TP_Cine_2\ReportesCine\Reportes\InformeGananciaFoirmaPago.rdlc";
                 reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("DataSetGananciaFormaPago", lst));
                 List<ReportParameter> paramList = new List<ReportParameter>();
 

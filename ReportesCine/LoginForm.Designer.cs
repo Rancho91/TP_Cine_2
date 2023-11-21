@@ -82,8 +82,8 @@
             // generarFacturaToolStripMenuItem
             // 
             this.generarFacturaToolStripMenuItem.Name = "generarFacturaToolStripMenuItem";
-            this.generarFacturaToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
-            this.generarFacturaToolStripMenuItem.Text = "Generar factura";
+            this.generarFacturaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.generarFacturaToolStripMenuItem.Text = "Salir";
             this.generarFacturaToolStripMenuItem.Click += new System.EventHandler(this.generarFacturaToolStripMenuItem_Click);
             // 
             // reportesToolStripMenuItem
@@ -140,7 +140,7 @@
             // nuevaToolStripMenuItem
             // 
             this.nuevaToolStripMenuItem.Name = "nuevaToolStripMenuItem";
-            this.nuevaToolStripMenuItem.Size = new System.Drawing.Size(108, 22);
+            this.nuevaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.nuevaToolStripMenuItem.Text = "Nueva";
             this.nuevaToolStripMenuItem.Click += new System.EventHandler(this.nuevaToolStripMenuItem_Click);
             // 

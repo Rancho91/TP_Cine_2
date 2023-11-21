@@ -99,6 +99,7 @@
             this.txtpass.TabIndex = 4;
             this.txtpass.Text = "CONTRASEÑA";
             this.txtpass.Click += new System.EventHandler(this.txtpass_Click);
+            this.txtpass.TextChanged += new System.EventHandler(this.txtpass_TextChanged);
             this.txtpass.Enter += new System.EventHandler(this.txtpass_Enter);
             this.txtpass.Leave += new System.EventHandler(this.txtpass_Leave);
             // 

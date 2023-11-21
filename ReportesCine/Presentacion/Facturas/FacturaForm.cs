@@ -252,6 +252,7 @@ namespace ReportesCine.Presentacion.Facturas
                         factura.AgregarFuncion(funcion);
                     }
                     await facturaService.Post(factura);
+                    lblTotal.Text = "0";
                 }
             }
             catch(Exception ex)
@@ -421,6 +422,16 @@ namespace ReportesCine.Presentacion.Facturas
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             habilitarDeshabilitar();
+        }
+
+        private void listboxFunciones_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblTotal_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

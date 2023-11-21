@@ -75,7 +75,7 @@ namespace CineApi.ReportesCine
 
                 }
 
-                reportViewer2.LocalReport.ReportPath = @"C:\Users\Sofi\Desktop\Cine\TP_Cine_2\ReportesCine\Reportes\ButacasDisponiblesXFuncion.rdlc";
+                reportViewer2.LocalReport.ReportPath = @"C:\Users\Fabri\Desktop\tpProgra\TP_Cine_2\ReportesCine\Reportes\ButacasDisponiblesXFuncion.rdlc";
                 reportViewer2.LocalReport.DataSources.Add(new ReportDataSource("DataSet1", lst));
                 List<ReportParameter> paramList = new List<ReportParameter>();
 

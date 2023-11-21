@@ -79,7 +79,7 @@ namespace ReportesCine
                 txtpass.Text = "CONTRASEÑA";
                
                 txtpass.ForeColor = Color.DarkGray;
-                txtpass.UseSystemPasswordChar = true;
+               
 
             }
         }
@@ -96,6 +96,11 @@ namespace ReportesCine
                 lblErrorUsuariocontra.Text = "USUARIO/CONTRASEÑA INCORRECTAS";
                 lblErrorUsuariocontra.ForeColor = Color.Red;
             }
+        }
+
+        private void txtpass_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

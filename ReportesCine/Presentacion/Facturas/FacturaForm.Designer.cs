@@ -85,6 +85,7 @@
             this.listboxFunciones.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.listboxFunciones.TabIndex = 23;
             this.listboxFunciones.TabStop = false;
+            this.listboxFunciones.Click += new System.EventHandler(this.listboxFunciones_Click);
             // 
             // pictureBox3
             // 
@@ -570,6 +571,7 @@
             this.lblTotal.Size = new System.Drawing.Size(21, 24);
             this.lblTotal.TabIndex = 94;
             this.lblTotal.Text = "0";
+            this.lblTotal.Click += new System.EventHandler(this.lblTotal_Click);
             // 
             // FacturaForm
             // 

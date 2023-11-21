@@ -47,6 +47,7 @@ namespace DataCineDb.Service
                 }
 
                 t.Commit();
+                helper.Desconectar();
             }
             catch (Exception ex)
             {
@@ -55,6 +56,7 @@ namespace DataCineDb.Service
                     t.Rollback();
                 }
                 Console.Write(ex.Message);
+                helper.Desconectar();
             }
             finally
             {
