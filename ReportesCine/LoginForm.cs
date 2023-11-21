@@ -49,8 +49,7 @@ namespace ReportesCine
 
         private void generarFacturaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FacturaForm form = new FacturaForm();
-            form.ShowDialog();
+            this.Close();
         }
 
         private void LoginForm_Load(object sender, EventArgs e)
