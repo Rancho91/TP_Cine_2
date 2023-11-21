@@ -77,5 +77,10 @@ namespace ReportesCine.Entidades.Maestras
         {
             return $"{Fecha:yyyy-MM-dd} / {Horario.Hours:D2}:{Horario.Minutes:D2}";
         }
+
+        public decimal ObtenerPrecio()
+        {
+            return Precio; // Método para obtener el precio
+        }
     }
 }
