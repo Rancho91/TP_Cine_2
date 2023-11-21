@@ -34,6 +34,7 @@ namespace ReportesCine.Presentacion.Facturas
         ReporteButacasDisponiblesService serviceButacas;
         FacturasE factura;
         Funciones funcion;
+
         public FacturaForm()
         {
             InitializeComponent();
@@ -66,6 +67,7 @@ namespace ReportesCine.Presentacion.Facturas
             llenarClientes();
             llenarPeliculas();
             llenarFormasDePago();
+            habilitarDeshabilitar();
         }
 
         private async void llenarClientes()
@@ -160,7 +162,7 @@ namespace ReportesCine.Presentacion.Facturas
             return null; // En caso de no encontrar el botón con el código de butaca especificado
         }
 
-        private void Boton_Click(object sender, EventArgs e)
+        private async void Boton_Click(object sender, EventArgs e)
         {
             try
             {
@@ -183,6 +185,7 @@ namespace ReportesCine.Presentacion.Facturas
                         // Añade aquí la lógica adicional según tus necesidades
                         // Por ejemplo, puedes actualizar la interfaz de usuario o realizar otras operaciones relacionadas con la compra de la butaca
                         MessageBox.Show($"Butaca {codigoButaca} comprada correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        Calculartotal();
                     }
                     else
                     {
@@ -191,6 +194,7 @@ namespace ReportesCine.Presentacion.Facturas
                         // Añade aquí la lógica adicional según tus necesidades
                         // Por ejemplo, puedes actualizar la interfaz de usuario o realizar otras operaciones relacionadas con la cancelación de la compra
                         MessageBox.Show($"Butaca {codigoButaca} cancelada correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        Calculartotal();
                     }
 
                     CambiarImagenBoton(boton);
@@ -217,7 +221,6 @@ namespace ReportesCine.Presentacion.Facturas
                     factura.TipoFactura.Codigo = 2;
                     factura.Fecha = DateTime.Now;
                     funcion.Precio = ((Funciones)cboFunciones.SelectedItem).ObtenerPrecio();
-
 
                     if (cboDescuento.SelectedItem == "0%")
                     {
@@ -248,8 +251,7 @@ namespace ReportesCine.Presentacion.Facturas
                         funcion.Precio *= (decimal)0.50;
                         factura.AgregarFuncion(funcion);
                     }
-
-                    facturaService.Post(factura);
+                    await facturaService.Post(factura);
                 }
             }
             catch(Exception ex)
@@ -261,12 +263,21 @@ namespace ReportesCine.Presentacion.Facturas
 
     private async void btnBuscar_Click(object sender, EventArgs e)
         {
+            if (cboPeliculas.SelectedItem == null)
+            {
+             
+                MessageBox.Show("Por favor, seleccione una película", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return; 
+            }
             funcion = new Funciones();
             funcion.Codigo = (int)cboFunciones.SelectedValue;
+            Funciones funcionSeleccionada = (Funciones)cboFunciones.SelectedItem;
+            funcion.Precio = funcionSeleccionada.Precio;
             serviceButacas = new ReporteButacasDisponiblesService((int)cboFunciones.SelectedValue,"Ñ");
             butacas = await serviceButacas.GetReporte();
             cboFunciones.Enabled = false;
             lstBoxFunc.Enabled = false;
+            habilitarDeshabilitar();
             cargarButacas();
         }
 
@@ -314,6 +325,102 @@ namespace ReportesCine.Presentacion.Facturas
             {
                 this.Close(); // Cierra el formulario actual
             }
+        }
+
+        private void cboPeliculas_SelectedIndexChanged(object sender, EventArgs e)
+        {
+        }
+
+        private async void btnGuardar_Click(object sender, EventArgs e)
+        {
+           
+
+
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Calculartotal()
+        {
+            decimal total;
+            if (factura != null)
+            {
+                if (cboDescuento.SelectedItem == "0%")
+                {
+                    factura.Descuento = 0;
+                    total = funcion.Butacas.Count * funcion.Precio;
+                    lblTotal.Text = total.ToString();
+                }
+                else if (cboDescuento.SelectedItem == "5%")
+                {
+                    factura.Descuento = 5;
+                    total = funcion.Butacas.Count * funcion.Precio * (decimal)0.95;
+                    lblTotal.Text = total.ToString();
+                }
+                else if (cboDescuento.SelectedItem == "15%")
+                {
+                    factura.Descuento = 15;
+                    total = funcion.Butacas.Count * funcion.Precio * (decimal)0.85;
+                    lblTotal.Text = total.ToString();
+
+                }
+                else if (cboDescuento.SelectedItem == "25%")
+                {
+                    factura.Descuento = 25;
+                    total = funcion.Butacas.Count * funcion.Precio * (decimal)0.75;
+                    lblTotal.Text = total.ToString();
+
+                }
+                else
+                {
+                    factura.Descuento = 50;
+                    total = funcion.Butacas.Count * funcion.Precio * (decimal)0.50;
+                    lblTotal.Text = total.ToString();
+
+                }
+            }
+        }
+
+        private void cboDescuento_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Calculartotal();
+        }
+
+        private void habilitarDeshabilitar()
+        {
+            btnCancelar.Enabled=!btnCancelar.Enabled;
+            butaca1.Enabled = !butaca1.Enabled;
+            butaca2.Enabled = !butaca2.Enabled;
+            butaca3.Enabled = !butaca3.Enabled;
+            butaca4.Enabled = !butaca4.Enabled;
+            butaca5.Enabled = !butaca5.Enabled;
+            butaca6.Enabled = !butaca6.Enabled;
+            butaca7.Enabled = !butaca7.Enabled;
+            butaca8.Enabled = !butaca8.Enabled;
+            butaca9.Enabled = !butaca9.Enabled;
+            butaca10.Enabled = !butaca10.Enabled;
+            butaca11.Enabled = !butaca11.Enabled;
+            butaca12.Enabled = !butaca12.Enabled;
+            butaca13.Enabled = !butaca13.Enabled;
+            butaca14.Enabled = !butaca14.Enabled;
+            butaca15.Enabled = !butaca15.Enabled;
+            butaca16.Enabled = !butaca16.Enabled;
+            butaca17.Enabled = !butaca17.Enabled;
+            butaca18.Enabled = !butaca18.Enabled;
+            butaca19.Enabled = !butaca19.Enabled;
+            butaca20.Enabled = !butaca20.Enabled;
+
+
+
+
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            habilitarDeshabilitar();
         }
     }
 }
