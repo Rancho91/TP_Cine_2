@@ -1472,3 +1472,5 @@ C:\Users\Fabri\Desktop\b\TP_Cine_2\ReportesCine\obj\Debug\ReportesCine.csproj.Co
 C:\Users\Fabri\Desktop\b\TP_Cine_2\ReportesCine\obj\Debug\ReportesCine.csproj.CopyComplete
 C:\Users\Fabri\Desktop\b\TP_Cine_2\ReportesCine\obj\Debug\ReportesCine.exe
 C:\Users\Fabri\Desktop\b\TP_Cine_2\ReportesCine\obj\Debug\ReportesCine.pdb
+C:\Users\Fabri\Desktop\b\TP_Cine_2\ReportesCine\obj\Debug\ReportesCine.LoginIniciarSesion.resources
+C:\Users\Fabri\Desktop\b\TP_Cine_2\ReportesCine\obj\Debug\ReportesCine.FormInformacionDesarrolladores.resources

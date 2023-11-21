@@ -236,6 +236,18 @@
     <Compile Include="Entidades\Reportes\ReporteFacturasFormaPago.cs" />
     <Compile Include="Entidades\Reportes\ReportePeliculasGanancia.cs" />
     <Compile Include="Entidades\Reportes\reportePeliculasXFecha.cs" />
+    <Compile Include="FormInformacionDesarrolladores.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormInformacionDesarrolladores.Designer.cs">
+      <DependentUpon>FormInformacionDesarrolladores.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LoginIniciarSesion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LoginIniciarSesion.Designer.cs">
+      <DependentUpon>LoginIniciarSesion.cs</DependentUpon>
+    </Compile>
     <Compile Include="Presentacion\PeliculasForm\FormEditarPelicula.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -318,6 +330,12 @@
     <Compile Include="service\ReportePeliculasGeneroClasiService.cs" />
     <Compile Include="service\SalasService.cs" />
     <Compile Include="SqlServerTypes\Loader.cs" />
+    <EmbeddedResource Include="FormInformacionDesarrolladores.resx">
+      <DependentUpon>FormInformacionDesarrolladores.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoginIniciarSesion.resx">
+      <DependentUpon>LoginIniciarSesion.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\PeliculasForm\FormEditarPelicula.resx">
       <DependentUpon>FormEditarPelicula.cs</DependentUpon>
     </EmbeddedResource>

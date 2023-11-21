@@ -20,6 +20,8 @@ namespace ReportesCine
         public LoginForm()
         {
             InitializeComponent();
+
+
         }
 
         private void peliculasGananciasToolStripMenuItem_Click(object sender, EventArgs e)
@@ -68,6 +70,22 @@ namespace ReportesCine
         {
             FacturaForm form = new FacturaForm();
             form.ShowDialog();
+        }
+
+        private void loginToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void aboutUsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void informacionDesarrolladoresToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormInformacionDesarrolladores f = new FormInformacionDesarrolladores();
+            f.ShowDialog();
         }
     }
 }
