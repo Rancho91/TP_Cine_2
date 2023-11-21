@@ -29,49 +29,24 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormInformacionDesarrolladores));
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.lblnombre = new System.Windows.Forms.Label();
             this.lbljoaquin = new System.Windows.Forms.Label();
             this.lblema = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.lblrami = new System.Windows.Forms.Label();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.pictureBox5 = new System.Windows.Forms.PictureBox();
+            this.lblinfo = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+            this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             this.SuspendLayout();
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.BackColor = System.Drawing.SystemColors.Window;
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.lblema);
-            this.groupBox1.Controls.Add(this.lbljoaquin);
-            this.groupBox1.Controls.Add(this.lblnombre);
-            this.groupBox1.Controls.Add(this.pictureBox4);
-            this.groupBox1.Controls.Add(this.pictureBox3);
-            this.groupBox1.Controls.Add(this.pictureBox1);
-            this.groupBox1.Controls.Add(this.pictureBox2);
-            this.groupBox1.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.groupBox1.Location = new System.Drawing.Point(34, 30);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(729, 415);
-            this.groupBox1.TabIndex = 0;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "INTEGRANTES";
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(18, 321);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(86, 87);
-            this.pictureBox1.TabIndex = 2;
-            this.pictureBox1.TabStop = false;
             // 
             // pictureBox2
             // 
@@ -82,6 +57,16 @@
             this.pictureBox2.TabIndex = 1;
             this.pictureBox2.TabStop = false;
             this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(18, 321);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(86, 87);
+            this.pictureBox1.TabIndex = 2;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // pictureBox3
             // 
@@ -106,7 +91,7 @@
             // lblnombre
             // 
             this.lblnombre.AutoSize = true;
-            this.lblnombre.ForeColor = System.Drawing.SystemColors.Window;
+            this.lblnombre.ForeColor = System.Drawing.SystemColors.InfoText;
             this.lblnombre.Location = new System.Drawing.Point(125, 218);
             this.lblnombre.Name = "lblnombre";
             this.lblnombre.Size = new System.Drawing.Size(35, 13);
@@ -116,8 +101,8 @@
             // lbljoaquin
             // 
             this.lbljoaquin.AutoSize = true;
-            this.lbljoaquin.BackColor = System.Drawing.SystemColors.Window;
-            this.lbljoaquin.ForeColor = System.Drawing.SystemColors.Window;
+            this.lbljoaquin.BackColor = System.Drawing.SystemColors.InfoText;
+            this.lbljoaquin.ForeColor = System.Drawing.SystemColors.InfoText;
             this.lbljoaquin.Location = new System.Drawing.Point(128, 125);
             this.lbljoaquin.Name = "lbljoaquin";
             this.lbljoaquin.Size = new System.Drawing.Size(35, 13);
@@ -127,51 +112,97 @@
             // lblema
             // 
             this.lblema.AutoSize = true;
-            this.lblema.ForeColor = System.Drawing.SystemColors.Window;
+            this.lblema.ForeColor = System.Drawing.SystemColors.InactiveCaptionText;
             this.lblema.Location = new System.Drawing.Point(128, 23);
             this.lblema.Name = "lblema";
             this.lblema.Size = new System.Drawing.Size(35, 13);
             this.lblema.TabIndex = 7;
             this.lblema.Text = "label1";
             // 
-            // label2
+            // lblrami
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(125, 321);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(35, 13);
-            this.label2.TabIndex = 8;
-            this.label2.Text = "label2";
+            this.lblrami.AutoSize = true;
+            this.lblrami.ForeColor = System.Drawing.SystemColors.Window;
+            this.lblrami.Location = new System.Drawing.Point(125, 321);
+            this.lblrami.Name = "lblrami";
+            this.lblrami.Size = new System.Drawing.Size(10, 13);
+            this.lblrami.TabIndex = 8;
+            this.lblrami.Text = ".";
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.BackColor = System.Drawing.SystemColors.InfoText;
+            this.groupBox1.Controls.Add(this.pictureBox5);
+            this.groupBox1.Controls.Add(this.lblrami);
+            this.groupBox1.Controls.Add(this.lblema);
+            this.groupBox1.Controls.Add(this.lbljoaquin);
+            this.groupBox1.Controls.Add(this.lblnombre);
+            this.groupBox1.Controls.Add(this.pictureBox4);
+            this.groupBox1.Controls.Add(this.pictureBox3);
+            this.groupBox1.Controls.Add(this.pictureBox1);
+            this.groupBox1.Controls.Add(this.pictureBox2);
+            this.groupBox1.ForeColor = System.Drawing.SystemColors.GrayText;
+            this.groupBox1.Location = new System.Drawing.Point(12, 64);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(776, 415);
+            this.groupBox1.TabIndex = 0;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "INTEGRANTES";
+            // 
+            // pictureBox5
+            // 
+            this.pictureBox5.Image = global::ReportesCine.Properties.Resources.Cine_12_svg;
+            this.pictureBox5.Location = new System.Drawing.Point(412, 182);
+            this.pictureBox5.Name = "pictureBox5";
+            this.pictureBox5.Size = new System.Drawing.Size(358, 227);
+            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox5.TabIndex = 9;
+            this.pictureBox5.TabStop = false;
+            // 
+            // lblinfo
+            // 
+            this.lblinfo.AutoSize = true;
+            this.lblinfo.ForeColor = System.Drawing.Color.Red;
+            this.lblinfo.Location = new System.Drawing.Point(233, 48);
+            this.lblinfo.Name = "lblinfo";
+            this.lblinfo.Size = new System.Drawing.Size(305, 13);
+            this.lblinfo.TabIndex = 10;
+            this.lblinfo.Text = "CLICK SOBRE LA IMAGEN PARA MOSTRAR INFORMACION";
             // 
             // FormInformacionDesarrolladores
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.Window;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.BackColor = System.Drawing.SystemColors.InfoText;
+            this.ClientSize = new System.Drawing.Size(800, 491);
+            this.Controls.Add(this.lblinfo);
             this.Controls.Add(this.groupBox1);
             this.Name = "FormInformacionDesarrolladores";
             this.Text = "FormInformacionDesarrolladores";
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Label lblnombre;
-        private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.PictureBox pictureBox4;
+        private System.Windows.Forms.Label lblnombre;
         private System.Windows.Forms.Label lbljoaquin;
         private System.Windows.Forms.Label lblema;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblrami;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.PictureBox pictureBox5;
+        private System.Windows.Forms.Label lblinfo;
     }
 }
